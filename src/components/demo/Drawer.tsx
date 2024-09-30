@@ -56,7 +56,7 @@ export const Drawer = () => {
     };
     return (
         <div>
-            <div className="relative hidden md:flex h-full items-start justify-start w-[250px]">
+            <div className="relative z-10 hidden md:flex h-full items-start justify-start w-[250px]">
                 <div className="h-full w-full border-2 border-border dark:border-darkBorder font-base">
                     {menuData.map((section, index) => (
                         <div key={index}>

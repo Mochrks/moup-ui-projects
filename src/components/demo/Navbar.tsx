@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from "framer-motion"
+import React, { useState } from 'react'
+import { motion } from "framer-motion"
 import { FaGithub } from "react-icons/fa";
 import { PiYoutubeLogo, PiOpenAiLogoFill } from "react-icons/pi";
 import { FiMenu } from "react-icons/fi";
@@ -17,33 +17,8 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { logos } from '@/assets';
 
-
-// const components: { title: string; href: string; description: string }[] = [
-//     {
-//         title: "Dialog",
-//         href: "components/dialog",
-//         description:
-//             "A modal dialog that interrupts the user with important content and expects a response.",
-//     },
-//     {
-//         title: "Alert",
-//         href: "components/alert",
-//         description: "Visually or semantically separates content.",
-//     },
-//     {
-//         title: "Tabs",
-//         href: "components/tabs",
-//         description:
-//             "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-//     },
-//     {
-//         title: "Loading",
-//         href: "components/loading",
-//         description:
-//             "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-//     },
-// ]
 
 const ListItem = React.forwardRef<
     React.ElementRef<"a">,
@@ -55,7 +30,7 @@ const ListItem = React.forwardRef<
                 <a
                     ref={ref}
                     className={cn(
-                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none bg-mainBg transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                         className
                     )}
                     {...props}
@@ -78,7 +53,7 @@ export const Navbar = () => {
         navigate('/components/all-components');
     }
     return (
-        <nav className="bg-white dark:bg-gray-800 px-5 lg:px-10 py-6 border-b-4 border-black">
+        <nav className="bg-white dark:bg-gray-800 px-5 lg:px-10 py-4 border-b-4 border-black">
             <div className="mx-auto">
                 <div className="flex items-center justify-between">
                     <div
@@ -90,7 +65,7 @@ export const Navbar = () => {
                             animate={isHovered ? { rotate: 360 } : { rotate: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <PiOpenAiLogoFill className="h-8 w-8" />
+                            <img src={logos} alt="logo" className='w-7 h-7' />
                         </motion.div>
                         <a
                             href="/"
@@ -117,13 +92,13 @@ export const Navbar = () => {
                                                         <div className='bg-mainBg rounded-sm'>
                                                             <a
                                                                 className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                                                href="/docs"
+                                                                href="/docs/introduction"
                                                             >
                                                                 <PiOpenAiLogoFill className="h-6 w-6" />
                                                                 <div className="mb-2 mt-4 text-lg font-medium">
                                                                     MoupUI
                                                                 </div>
-                                                                <p className="text-sm leading-tight text-muted-foreground">
+                                                                <p className="text-sm font-normal">
                                                                     Beautifully designed components that you can copy and
                                                                     paste into your apps. Accessible. Customizable. Open
                                                                     Source.
@@ -132,10 +107,10 @@ export const Navbar = () => {
                                                         </div>
                                                     </NavigationMenuLink>
                                                 </li>
-                                                <ListItem href="/docs/introduction" title="Introduction">
+                                                <ListItem href="/docs/introduction" title="Introduction" className='font-normal'>
                                                     Re-usable components built using Reacts and Tailwind CSS.
                                                 </ListItem>
-                                                <ListItem href="/docs/installation" title="Installation">
+                                                <ListItem href="/docs/installation" title="Installation" className='font-normal'>
                                                     How to install dependencies and structure your app.
                                                 </ListItem>
 
@@ -148,16 +123,15 @@ export const Navbar = () => {
                                     <NavigationMenuItem>
                                         <NavigationMenuTrigger>Components</NavigationMenuTrigger>
                                         <NavigationMenuContent>
-                                            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-
-                                                <ListItem href="/components/alert" title="Alert">
+                                            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] ">
+                                                <ListItem href="/components/alert" title="Alert" className='font-normal'>
                                                     Alert component
                                                 </ListItem>
-                                                <ListItem href="/components/loading" title="Loading">
+                                                <ListItem href="/components/loading" title="Loading" className='font-normal'>
                                                     Create many loading components
                                                 </ListItem>
                                             </ul>
-                                            <div className='m-5 w-full'>
+                                            <div className='mx-5 mb-5 w-full'>
                                                 <Button variant="noShadow" onClick={handleSeeMore}>See More</Button>
                                             </div>
                                         </NavigationMenuContent>
@@ -179,10 +153,15 @@ export const Navbar = () => {
                     </div>
                     <div className="hidden md:flex space-x-4 text-lg">
                         <Button variant="neutral" size="icon">
-                            <FaGithub className="h-6 w-6" />
+                            <a href="https://www.github.com/mochrks" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                                <FaGithub className="h-6 w-6" />
+                            </a>
                         </Button>
                         <Button variant="neutral" size="icon">
-                            <PiYoutubeLogo className="h-6 w-6" />
+                            <a href="https://www.youtube.com/@gdvisuel" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                                <PiYoutubeLogo className="h-6 w-6" />
+                            </a>
+
                         </Button>
                     </div>
                     <div className="md:hidden">
@@ -191,7 +170,7 @@ export const Navbar = () => {
                         </Button>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </div >
+        </nav >
     )
 }
