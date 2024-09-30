@@ -1,5 +1,4 @@
 
-
 export const SignIn = () => {
     return (
         <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-3 '>
@@ -18,8 +17,6 @@ export const SignIn = () => {
                     Quickly implement these sign-in components by copying them into your project, customizing the design to suit your brand, and connecting them to your authentication logic. Get your sign-in process up and running effortlessly with MoupUI.
                 </p>
             </div>
-
-
         </div>
     )
 }
