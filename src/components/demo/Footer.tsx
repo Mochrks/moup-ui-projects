@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Button } from '../ui/button';
 import { FaGithub } from 'react-icons/fa';
 import { logos } from '@/assets';

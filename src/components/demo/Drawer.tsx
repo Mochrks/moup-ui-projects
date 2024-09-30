@@ -1,4 +1,3 @@
-import React from 'react'
 
 import { useNavigate } from 'react-router-dom'; // Tambahkan Routes dan Route
 import { RiMenuUnfold4Line2 } from "react-icons/ri";
@@ -51,7 +50,7 @@ const menuData = [
 export const Drawer = () => {
     const navigate = useNavigate();
 
-    const handleNavigation = (route) => {
+    const handleNavigation = (route: string) => {
         navigate(`/${route}`);
     };
     return (
