@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { motion } from "framer-motion"
-import { FaGithub } from "react-icons/fa";
-import { PiYoutubeLogo, PiOpenAiLogoFill } from "react-icons/pi";
-import { FiMenu } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa"
+import { PiYoutubeLogo, PiOpenAiLogoFill } from "react-icons/pi"
+import { FiMenu } from "react-icons/fi"
 import { Button } from '@/components/ui/button'
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom'
 import { cn } from "@/lib/utils"
-
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -17,8 +15,12 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { logos } from '@/assets';
-
+import {
+    Sheet,
+    SheetContent,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+import { logos } from '@/assets'
 
 const ListItem = React.forwardRef<
     React.ElementRef<"a">,
@@ -46,12 +48,82 @@ const ListItem = React.forwardRef<
 })
 ListItem.displayName = "ListItem"
 
+const MobileMenu = () => {
+    const navigate = useNavigate()
+    const handleSeeMore = () => {
+        navigate('/components/all-components')
+    }
+
+    return (
+        <div className="  flex flex-col space-y-4 h-full">
+            <div className='flex-grow '>
+                <NavigationMenu orientation="vertical">
+                    <NavigationMenuList className=" flex-col items-start space-y-2">
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="grid gap-3 p-6 w-[250px]">
+                                    <ListItem href="/docs/introduction" title="Introduction" className='font-normal'>
+                                        Re-usable components built using React and Tailwind CSS.
+                                    </ListItem>
+                                    <ListItem href="/docs/installation" title="Installation" className='font-normal'>
+                                        How to install dependencies and structure your app.
+                                    </ListItem>
+                                </ul>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+                            <NavigationMenuContent >
+                                <ul className="grid gap-3 p-6 w-[250px]">
+                                    <ListItem href="/components/alert" title="Alert" className='font-normal'>
+                                        Alert component
+                                    </ListItem>
+                                    <ListItem href="/components/loading" title="Loading" className='font-normal'>
+                                        Create many loading components
+                                    </ListItem>
+                                </ul>
+                                <div className='mx-5 pb-5 w-full'>
+                                    <Button variant="noShadow" onClick={handleSeeMore} >See More</Button>
+                                </div>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                Color
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                FAQ
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
+                </NavigationMenu>
+            </div>
+            <div className="flex space-x-4 text-lg px-5 ">
+                <Button variant="neutral" size="icon">
+                    <a href="https://www.github.com/mochrks" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        <FaGithub className="h-6 w-6" />
+                    </a>
+                </Button>
+                <Button variant="neutral" size="icon">
+                    <a href="https://www.youtube.com/@gdvisuel" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        <PiYoutubeLogo className="h-6 w-6" />
+                    </a>
+                </Button>
+            </div>
+        </div>
+    )
+}
+
 export const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false)
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const handleSeeMore = () => {
-        navigate('/components/all-components');
+        navigate('/components/all-components')
     }
+
     return (
         <nav className="bg-white dark:bg-gray-800 px-5 lg:px-10 py-4 border-b-4 border-black">
             <div className="mx-auto">
@@ -67,9 +139,7 @@ export const Navbar = () => {
                         >
                             <img src={logos} alt="logo" className='w-7 h-7' />
                         </motion.div>
-                        <a
-                            href="/"
-                        >
+                        <a href="/">
                             <motion.span
                                 className="text-xl font-bold cursor-pointer"
                                 animate={isHovered ? { scale: 1.1 } : { scale: 1 }}
@@ -81,8 +151,6 @@ export const Navbar = () => {
                         <div className='hidden md:flex space-x-4 px-10 '>
                             <NavigationMenu>
                                 <NavigationMenuList>
-
-                                    {/* docs */}
                                     <NavigationMenuItem>
                                         <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
                                         <NavigationMenuContent>
@@ -113,13 +181,9 @@ export const Navbar = () => {
                                                 <ListItem href="/docs/installation" title="Installation" className='font-normal'>
                                                     How to install dependencies and structure your app.
                                                 </ListItem>
-
                                             </ul>
                                         </NavigationMenuContent>
                                     </NavigationMenuItem>
-
-
-                                    {/* components */}
                                     <NavigationMenuItem>
                                         <NavigationMenuTrigger>Components</NavigationMenuTrigger>
                                         <NavigationMenuContent>
@@ -148,7 +212,6 @@ export const Navbar = () => {
                                     </NavigationMenuItem>
                                 </NavigationMenuList>
                             </NavigationMenu>
-
                         </div>
                     </div>
                     <div className="hidden md:flex space-x-4 text-lg">
@@ -161,16 +224,22 @@ export const Navbar = () => {
                             <a href="https://www.youtube.com/@gdvisuel" target="_blank" rel="noopener noreferrer" className="hover:underline">
                                 <PiYoutubeLogo className="h-6 w-6" />
                             </a>
-
                         </Button>
                     </div>
                     <div className="md:hidden">
-                        <Button variant="neutral" size="icon">
-                            <FiMenu className="h-6 w-6" />
-                        </Button>
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <Button variant="neutral" size="icon">
+                                    <FiMenu className="h-6 w-6" />
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent side="right">
+                                <MobileMenu />
+                            </SheetContent>
+                        </Sheet>
                     </div>
                 </div>
-            </div >
-        </nav >
+            </div>
+        </nav>
     )
 }
