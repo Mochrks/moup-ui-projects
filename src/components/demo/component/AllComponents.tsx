@@ -1,8 +1,8 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { LucideIcon, Bell } from 'lucide-react'
-import { NavLink } from 'react-router-dom'
+import { LucideIcon, ListCollapse, MessageCircleWarning, User, Star, PanelBottom, RectangleEllipsis, StretchHorizontal, MessageCircleCode, LogIn, LayoutDashboard, GalleryHorizontalEnd, Sheet, PanelLeftOpen, MessageSquareText, Loader, LayoutPanelTop } from 'lucide-react'
+import ScrollToTopButton from '../ScrollToTopButton'
+
 
 
 interface ButtonInfo {
@@ -20,29 +20,28 @@ const sections: Section[] = [
     {
         title: 'Components',
         buttons: [
-            { name: 'All components', route: 'components/all-components', icon: Bell },
-            { name: 'Accordion', route: 'components/accordion', icon: Bell },
-            { name: 'Alert', route: 'components/alert', icon: Bell },
-            { name: 'Loading', route: 'components/loading', icon: Bell },
-            { name: 'Drawer', route: 'components/drawer', icon: Bell },
-            { name: 'Dialog', route: 'components/dialog', icon: Bell },
-            { name: 'Pagination', route: 'components/pagination', icon: Bell },
-            { name: 'Carousel', route: 'components/carousel', icon: Bell },
-            { name: 'Table', route: 'components/table', icon: Bell },
+            { name: 'Accordion', route: 'components/accordion', icon: ListCollapse },
+            { name: 'Alert', route: 'components/alert', icon: MessageCircleWarning },
+            { name: 'Carousel', route: 'components/carousel', icon: GalleryHorizontalEnd },
+            { name: 'Drawer', route: 'components/drawer', icon: PanelLeftOpen },
+            { name: 'Dialog', route: 'components/dialog', icon: MessageSquareText },
+            { name: 'Loading', route: 'components/loading', icon: Loader },
+            { name: 'Pagination', route: 'components/pagination', icon: LayoutPanelTop },
+            { name: 'Table', route: 'components/table', icon: Sheet },
         ],
 
     },
     {
         title: 'Section',
         buttons: [
-            { name: 'Dashboard', route: 'section/dashboard', icon: Bell },
-            { name: 'Heros', route: 'section/heros', icon: Bell },
-            { name: 'Sign in', route: 'section/sign-in', icon: Bell },
-            { name: 'Navbar', route: 'section/navbar', icon: Bell },
-            { name: 'Footer', route: 'section/footer', icon: Bell },
-            { name: 'Chat', route: 'section/chat', icon: Bell },
-            { name: 'User Feedback and Rating', route: 'section/user-feedback-rating', icon: Bell },
-            { name: 'User Profiles', route: 'section/user-profiles', icon: Bell },
+            { name: 'Chat', route: 'section/chat', icon: MessageCircleCode },
+            { name: 'Sign in', route: 'section/sign-in', icon: LogIn },
+            { name: 'Dashboard', route: 'section/dashboard', icon: LayoutDashboard },
+            { name: 'Navbar', route: 'section/navbar', icon: StretchHorizontal },
+            { name: 'Heros', route: 'section/heros', icon: RectangleEllipsis },
+            { name: 'Footer', route: 'section/footer', icon: PanelBottom },
+            { name: 'Feedback & Rating', route: 'section/user-feedback-rating', icon: Star },
+            { name: 'User Profiles', route: 'section/user-profiles', icon: User },
         ],
 
     },
@@ -55,7 +54,7 @@ const ButtonCard: React.FC<ButtonInfo> = ({ name, route, icon: Icon }) => {
             {/* <motion.div whileHover={{ scale: 1.05 }} className="relative overflow-hidden"> */}
             <Button
                 variant="default"
-                className="w-full h-20  dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 flex items-center justify-between px-4"
+                className="w-full h-20  bg-gradient-to-r from-indigo-500 to-mainAccent text-white border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 flex items-center justify-between px-4"
                 asChild
             >
                 <a href={route} className="flex items-center justify-between w-full ">
@@ -83,6 +82,8 @@ export const AllComponents: React.FC = () => {
                     </div>
                 </div>
             ))}
+            <ScrollToTopButton />
         </div>
+
     )
 }

@@ -147,12 +147,6 @@ const SampleComponent: React.FC = () => {
 };
 
 
-
-
-
-
-
-
 export const Heros = () => {
 
     const sampleCode = `

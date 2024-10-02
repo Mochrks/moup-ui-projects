@@ -9,7 +9,6 @@ import CodePreview from '@/components/demo/CodePriview';
 import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
 
 
-// sample button
 type ButtonProps = {
     children: React.ReactNode
     onClick?: () => void

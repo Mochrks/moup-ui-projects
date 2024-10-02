@@ -12,22 +12,24 @@ export const Docs = () => {
 
 
     return (
-        <>
+        <div className="min-h-screen flex flex-col">
             <header>
                 <Navbar />
             </header>
-            <main className="flex">
+            <div className="flex flex-1 pt-2 ">
                 {/* Drawer */}
-                <Drawer />
+                <aside className="fixed left-0 top-16 bottom-0 w-64 overflow-y-auto overflow-x-hidden">
+                    <Drawer />
+                </aside>
                 {/* Content */}
-                <div className="flex-1 p-4 overflow-auto">
+                <main className="flex-1 ml-1 md:ml-64 p-4 overflow-auto">
                     <Routes>
                         <Route path="introduction" element={<IntroductionContent />} />
                         <Route path="installation" element={<InstallationContent />} />
                         <Route path="templates" element={<TemplatesContent />} />
                     </Routes>
-                </div>
-            </main>
-        </>
+                </main>
+            </div>
+        </div>
     );
 };

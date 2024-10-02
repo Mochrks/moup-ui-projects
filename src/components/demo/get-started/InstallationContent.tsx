@@ -1,9 +1,11 @@
 
+import { Button } from '@/components/ui/button'
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 
 export const InstallationContent = () => {
     return (
-        <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-3 '>
-            <div className="p-6  text-start">
+        <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-1 md:px-3 '>
+            <div className="p-6  text-start w-full">
                 <h2 className="text-2xl font-bold mb-4">ShadCN Installation</h2>
                 <p className="mb-2">
                     Visit the{' '}
@@ -26,14 +28,6 @@ export const InstallationContent = () => {
                     For example, to install the ShadCN button component, navigate to the button page, click on the ShadCN docs link, and follow the installation steps.
                 </p>
 
-                <p className="mb-4">
-                    After installing, return to the NeoBrutalism button page and copy the button component into your project at{' '}
-                    <code>components/ui/button.tsx</code> or your custom path.
-                </p>
-
-                <p className="mb-4">
-                    Keep in mind that NeoBrutalism components might have different variants from the default ShadCN components.
-                </p>
 
                 <h3 className="text-xl font-semibold mb-2">Styling</h3>
                 <p>
@@ -48,7 +42,20 @@ export const InstallationContent = () => {
                     </a>.
                 </p>
             </div>
-
+            <div className="flex px-4 py-2 justify-between w-full">
+                <Button className='px-2 md:px-4 py-2 text-md'>
+                    <FaArrowLeft className='m-2 w-4 h-4' />
+                    <a href="/docs/introduction" className="hover:underline">
+                        introduction
+                    </a>
+                </Button>
+                <Button className='px-2 md:px-4 py-2 text-md'>
+                    <a href="/docs/templates" className="hover:underline">
+                        templates
+                    </a>
+                    < FaArrowRight className='m-2 w-4 h-4' />
+                </Button>
+            </div>
         </div>
     )
 }

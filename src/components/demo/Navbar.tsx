@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion"
 import { FaGithub } from "react-icons/fa"
 import { PiYoutubeLogo, PiOpenAiLogoFill } from "react-icons/pi"
@@ -119,13 +119,35 @@ const MobileMenu = () => {
 
 export const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
+
+
     const navigate = useNavigate()
     const handleSeeMore = () => {
         navigate('/components/all-components')
     }
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true)
+            } else {
+                setIsScrolled(false)
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
     return (
-        <nav className="bg-white dark:bg-gray-800 px-5 lg:px-10 py-4 border-b-4 border-black">
+        <nav className={cn(
+            " bg-white/45 backdrop-blur supports-[backdrop-filter]:bg-bg-white/80 dark:bg-gray-800 px-5 lg:px-10 py-4 border-b-4 border-black w-full z-50 transition-all duration-300",
+            isScrolled ? "fixed top-0 left-0 shadow-md  bg-white transition-all duration-100 ease-in-out" : "relative"
+        )}>
             <div className="mx-auto">
                 <div className="flex items-center justify-between">
                     <div
