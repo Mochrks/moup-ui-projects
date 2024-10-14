@@ -286,7 +286,8 @@ export default function AnimatedButtons() {
                 <CodePreview
                     title="Animation Hero Section"
                     code={sampleCode}
-                    language="hero-animation.tsx"
+                    language="javasciprt"
+                    nameFile='hero-animation.tsx'
                     preview={<SampleComponent />}
                 />
             </div>
