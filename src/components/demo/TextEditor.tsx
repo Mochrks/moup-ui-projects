@@ -7,9 +7,10 @@ import { Highlight, themes, type Language } from 'prism-react-renderer'
 interface VSCodeEditorProps {
     code: string
     language?: Language
+    nameFile: string
 }
 
-export default function VSCodeEditor({ code, language = 'tsx' }: VSCodeEditorProps) {
+export default function VSCodeEditor({ code, language = 'javasciprt', nameFile }: VSCodeEditorProps) {
     const [isCopied, setIsCopied] = useState(false)
 
     const handleCopyCode = () => {
@@ -22,7 +23,7 @@ export default function VSCodeEditor({ code, language = 'tsx' }: VSCodeEditorPro
     return (
         <div className="border rounded-md overflow-hidden bg-[#1E1E1E] text-[#D4D4D4]">
             <div className="flex justify-between items-center p-2 bg-[#252526]">
-                <span className="text-sm font-mono ml-3">{language}</span>
+                <span className="text-sm font-mono ml-3">{nameFile}</span>
                 <Button
                     variant="neutral"
                     size="sm"
@@ -38,7 +39,7 @@ export default function VSCodeEditor({ code, language = 'tsx' }: VSCodeEditorPro
             </div>
             <ScrollArea className="h-[300px] w-full">
                 <div className="min-w-full inline-block">
-                    <Highlight theme={themes.vsDark} code={code} language={language}>
+                    <Highlight theme={themes.oneDark} code={code} language={language}>
                         {({ className, style, tokens, getLineProps, getTokenProps }) => (
                             <pre className={`${className} p-4 font-mono text-sm`} style={style}>
                                 {tokens.map((line, i) => (

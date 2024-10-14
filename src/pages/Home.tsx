@@ -8,7 +8,6 @@ import { Footer } from '@/components/demo/Footer';
 import CodePreview from '@/components/demo/CodePriview';
 import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
 
-
 type ButtonProps = {
     children: React.ReactNode
     onClick?: () => void
@@ -116,8 +115,9 @@ const SampleComponent = () => {
     )
 }
 export const Home = () => {
+
+    // code text editor
     const sampleCode = `
-"use client"
 
 import React from "react"
 import { motion } from "framer-motion"
@@ -233,41 +233,40 @@ export default function AnimatedButtons() {
 
     return (
         <>
-            <header>
-                <Navbar />
-            </header>
-            <main>
-                <div className='min-h-screen flex flex-col items-center justify-center space-y-10 '>
-                    <div className='flex flex-col text-start md:text-center space-y-5 md:space-y-10'>
-                        <h1 className="max-w-2xl  scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl pt-20 md:pt-1 2xl:pt-6 px-5">
-                            Animated UI Components for Tailwind With Shadcn
-                        </h1>
-                        <p className="max-w-2xl  text-xl  leading-7 [&:not(:first-child)]:mt-3 px-5">
-                            Boost your React apps with MoupUI – a sleek set of animated UI components integrated with Tailwind CSS, ShadCN UI, and Framer Motion, ready to use and easy to add with just a simple copy and paste
-                        </p>
+            <div className="flex flex-col min-h-screen">
+                <header>
+                    <Navbar />
+                </header>
+                <main className="flex-grow">
+                    <div className=' flex flex-col items-center justify-center space-y-10 py-20'>
+                        <div className='flex flex-col text-start md:text-center space-y-5 md:space-y-10 '>
+                            <h1 className="max-w-2xl  scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl pt-20 md:pt-1 2xl:pt-6 px-5">
+                                Animated UI Components for Tailwind With Shadcn
+                            </h1>
+                            <p className="max-w-2xl  text-xl  leading-7 [&:not(:first-child)]:mt-3 px-5">
+                                Boost your React apps with MoupUI – a sleek set of animated UI components integrated with Tailwind CSS, ShadCN UI, and Framer Motion, ready to use and easy to add with just a simple copy and paste
+                            </p>
+                        </div>
+                        <Button className='px-5 py-6 text-xl'>
+                            <a href="/docs/introduction" className="hover:underline">
+                                Read the docs
+                            </a>
+                            < MdArrowOutward className='m-2 w-5 h-5' />
+                        </Button>
+                        <div className='flex items-center justify-center w-full px-5 pt-20'>
+                            <CodePreview
+                                title="Button"
+                                code={sampleCode}
+                                language="javascript"
+                                nameFile='Button.tsx'
+                                preview={<SampleComponent />}
+                            />
+                        </div>
                     </div>
-                    <Button className='px-5 py-6 text-xl'>
-                        <a href="/docs/introduction" className="hover:underline">
-                            Read the docs
-                        </a>
-                        < MdArrowOutward className='m-2 w-5 h-5' />
-                    </Button>
-                    <div className='flex items-center justify-center w-full px-5'>
-                        <CodePreview
-                            title="Button"
-                            code={sampleCode}
-                            language="Button.tsx"
-                            preview={<SampleComponent />}
-                        />
-                    </div>
+                </main>
+                <div className='mt-20'>
+                    <Footer />
                 </div>
-                {/* sample code for text editor */}
-                {/* <div className='flex items-center justify-center mb-10'>
-                    <TextEditor code={sampleCode} language="typescript" />
-                </div> */}
-            </main>
-            <div className='mt-20'>
-                <Footer />
             </div>
             <ScrollToTopButton />
         </>

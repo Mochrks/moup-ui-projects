@@ -4,7 +4,7 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 export const TemplatesContent = () => {
     return (
         <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-1 md:px-3 '>
-            <div className='p-6 text-start'>
+            <div className='p-6 text-start w-full '>
                 <h2 className="text-2xl font-bold mb-4">Templates</h2>
                 <p className="mb-4 ">
                     Explore our collection of pre-built templates designed to streamline your development process. From landing pages to fully functional applications, MoupUI offers ready-made solutions.
@@ -23,8 +23,6 @@ export const TemplatesContent = () => {
                         < FaArrowRight className='m-2 w-4 h-4' />
                     </Button>
                 </div>
-
-
             </div>
             <div className=' p-6 w-full py-5'>
                 <h3 className="text-xl font-semibold mb-4">E-Commerce Template</h3>

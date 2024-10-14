@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { RiMenuUnfold4Line2 } from "react-icons/ri";
 import { TbSection } from "react-icons/tb";
 import { RxComponent1 } from "react-icons/rx";
+import { ScrollArea } from '../ui/scroll-area';
 
 
 // Menu Data
@@ -73,28 +74,30 @@ export const Drawer = () => {
         navigate(`/${route}`);
     };
     return (
+        <ScrollArea className="h-full w-full">
+            <div className="hidden md:block pt-5 left-0 w-full h-s transition-all duration-300">
+                <div className="h-full w-full border-2 border-border dark:border-darkBorder font-base">
+                    {menuData.map((section, index) => (
+                        <div key={index}>
 
-        <div className="hidden md:block pt-5 left-0 w-[250px] h-s transition-all duration-300">
-            <div className="h-full w-full border-2 border-border dark:border-darkBorder font-base">
-                {menuData.map((section, index) => (
-                    <div key={index}>
-
-                        <h6 className="flex items-center w-full text-lg font-bold text-text border-b-2 border-border dark:border-darkBorder bg-white px-5 py-4">
-                            <section.logo className="h-5 w-5 mr-2" />
-                            {section.label}
-                        </h6>
-                        {section.items.map((item, idx) => (
-                            <div
-                                key={idx}
-                                onClick={() => handleNavigation(item.route)}
-                                className="cursor-pointer block w-full text-text border-b-2 text-start border-border dark:border-darkBorder bg-white px-5 py-4 hover:bg-main"
-                            >
-                                {item.name}
-                            </div>
-                        ))}
-                    </div>
-                ))}
+                            <h6 className="flex items-center w-full text-lg font-bold text-text border-b-2 border-border dark:border-darkBorder bg-white px-5 py-4">
+                                <section.logo className="h-5 w-5 mr-2" />
+                                {section.label}
+                            </h6>
+                            {section.items.map((item, idx) => (
+                                <div
+                                    key={idx}
+                                    onClick={() => handleNavigation(item.route)}
+                                    className="cursor-pointer block w-full text-text border-b-2 text-start border-border dark:border-darkBorder bg-white px-5 py-4 hover:bg-main"
+                                >
+                                    {item.name}
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        </ScrollArea>
     )
+
 }

@@ -48,6 +48,8 @@ const ListItem = React.forwardRef<
 })
 ListItem.displayName = "ListItem"
 
+
+// mobile menu
 const MobileMenu = () => {
     const navigate = useNavigate()
     const handleSeeMore = () => {
@@ -55,12 +57,12 @@ const MobileMenu = () => {
     }
 
     return (
-        <div className="  flex flex-col space-y-4 h-full">
+        <div className="flex flex-col space-y-4 h-full">
             <div className='flex-grow '>
                 <NavigationMenu orientation="vertical">
-                    <NavigationMenuList className=" flex-col items-start space-y-2">
+                    <NavigationMenuList className=" flex-col items-start space-y-2 ">
                         <NavigationMenuItem>
-                            <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
+                            <NavigationMenuTrigger className='ml-1'>Docs</NavigationMenuTrigger>
                             <NavigationMenuContent>
                                 <ul className="grid gap-3 p-6 w-[250px]">
                                     <ListItem href="/docs/introduction" title="Introduction" className='font-normal'>
@@ -214,7 +216,13 @@ export const Navbar = () => {
                                                     Alert component
                                                 </ListItem>
                                                 <ListItem href="/components/loading" title="Loading" className='font-normal'>
-                                                    Create many loading components
+                                                    Loading components
+                                                </ListItem>
+                                                <ListItem href="components/carousel" title="Carousel" className='font-normal'>
+                                                    Carousel component
+                                                </ListItem>
+                                                <ListItem href="components/table" title="Table" className='font-normal'>
+                                                    Table components
                                                 </ListItem>
                                             </ul>
                                             <div className='mx-5 mb-5 w-full'>

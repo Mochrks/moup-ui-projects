@@ -9,9 +9,10 @@ interface CodePreviewCardProps {
     code: string
     language?: string
     preview: React.ReactNode
+    nameFile: string
 }
 
-export default function CodePreview({ title, code, language = 'tsx', preview }: CodePreviewCardProps) {
+export default function CodePreview({ title, code, language = 'tsx', preview, nameFile }: CodePreviewCardProps) {
     const [activeTab, setActiveTab] = useState<string>('preview')
 
     return (
@@ -33,7 +34,7 @@ export default function CodePreview({ title, code, language = 'tsx', preview }: 
                         </div>
                     </TabsContent>
                     <TabsContent value="code" className="mt-4">
-                        <TextEditor code={code} language={language} />
+                        <TextEditor code={code} language={language} nameFile={nameFile} />
                     </TabsContent>
                 </Tabs>
             </CardContent>
