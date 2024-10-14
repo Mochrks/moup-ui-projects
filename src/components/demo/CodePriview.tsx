@@ -16,7 +16,7 @@ export default function CodePreview({ title, code, language = 'tsx', preview, na
     const [activeTab, setActiveTab] = useState<string>('preview')
 
     return (
-        <Card className="w-full max-w-6xl">
+        <Card className="w-full">
             <CardContent>
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                     <div className='flex border-b-2 border-zinc-600 py-2'>

@@ -13,6 +13,7 @@ import { FooterContent } from '@/components/demo/section/FooterContent';
 import { UserProfile } from '@/components/demo/section/UserProfile';
 import { FeedbackRating } from '@/components/demo/section/FeedbackRating';
 import { Other } from '@/components/demo/section/Other';
+import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
 
 export const Section = () => {
     return (
@@ -27,7 +28,7 @@ export const Section = () => {
                 </aside>
 
                 {/* Content */}
-                <main className="flex-1 ml-1 md:ml-64 p-4 overflow-auto">
+                <main className="flex-1 ml-1 md:ml-64 py-4 px-7 overflow-auto">
                     <Routes>
                         <Route path="dashboard" element={<Dashboard />} />
                         <Route path="heros" element={<Heros />} />
@@ -41,6 +42,7 @@ export const Section = () => {
                     </Routes>
                 </main>
             </div>
-        </div >
+            <ScrollToTopButton />
+        </div>
     )
 }

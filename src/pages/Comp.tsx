@@ -12,6 +12,7 @@ import { Dialog } from '@/components/demo/component/Dialog';
 import { Carousel } from '@/components/demo/component/Carousel';
 import { Pagination } from '@/components/demo/component/Pagination';
 import { Table } from '@/components/demo/component/Table';
+import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
 
 
 export const Comp = () => {
@@ -27,7 +28,7 @@ export const Comp = () => {
                 </aside>
 
                 {/* Content */}
-                <main className="flex-1 ml-1 md:ml-64 p-4 overflow-auto">
+                <main className="flex-1 ml-1 md:ml-64 py-4 px-7 overflow-auto">
 
                     <Routes>
                         <Route path="all-components" element={<AllComponents />} />
@@ -42,6 +43,7 @@ export const Comp = () => {
                     </Routes>
                 </main>
             </div>
-        </div >
+            <ScrollToTopButton />
+        </div>
     )
 }

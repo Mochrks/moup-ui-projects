@@ -6,6 +6,7 @@ import { IntroductionContent } from '@/components/demo/get-started/IntroductionC
 import { InstallationContent } from '@/components/demo/get-started/InstallationContent';
 import { TemplatesContent } from '@/components/demo/get-started/TemplatesContent';
 import { Drawer } from '@/components/demo/Drawer';
+import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
 
 
 export const Docs = () => {
@@ -22,7 +23,7 @@ export const Docs = () => {
                     <Drawer />
                 </aside>
                 {/* Content */}
-                <main className="flex-1 ml-1 md:ml-64 p-4 overflow-auto">
+                <main className="flex-1 ml-1 md:ml-64 py-4 px-7 overflow-auto">
                     <Routes>
                         <Route path="introduction" element={<IntroductionContent />} />
                         <Route path="installation" element={<InstallationContent />} />
@@ -30,6 +31,7 @@ export const Docs = () => {
                     </Routes>
                 </main>
             </div>
+            <ScrollToTopButton />
         </div>
     );
 };

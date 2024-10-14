@@ -253,7 +253,7 @@ export default function AnimatedButtons() {
                             </a>
                             < MdArrowOutward className='m-2 w-5 h-5' />
                         </Button>
-                        <div className='flex items-center justify-center w-full px-5 pt-20'>
+                        <div className='flex items-center justify-center w-full max-w-6xl px-5 pt-20'>
                             <CodePreview
                                 title="Button"
                                 code={sampleCode}

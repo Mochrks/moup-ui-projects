@@ -211,19 +211,14 @@ export const Navbar = () => {
                                     <NavigationMenuItem>
                                         <NavigationMenuTrigger>Components</NavigationMenuTrigger>
                                         <NavigationMenuContent>
-                                            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] ">
+                                            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[400px] lg:grid-cols-[.75fr_1fr] ">
                                                 <ListItem href="/components/alert" title="Alert" className='font-normal'>
                                                     Alert component
                                                 </ListItem>
                                                 <ListItem href="/components/loading" title="Loading" className='font-normal'>
                                                     Loading components
                                                 </ListItem>
-                                                <ListItem href="components/carousel" title="Carousel" className='font-normal'>
-                                                    Carousel component
-                                                </ListItem>
-                                                <ListItem href="components/table" title="Table" className='font-normal'>
-                                                    Table components
-                                                </ListItem>
+
                                             </ul>
                                             <div className='mx-5 mb-5 w-full'>
                                                 <Button variant="noShadow" onClick={handleSeeMore}>See More</Button>

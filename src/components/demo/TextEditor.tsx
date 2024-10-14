@@ -37,7 +37,7 @@ export default function VSCodeEditor({ code, language = 'javasciprt', nameFile }
                     )}
                 </Button>
             </div>
-            <ScrollArea className="h-[300px] w-full">
+            <ScrollArea className="h-[600px] w-full">
                 <div className="min-w-full inline-block">
                     <Highlight theme={themes.oneDark} code={code} language={language}>
                         {({ className, style, tokens, getLineProps, getTokenProps }) => (
