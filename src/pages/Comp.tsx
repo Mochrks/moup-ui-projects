@@ -9,7 +9,6 @@ import { Accordion } from '@/components/demo/component/Accordion';
 import { AllComponents } from '@/components/demo/component/AllComponents';
 import { DrawerContent } from '@/components/demo/component/DrawerContent';
 import { Dialog } from '@/components/demo/component/Dialog';
-import { Carousel } from '@/components/demo/component/Carousel';
 import { Pagination } from '@/components/demo/component/Pagination';
 import { Table } from '@/components/demo/component/Table';
 import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
@@ -36,7 +35,6 @@ export const Comp = () => {
                         <Route path="alert" element={<Alert />} />
                         <Route path="drawer" element={<DrawerContent />} />
                         <Route path="dialog" element={<Dialog />} />
-                        <Route path="carousel" element={<Carousel />} />
                         <Route path="loading" element={<Loading />} />
                         <Route path="pagination" element={<Pagination />} />
                         <Route path="table" element={<Table />} />

@@ -14,6 +14,7 @@ import { UserProfile } from '@/components/demo/section/UserProfile';
 import { FeedbackRating } from '@/components/demo/section/FeedbackRating';
 import { Other } from '@/components/demo/section/Other';
 import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
+import { Carousel } from '@/components/demo/component/Carousel';
 
 export const Section = () => {
     return (
@@ -36,6 +37,7 @@ export const Section = () => {
                         <Route path="chat" element={<Chat />} />
                         <Route path="navbar" element={<NavbarContent />} />
                         <Route path="footer" element={<FooterContent />} />
+                        <Route path="carousel" element={<Carousel />} />
                         <Route path="feedback-rating" element={<FeedbackRating />} />
                         <Route path="user-profiles" element={<UserProfile />} />
                         <Route path="other" element={<Other />} />
