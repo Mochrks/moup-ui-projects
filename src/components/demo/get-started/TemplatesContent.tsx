@@ -489,7 +489,7 @@ const SampleComponent = () => {
 
 
 export const TemplatesContent = () => {
-    const [view, setView] = useState('grid')
+
     const sampleCode = `
 import React, { useState } from 'react'
 import { Button } from "@/components/ui/button"
@@ -546,10 +546,10 @@ const ProductListingPage = () => {
                     </div>
                 </div>
             </div>
-            <div className={'grid gap-6 ${view === 'grid' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'} '}>
+            <div className={'grid gap-6 ($){view === 'grid' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'} '}>
                 {products.map((product) => (
                     <Card key={product.id} className={view === 'list' ? 'flex flex-row' : ''}>
-                        <img src={product.image} alt={product.name} className={'object - cover ${view === 'grid' ? 'h-48 w-full' : 'h-full w-48'} '} />
+                        <img src={product.image} alt={product.name} className={'object - cover ($){view === 'grid' ? 'h-48 w-full' : 'h-full w-48'} '} />
                         <div className="p-4 flex flex-col justify-between flex-grow">
                             <div>
                                 <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
