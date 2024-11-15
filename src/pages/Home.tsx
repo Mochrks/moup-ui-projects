@@ -234,11 +234,11 @@ export default function AnimatedButtons() {
     return (
         <>
             <div className="flex flex-col min-h-screen">
-                <header>
-                    <Navbar />
-                </header>
+                {/* navbar */}
+                <Navbar />
+                {/* main content */}
                 <main className="flex-grow">
-                    <div className=' flex flex-col items-center justify-center space-y-10 py-20'>
+                    <div className=' flex flex-col items-center justify-center space-y-10 py-10 md:py-[9rem]'>
                         <div className='flex flex-col text-start md:text-center space-y-5 md:space-y-10 '>
                             <h1 className="max-w-2xl  scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl pt-20 md:pt-1 2xl:pt-6 px-5">
                                 Animated UI Components for Tailwind With Shadcn

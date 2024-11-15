@@ -75,7 +75,7 @@ export const Drawer = () => {
     };
     return (
         <ScrollArea className="h-full w-full">
-            <div className="hidden md:block pt-5 left-0 w-full h-s transition-all duration-300">
+            <div className="hidden md:block pt-4 left-0 w-full h-s transition-all duration-300">
                 <div className="h-full w-full border-2 border-border dark:border-darkBorder font-base">
                     {menuData.map((section, index) => (
                         <div key={index}>

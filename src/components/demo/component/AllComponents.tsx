@@ -70,8 +70,8 @@ const ButtonCard: React.FC<ButtonInfo> = ({ name, route, icon: Icon }) => {
 
 export const AllComponents: React.FC = () => {
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8">All Components</h1>
+        <div className="container mx-auto px-4 py-20">
+            <h1 className="text-3xl font-bold mb-8 pt-6">All Components</h1>
             {sections.map((section) => (
                 <div key={section.title} className="mb-8">
                     <h2 className="text-xl font-semibold mb-4">{section.title}</h2>
