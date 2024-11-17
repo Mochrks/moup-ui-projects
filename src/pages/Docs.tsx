@@ -9,7 +9,7 @@ import { Drawer } from '@/components/demo/Drawer';
 import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
 
 
-export const Docs = () => {
+const Docs = () => {
 
 
     return (
@@ -35,3 +35,6 @@ export const Docs = () => {
         </div>
     );
 };
+
+
+export default Docs;

@@ -15,8 +15,7 @@ import { FeedbackRating } from '@/components/demo/section/FeedbackRating';
 import { Other } from '@/components/demo/section/Other';
 import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
 import { Carousel } from '@/components/demo/component/Carousel';
-
-export const Section = () => {
+const Section = () => {
     return (
         <div className="min-h-screen flex flex-col">
             <header>
@@ -48,3 +47,6 @@ export const Section = () => {
         </div>
     )
 }
+
+
+export default Section;

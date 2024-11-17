@@ -1,7 +1,7 @@
 import { notFound } from '@/assets';
 import React from 'react';
 
-export const NotFound: React.FC = () => {
+const NotFound: React.FC = () => {
     return (
         <div className="h-screen flex flex-col  items-center justify-center z-50">
             <img src={notFound} alt="404" className='w-[30rem]' />
@@ -10,4 +10,6 @@ export const NotFound: React.FC = () => {
     );
 };
 
+
+export default NotFound;
 

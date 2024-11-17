@@ -22,7 +22,7 @@
 - Customizable and responsive components for various use cases
 - Fast development and optimized build with **Vite**
 - Interactive animations using **Framer Motion**
-- Support for **TypeScript** for better type safety and development experience
+
 
 ## Tech Stack
 

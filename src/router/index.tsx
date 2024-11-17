@@ -1,22 +1,28 @@
-import React from 'react';
-import { NotFound } from '@/components/demo/NotFound';
-import { Home } from '@/pages/Home';
+import ErrorBoundary from '@/components/demo/ErrorBoundary';
+import Loader from '@/components/demo/Loader';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Docs } from '@/pages/Docs';
-import { Comp } from '@/pages/Comp';
-import { Section } from '@/pages/Section';
 
 
+const Home = lazy(() => import('@/pages/Home'));
+const Docs = lazy(() => import('@/pages/Docs'));
+const Comp = lazy(() => import('@/pages/Comp'));
+const Section = lazy(() => import('@/pages/Section'));
+const NotFound = lazy(() => import('@/components/demo/NotFound'));
 
 const AppRoutes: React.FC = () => {
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/docs/*" element={<Docs />} />
-            <Route path="/components/*" element={<Comp />} />
-            <Route path="/section/*" element={<Section />} />
-            <Route path="*" element={<NotFound />} />
-        </Routes>
+        <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/docs/*" element={<Docs />} />
+                    <Route path="/components/*" element={<Comp />} />
+                    <Route path="/section/*" element={<Section />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </Suspense>
+        </ErrorBoundary>
     );
 };
 

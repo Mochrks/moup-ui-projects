@@ -14,7 +14,7 @@ import { Table } from '@/components/demo/component/Table';
 import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
 
 
-export const Comp = () => {
+const Comp = () => {
     return (
         <div className="min-h-screen flex flex-col">
             <header>
@@ -45,3 +45,6 @@ export const Comp = () => {
         </div>
     )
 }
+
+
+export default Comp;

@@ -114,7 +114,7 @@ const SampleComponent = () => {
         </div>
     )
 }
-export const Home = () => {
+const Home = () => {
 
     // code text editor
     const sampleCode = `
@@ -272,3 +272,6 @@ export default function AnimatedButtons() {
         </>
     )
 }
+
+
+export default Home;
