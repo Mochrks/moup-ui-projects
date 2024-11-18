@@ -19,11 +19,11 @@ const Docs = () => {
             </header>
             <div className="flex flex-1 pt-2 ">
                 {/* Drawer */}
-                <aside className="fixed left-0 top-16 bottom-0 w-64 overflow-y-auto overflow-x-hidden">
+                <aside className="fixed left-0 top-16 bottom-0 w-64 max-h-screen overflow-y-auto overflow-x-hidden">
                     <Drawer />
                 </aside>
                 {/* Content */}
-                <main className="flex-1 ml-1 md:ml-64 py-4 px-7 overflow-auto">
+                <main className="flex-1 ml-1 md:ml-64 py-4 px-7 pt-20 overflow-auto ">
                     <Routes>
                         <Route path="introduction" element={<IntroductionContent />} />
                         <Route path="installation" element={<InstallationContent />} />

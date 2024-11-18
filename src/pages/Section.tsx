@@ -28,7 +28,7 @@ const Section = () => {
                 </aside>
 
                 {/* Content */}
-                <main className="flex-1 ml-1 md:ml-64 py-4 px-7 overflow-auto">
+                <main className="flex-1 ml-1 md:ml-64 py-4 px-7 pt-20 overflow-auto">
                     <Routes>
                         <Route path="dashboard" element={<Dashboard />} />
                         <Route path="heros" element={<Heros />} />

@@ -74,8 +74,8 @@ export const Drawer = () => {
         navigate(`/${route}`);
     };
     return (
-        <ScrollArea className="h-full w-full">
-            <div className="hidden md:block pt-4 left-0 w-full h-s transition-all duration-300">
+        <ScrollArea className="h-full w-full md:bg-white ">
+            <div className="hidden md:block pt-14 left-0 w-full h-s transition-all duration-300">
                 <div className="h-full w-full border-2 border-border dark:border-darkBorder font-base">
                     {menuData.map((section, index) => (
                         <div key={index}>

@@ -7,6 +7,7 @@ import { Footer } from '@/components/demo/Footer';
 // import TextEditor from '@/components/demo/TextEditor';
 import CodePreview from '@/components/demo/CodePriview';
 import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
+// import AlertInformation from '@/components/demo/AlertInformation';
 
 type ButtonProps = {
     children: React.ReactNode
@@ -234,10 +235,12 @@ export default function AnimatedButtons() {
     return (
         <>
             <div className="flex flex-col min-h-screen">
-                {/* navbar */}
-                <Navbar />
+                <header>
+                    <Navbar />
+                </header>
+
                 {/* main content */}
-                <main className="flex-grow">
+                <main className="flex-grow pt-20">
                     <div className=' flex flex-col items-center justify-center space-y-10 py-10 md:py-[9rem]'>
                         <div className='flex flex-col text-start md:text-center space-y-5 md:space-y-10 '>
                             <h1 className="max-w-2xl  scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl pt-20 md:pt-1 2xl:pt-6 px-5">
