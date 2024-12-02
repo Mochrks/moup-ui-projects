@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=react,vite,tailwind,scss" alt="Tech Stack Icons" />
+  <img src="https://skillicons.dev/icons?i=react,vite,tailwind" alt="Tech Stack Icons" />
 </p>
 
 ## Overview
@@ -32,7 +32,6 @@
 - **TailwindCSS** for utility-first styling
 - **ShadCNUI** for enhanced UI components
 - **Framer Motion** for animations
-- **CSS/SCSS** for additional styling option
 
 ## Setup & Installation
 
