@@ -123,29 +123,12 @@ const MobileMenu = () => {
 
 export const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false)
-    // const [isScrolled, setIsScrolled] = useState(false)
 
 
     const navigate = useNavigate()
     const handleSeeMore = () => {
         navigate('/components/all-components')
     }
-
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         if (window.scrollY > 0) {
-    //             setIsScrolled(true)
-    //         } else {
-    //             setIsScrolled(false)
-    //         }
-    //     }
-
-    //     window.addEventListener('scroll', handleScroll)
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll)
-    //     }
-    // }, [])
 
     return (
         <div className='fixed w-full z-50'>
@@ -235,7 +218,7 @@ export const Navbar = () => {
                                             </NavigationMenuContent>
                                         </NavigationMenuItem>
                                         <NavigationMenuItem>
-                                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/colors">
                                                 Color
                                             </NavigationMenuLink>
                                         </NavigationMenuItem>

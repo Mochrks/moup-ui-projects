@@ -1,17 +1,16 @@
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
-import CodePreview from '../CodePriview';
-
-
-// e-commerce
 import React, { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
+
+import CodePreview from '../CodePriview';
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
+import { Button } from "@/components/ui-shadcn/button"
+import { Button as Button2 } from "@/components/ui/button"
+import { Input } from "@/components/ui-shadcn/input"
+import { Label } from "@/components/ui-shadcn/label"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-shadcn/card"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui-shadcn/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui-shadcn/select"
+import { Badge } from "@/components/ui-shadcn/badge"
+import { Separator } from "@/components/ui-shadcn/separator"
 import { Star, ChevronLeft, ChevronRight, Plus, Minus, Trash2, CheckCircle } from 'lucide-react'
 
 
@@ -49,10 +48,10 @@ const ProductListingPage = () => {
                         </SelectContent>
                     </Select>
                     <div className="flex border rounded-md">
-                        <Button variant="noShadow" size="icon" onClick={() => setView('grid')} className={view === 'grid' ? 'bg-secondary' : ''}>
+                        <Button variant="default" size="icon" onClick={() => setView('grid')} className={view === 'grid' ? 'bg-secondary' : ''}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg>
                         </Button>
-                        <Button variant="noShadow" size="icon" onClick={() => setView('list')} className={view === 'list' ? 'bg-secondary' : ''}>
+                        <Button variant="default" size="icon" onClick={() => setView('list')} className={view === 'list' ? 'bg-secondary' : ''}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" /></svg>
                         </Button>
                     </div>
@@ -81,13 +80,13 @@ const ProductListingPage = () => {
                 ))}
             </div>
             <div className="flex justify-center mt-8 space-x-2">
-                <Button variant="neutral" size="icon">
+                <Button variant="default" size="icon">
                     <ChevronLeft className="h-4 w-4" />
                 </Button>
-                <Button variant="neutral">1</Button>
-                <Button variant="neutral">2</Button>
-                <Button variant="neutral">3</Button>
-                <Button variant="neutral" size="icon">
+                <Button variant="default">1</Button>
+                <Button variant="default">2</Button>
+                <Button variant="default">3</Button>
+                <Button variant="default" size="icon">
                     <ChevronRight className="h-4 w-4" />
                 </Button>
             </div>
@@ -142,11 +141,11 @@ const ProductDetailPage = () => {
                     <div className="flex items-center space-x-4">
                         <Label>Quantity:</Label>
                         <div className="flex items-center border rounded-md">
-                            <Button variant="noShadow" size="icon" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
+                            <Button variant="default" size="icon" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
                                 <Minus className="h-4 w-4" />
                             </Button>
                             <span className="w-12 text-center">{quantity}</span>
-                            <Button variant="noShadow" size="icon" onClick={() => setQuantity(quantity + 1)}>
+                            <Button variant="default" size="icon" onClick={() => setQuantity(quantity + 1)}>
                                 <Plus className="h-4 w-4" />
                             </Button>
                         </div>
@@ -154,7 +153,7 @@ const ProductDetailPage = () => {
                 </div>
                 <div className="space-y-4">
                     <Button className="w-full">Add to Cart</Button>
-                    <Button variant="neutral" className="w-full">Add to Wishlist</Button>
+                    <Button variant="default" className="w-full">Add to Wishlist</Button>
                 </div>
                 <Separator />
                 <div className="space-y-4">
@@ -196,18 +195,18 @@ const CartPage = () => {
                                         <h3 className="font-semibold">{item.name}</h3>
                                         <p className="text-sm text-gray-600 mb-2">${item.price.toFixed(2)}</p>
                                         <div className="flex items-center space-x-2">
-                                            <Button variant="neutral" size="icon">
+                                            <Button variant="default" size="icon">
                                                 <Minus className="h-4 w-4" />
                                             </Button>
                                             <span>{item.quantity}</span>
-                                            <Button variant="neutral" size="icon">
+                                            <Button variant="default" size="icon">
                                                 <Plus className="h-4 w-4" />
                                             </Button>
                                         </div>
                                     </div>
                                     <div className="text-right">
                                         <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
-                                        <Button variant="noShadow" size="icon" className="text-red-500">
+                                        <Button variant="default" size="icon" className="text-red-500">
                                             <Trash2 className="h-4 w-4" />
                                         </Button>
                                     </div>
@@ -986,28 +985,30 @@ const SampleComponent = () => {
             </div>
 
             <div className="flex px-6 py-2 mb-10 justify-between w-full">
-                <Button className='px-2 md:px-4 py-2 text-md'>
+                <Button2 className='px-2 md:px-4 py-2 text-md'>
                     <FaArrowLeft className='m-2 w-4 h-4' />
                     <a href="/docs/installation" className="hover:underline">
                         Installation
                     </a>
-                </Button>
-                <Button className='px-2 md:px-4 py-2 text-md'>
+                </Button2>
+                <Button2 className='px-2 md:px-4 py-2 text-md'>
                     <a href="/components/all-components" className="hover:underline">
                         Components
                     </a>
                     <FaArrowRight className='m-2 w-4 h-4' />
-                </Button>
+                </Button2>
             </div>
 
-            <div className='flex items-center justify-center w-full pt-5 px-5 '>
-                <CodePreview
-                    title="E-Commerce"
-                    code={sampleCode}
-                    language="javascript"
-                    nameFile='e-commerce.tsx'
-                    preview={<SampleComponent />}
-                />
+            <div className='sm:hidden md:block flex items-center justify-center w-full pt-5 px-5 '>
+                <div className='md:block hidden'>
+                    <CodePreview
+                        title="E-Commerce"
+                        code={sampleCode}
+                        language="javascript"
+                        nameFile='e-commerce.tsx'
+                        preview={<SampleComponent />}
+                    />
+                </div>
             </div>
         </div>
 

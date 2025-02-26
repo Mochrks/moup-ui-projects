@@ -51,24 +51,6 @@ const menuData = [
 
 export const Drawer = () => {
     const navigate = useNavigate();
-    // const [isScrolled, setIsScrolled] = useState(false);
-
-
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         if (window.scrollY > 0) {
-    //             setIsScrolled(true);
-    //         } else {
-    //             setIsScrolled(false);
-    //         }
-    //     };
-
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
 
     const handleNavigation = (route: string) => {
         navigate(`/${route}`);
@@ -87,6 +69,7 @@ export const Drawer = () => {
                             {section.items.map((item, idx) => (
                                 <div
                                     key={idx}
+                                    role="button"
                                     onClick={() => handleNavigation(item.route)}
                                     className="cursor-pointer block w-full text-text border-b-2 text-start border-border dark:border-darkBorder bg-white px-5 py-4 hover:bg-main"
                                 >

@@ -4,7 +4,6 @@ import { FaGithub } from 'react-icons/fa';
 import { logos } from '@/assets';
 
 export const Footer = () => {
-    const currentYear = new Date().getFullYear();
     return (
         <footer className="bg-gradient-to-r from-indigo-600 to-mainAccent text-white py-12 px-10">
             <div className="container mx-auto px-2">
@@ -123,7 +122,7 @@ export const Footer = () => {
                 </div>
                 <div className="text-center ">
                     <div className="mt-4  text-center md:text-start text-md text-white">
-                        © {currentYear} MoupUI . All rights reserved.
+                        © 2024 MoupUI . All rights reserved.
                     </div>
                 </div>
             </div>
