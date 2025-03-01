@@ -25,12 +25,9 @@ const menuData = [
             { name: 'Carousel', route: 'section/carousel' },
             { name: 'Chat', route: 'section/chat' },
             { name: 'Dashboard', route: 'section/dashboard' },
-            { name: 'Navbar', route: 'section/navbar' },
-            { name: 'Hero', route: 'section/heros' },
-            { name: 'Footer', route: 'section/footer' },
+            // { name: 'Hero', route: 'section/heros' },
             { name: 'Feedback & Rating', route: 'section/user-feedback-rating' },
             { name: 'User Profiles', route: 'section/user-profiles' },
-            { name: 'Other', route: 'section/other' },
         ],
     },
     {

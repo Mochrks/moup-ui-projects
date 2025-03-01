@@ -1,20 +1,17 @@
 
-import { Navbar } from '@/components/demo/Navbar';
+import { Navbar } from '@/components/ui-other/Navbar';
 import { Routes, Route } from 'react-router-dom';
-
-
-import { Drawer } from '@/components/demo/Drawer';
+import { Drawer } from '@/components/ui-other/Drawer';
 import { Dashboard } from '@/components/demo/section/Dashboard';
-import { SignIn } from '@/components/demo/section/SignIn';
+import { Authentification } from '@/components/demo/section/Authentification';
 import { Heros } from '@/components/demo/section/Heros';
 import { Chat } from '@/components/demo/section/Chat';
-import { NavbarContent } from '@/components/demo/section/NavbarContent';
-import { FooterContent } from '@/components/demo/section/FooterContent';
 import { UserProfile } from '@/components/demo/section/UserProfile';
 import { FeedbackRating } from '@/components/demo/section/FeedbackRating';
-import { Other } from '@/components/demo/section/Other';
-import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
-import { Carousel } from '@/components/demo/component/Carousel';
+import ScrollToTopButton from '@/components/ui-other/ScrollToTopButton';
+import { Carousel } from '@/components/demo/section/Carousel';
+
+
 const Section = () => {
     return (
         <div className="min-h-screen flex flex-col">
@@ -32,14 +29,12 @@ const Section = () => {
                     <Routes>
                         <Route path="dashboard" element={<Dashboard />} />
                         <Route path="heros" element={<Heros />} />
-                        <Route path="sign-in" element={<SignIn />} />
+                        <Route path="sign-in" element={<Authentification />} />
                         <Route path="chat" element={<Chat />} />
-                        <Route path="navbar" element={<NavbarContent />} />
-                        <Route path="footer" element={<FooterContent />} />
                         <Route path="carousel" element={<Carousel />} />
-                        <Route path="feedback-rating" element={<FeedbackRating />} />
+                        <Route path="user-feedback-rating" element={<FeedbackRating />} />
                         <Route path="user-profiles" element={<UserProfile />} />
-                        <Route path="other" element={<Other />} />
+
                     </Routes>
                 </main>
             </div>

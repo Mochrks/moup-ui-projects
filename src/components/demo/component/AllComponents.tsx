@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { LucideIcon, ListCollapse, MessageCircleWarning, User, Star, PanelBottom, RectangleEllipsis, StretchHorizontal, MessageCircleCode, LogIn, LayoutDashboard, GalleryHorizontalEnd, Sheet, PanelLeftOpen, MessageSquareText, Loader, LayoutPanelTop } from 'lucide-react'
-import ScrollToTopButton from '../ScrollToTopButton'
+import ScrollToTopButton from '../../ui-other/ScrollToTopButton'
 
 
 
@@ -50,8 +50,7 @@ const sections: Section[] = [
 
 const ButtonCard: React.FC<ButtonInfo> = ({ name, route, icon: Icon }) => {
     return (
-        <>
-            {/* <motion.div whileHover={{ scale: 1.05 }} className="relative overflow-hidden"> */}
+        <div>
             <Button
                 variant="default"
                 className="w-full h-20  bg-gradient-to-r from-indigo-500 to-mainAccent text-white border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 flex items-center justify-between px-4"
@@ -62,9 +61,7 @@ const ButtonCard: React.FC<ButtonInfo> = ({ name, route, icon: Icon }) => {
                     <Icon className="w-6 h-6 text-white z-10" />
                 </a>
             </Button>
-            {/* <Icon className="absolute left-2 top-1/2 transform -translate-y-1/2 w-24 h-24 text-gray-100 dark:text-gray-700 opacity-20 -rotate-12" /> */}
-            {/* </motion.div> */}
-        </>
+        </div>
     )
 }
 

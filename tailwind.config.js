@@ -39,10 +39,20 @@ module.exports = {
         boxShadowY: "5px",
         reverseBoxShadowX: "-5px",
         reverseBoxShadowY: "-5px",
+        101: "101%",
       },
       fontWeight: {
         base: "500",
         heading: "900",
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0%)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 15s linear infinite",
       },
     },
   },

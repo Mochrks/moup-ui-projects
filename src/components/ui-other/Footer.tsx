@@ -20,7 +20,7 @@ export const Footer = () => {
                                 </a>
                             </Button>
                         </div>
-                        <p>Made with🚀 <a href="https://www.github.com/mochrks" target="_blank" rel="noopener noreferrer" className="hover:underline">@mochrks</a>.</p>
+                        <p>Made with🚀 <a href="https://mochrks.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:underline">@mochrks</a>.</p>
                         <p className='max-w-md'>These components are protected by copyright and cannot be redistributed without written permission </p>
                     </div>
                     <div >

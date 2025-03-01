@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import TextEditor from '@/components/demo/TextEditor';
+import TextEditor from '@/components/ui-other/TextEditor';
 import { AiOutlineEye } from "react-icons/ai";
 import { FaCode } from "react-icons/fa6";
 interface CodePreviewCardProps {

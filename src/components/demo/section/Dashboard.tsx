@@ -1,6 +1,12 @@
+'use client'
 
+import CodePreview from '@/components/ui-other/CodePriview'
+import { DashboardPage } from '@/code/dashboard'
 
 export const Dashboard = () => {
+
+    const sampleCode = `sample code`.trim()
+
     return (
         <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-3 '>
             <div className="p-6 text-start w-full">
@@ -17,9 +23,18 @@ export const Dashboard = () => {
                 <p className="mb-4">
                     Simply copy the template into your project and customize the components to match your brand and requirements. Get your dashboard up and running in no time with MoupUI.
                 </p>
+
+                <div className='mt-10'>
+                    <CodePreview
+                        title="Dashboard"
+                        code={sampleCode}
+                        language="javascript"
+                        nameFile='dashboard.tsx'
+                        preview={<DashboardPage />}
+                    />
+                </div>
             </div>
 
         </div>
-
     )
 }

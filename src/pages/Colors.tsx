@@ -10,8 +10,8 @@ import { Label } from "@/components/ui-shadcn/label"
 import { Copy, Plus } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui-shadcn/tooltip"
 import { christmasColors, coffeeColors, coldColors, creamColors, cyberpunkColors, galaxyColors, goldColors, halloweenColors, initialTailwindColors, kidsColors, neonColors, pastelColors, rainbowColors, ramadhanColors, retroColors, seaColors, skyColors, spaceXColors, summerColors, sunsetColors, vintageColors, warmColors, weddingColors } from '@/utils/color'
-import { Navbar } from '@/components/demo/Navbar'
-import ScrollToTopButton from '@/components/demo/ScrollToTopButton'
+import { Navbar } from '@/components/ui-other/Navbar'
+import ScrollToTopButton from '@/components/ui-other/ScrollToTopButton'
 
 function hslToRgb(h: number, s: number, l: number) {
     s /= 100

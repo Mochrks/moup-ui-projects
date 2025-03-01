@@ -1,12 +1,12 @@
 
-import { Navbar } from '@/components/demo/Navbar';
+import { Navbar } from '@/components/ui-other/Navbar';
 import { Routes, Route } from 'react-router-dom';
 
 import { IntroductionContent } from '@/components/demo/get-started/IntroductionContent';
 import { InstallationContent } from '@/components/demo/get-started/InstallationContent';
 import { TemplatesContent } from '@/components/demo/get-started/TemplatesContent';
-import { Drawer } from '@/components/demo/Drawer';
-import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
+import { Drawer } from '@/components/ui-other/Drawer';
+import ScrollToTopButton from '@/components/ui-other/ScrollToTopButton';
 
 
 const Docs = () => {

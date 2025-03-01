@@ -1,8 +1,8 @@
 
-import { Navbar } from '@/components/demo/Navbar';
+import { Navbar } from '@/components/ui-other/Navbar';
 import { Routes, Route } from 'react-router-dom';
 
-import { Drawer } from '@/components/demo/Drawer';
+import { Drawer } from '@/components/ui-other/Drawer';
 import { Loading } from '@/components/demo/component/Loading';
 import { Alert } from '@/components/demo/component/Alert';
 import { Accordion } from '@/components/demo/component/Accordion';
@@ -11,7 +11,7 @@ import { DrawerContent } from '@/components/demo/component/DrawerContent';
 import { Dialog } from '@/components/demo/component/Dialog';
 import { Pagination } from '@/components/demo/component/Pagination';
 import { Table } from '@/components/demo/component/Table';
-import ScrollToTopButton from '@/components/demo/ScrollToTopButton';
+import ScrollToTopButton from '@/components/ui-other/ScrollToTopButton';
 
 
 const Comp = () => {
