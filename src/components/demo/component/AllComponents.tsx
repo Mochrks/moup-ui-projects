@@ -1,20 +1,9 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
-import { LucideIcon, ListCollapse, MessageCircleWarning, User, Star, PanelBottom, RectangleEllipsis, StretchHorizontal, MessageCircleCode, LogIn, LayoutDashboard, GalleryHorizontalEnd, Sheet, PanelLeftOpen, MessageSquareText, Loader, LayoutPanelTop } from 'lucide-react'
+import { ListCollapse, MessageCircleWarning, User, Star, PanelBottom, RectangleEllipsis, StretchHorizontal, MessageCircleCode, LogIn, LayoutDashboard, GalleryHorizontalEnd, Sheet, PanelLeftOpen, MessageSquareText, Loader, LayoutPanelTop } from 'lucide-react'
 import ScrollToTopButton from '../../ui-other/ScrollToTopButton'
+import { ButtonInfo, Section } from '@/types/all-component'
 
-
-
-interface ButtonInfo {
-    name: string
-    route: string
-    icon: LucideIcon
-}
-
-interface Section {
-    title: string
-    buttons: ButtonInfo[]
-}
 
 const sections: Section[] = [
     {

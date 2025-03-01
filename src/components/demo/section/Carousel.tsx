@@ -3,8 +3,6 @@
 import CodePreview from '@/components/ui-other/CodePriview'
 import { BasicCarousel, CircularCarousel, CubeCarousel, ElasticCarousel, FadeCarousel, InfiniteCarousel, ParallaxCarousel, PerspectiveCarousel, StackedCarousel, ZoomCarousel } from '@/code/carousel'
 
-
-
 export const Carousel = () => {
 
     const sampleCode = `sample code`.trim()

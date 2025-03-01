@@ -1,4 +1,3 @@
-
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, SocialLogin, TwoFactor } from "@/code/sign-in"
 import CodePreview from "../../ui-other/CodePriview"
 

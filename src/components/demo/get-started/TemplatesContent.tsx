@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import CodePreview from '../../ui-other/CodePriview';
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
@@ -30,7 +30,7 @@ const SampleComponent = () => {
     }
 
     return (
-        <React.Fragment>
+        <div>
             <EcommerceLayout>
                 <Tabs value={currentPage} onValueChange={setCurrentPage} className="w-full mb-8">
                     <TabsList className="grid w-full grid-cols-6">
@@ -44,7 +44,7 @@ const SampleComponent = () => {
                 </Tabs>
                 {renderPage()}
             </EcommerceLayout>
-        </React.Fragment>
+        </div>
     )
 }
 

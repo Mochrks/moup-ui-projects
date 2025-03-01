@@ -329,16 +329,28 @@ export const InteractiveReviewCard = () => {
 
     const handleVote = (voteType: 'helpful' | 'not-helpful') => {
         if (userVote === voteType) {
-            setUserVote(null)
-            voteType === 'helpful' ? setHelpfulCount(helpfulCount - 1) : setNotHelpfulCount(notHelpfulCount - 1)
+            setUserVote(null);
+            if (voteType === 'helpful') {
+                setHelpfulCount(helpfulCount - 1);
+            } else {
+                setNotHelpfulCount(notHelpfulCount - 1);
+            }
         } else {
             if (userVote) {
-                userVote === 'helpful' ? setHelpfulCount(helpfulCount - 1) : setNotHelpfulCount(notHelpfulCount - 1)
+                if (userVote === 'helpful') {
+                    setHelpfulCount(helpfulCount - 1);
+                } else {
+                    setNotHelpfulCount(notHelpfulCount - 1);
+                }
             }
-            setUserVote(voteType)
-            voteType === 'helpful' ? setHelpfulCount(helpfulCount + 1) : setNotHelpfulCount(notHelpfulCount + 1)
+            setUserVote(voteType);
+            if (voteType === 'helpful') {
+                setHelpfulCount(helpfulCount + 1);
+            } else {
+                setNotHelpfulCount(notHelpfulCount + 1);
+            }
         }
-    }
+    };
 
     return (
         <div className="w-full  mx-auto">

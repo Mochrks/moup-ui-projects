@@ -1,5 +1,6 @@
 import ErrorBoundary from '@/components/ui-other/ErrorBoundary';
-import Loader from '@/components/ui-other/Loader';
+import TopLoadingBar from '@/components/ui-other/TopLoadingBar';
+import { useLoadingRoute } from '@/hooks/useLoadingRoute';
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -11,9 +12,12 @@ const Section = lazy(() => import('@/pages/Section'));
 const NotFound = lazy(() => import('@/components/ui-other/NotFound'));
 
 const AppRoutes: React.FC = () => {
+    const isLoading = useLoadingRoute();
+
     return (
         <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {isLoading && <TopLoadingBar />}
+            <Suspense fallback={null}>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/docs/*" element={<Docs />} />
