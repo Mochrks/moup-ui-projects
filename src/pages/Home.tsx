@@ -11,7 +11,7 @@ import FlowingMenu from '@/components/ui-other/FlowingMenu';
 
 const demoItems = [
     { link: 'docs/introduction', text: 'DOCS', image: 'https://img.freepik.com/free-psd/3d-rendering-graphic-design_23-2149667482.jpg?semt=ais_hybrid' },
-    { link: 'components/all-components', text: 'Animated Components', image: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/aa8625109287767.5fd08439c7676.jpg' },
+    { link: 'components/all-components', text: 'All Components', image: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/aa8625109287767.5fd08439c7676.jpg' },
     { link: 'colors', text: 'Colors', image: 'https://img.freepik.com/free-psd/3d-rendering-graphic-design_23-2149642698.jpg' },
     { link: 'docs/templates', text: 'Templates', image: 'https://img.freepik.com/free-psd/3d-rendering-search-engine-background_23-2150562441.jpg' }
 ];
@@ -32,7 +32,7 @@ const Home = () => {
 
     return (
         <div className='overflow-x-hidden overflow-y-auto' >
-            <div className='absolute top-[10rem] left-5 z-10 max-w-[200px]'>
+            <div className='hidden lg:block absolute top-[10rem] left-5 z-10 max-w-[200px]'>
                 <CircularText
                     text="MOUP*UI*COMPONENTS*"
                     onHover="speedUp"
@@ -74,11 +74,12 @@ const Home = () => {
                     </div>
                 </main>
 
+
+
                 <div className='mt-20'>
                     <div style={{ height: '600px', position: 'relative' }}>
                         <FlowingMenu items={demoItems} />
                     </div>
-
                     <Footer />
                 </div>
             </div>

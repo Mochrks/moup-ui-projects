@@ -4,7 +4,6 @@ import { FaGithub } from "react-icons/fa"
 import { PiYoutubeLogo } from "react-icons/pi"
 import { FiMenu } from "react-icons/fi"
 import { Button } from '@/components/ui/button'
-import { useNavigate } from 'react-router-dom'
 import { cn } from "@/lib/utils"
 import {
     NavigationMenu,
@@ -53,10 +52,8 @@ ListItem.displayName = "ListItem"
 
 // mobile menu
 const MobileMenu = () => {
-    const navigate = useNavigate()
-    const handleSeeMore = () => {
-        navigate('/components/all-components')
-    }
+
+
 
     return (
         <div className="flex flex-col space-y-4 h-full">
@@ -78,18 +75,15 @@ const MobileMenu = () => {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-                            <NavigationMenuContent >
-                                <ul className="grid gap-3 p-6 w-[250px]">
-                                    <ListItem href="/components/alert" title="Alert" className='font-normal'>
-                                        Alert component
-                                    </ListItem>
-                                    <ListItem href="/components/loading" title="Loading" className='font-normal'>
-                                        Create many loading components
-                                    </ListItem>
+                            <NavigationMenuContent>
+                                <ul className="grid gap-3 p-6 w-[250px] bg-white">
+                                    <div className="mb-2 mt-4 text-lg font-medium">
+                                        All components
+                                    </div>
+                                    <p className="text-sm font-normal">
+                                        A collection of beautifully designed web components with animations, ready to be copied and pasted into your web applications. Accessible, customizable, and open source.
+                                    </p>
                                 </ul>
-                                <div className='mx-5 pb-5 w-full'>
-                                    <Button variant="noShadow" onClick={handleSeeMore} >See More</Button>
-                                </div>
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
@@ -124,11 +118,6 @@ const MobileMenu = () => {
 export const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false)
 
-
-    const navigate = useNavigate()
-    const handleSeeMore = () => {
-        navigate('/components/all-components')
-    }
 
     return (
         <div className='fixed w-full z-50'>
@@ -203,18 +192,26 @@ export const Navbar = () => {
                                         <NavigationMenuItem>
                                             <NavigationMenuTrigger>Components</NavigationMenuTrigger>
                                             <NavigationMenuContent>
-                                                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[400px] lg:grid-cols-[.75fr_1fr] ">
-                                                    <ListItem href="/components/alert" title="Alert" className='font-normal'>
-                                                        Alert component
-                                                    </ListItem>
-                                                    <ListItem href="/components/loading" title="Loading" className='font-normal'>
-                                                        Loading components
-                                                    </ListItem>
+                                                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-1">
+                                                    <li className="row-span-3">
+                                                        <NavigationMenuLink asChild>
+                                                            <div className='bg-mainBg rounded-sm'>
+                                                                <a
+                                                                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                                                    href="/components/all-components"
+                                                                >
 
+                                                                    <div className="mb-2 mt-4 text-lg font-medium">
+                                                                        All components
+                                                                    </div>
+                                                                    <p className="text-sm font-normal">
+                                                                        A collection of beautifully designed web components with animations, ready to be copied and pasted into your web applications. Accessible, customizable, and open source.
+                                                                    </p>
+                                                                </a>
+                                                            </div>
+                                                        </NavigationMenuLink>
+                                                    </li>
                                                 </ul>
-                                                <div className='mx-5 mb-5 w-full'>
-                                                    <Button variant="noShadow" onClick={handleSeeMore}>See More</Button>
-                                                </div>
                                             </NavigationMenuContent>
                                         </NavigationMenuItem>
                                         <NavigationMenuItem>

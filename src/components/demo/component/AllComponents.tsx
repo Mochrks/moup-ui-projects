@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
-import { ListCollapse, MessageCircleWarning, User, Star, PanelBottom, RectangleEllipsis, StretchHorizontal, MessageCircleCode, LogIn, LayoutDashboard, GalleryHorizontalEnd, Sheet, PanelLeftOpen, MessageSquareText, Loader, LayoutPanelTop } from 'lucide-react'
+import { ListCollapse, MessageCircleWarning, User, Star, PanelBottom, MessageCircleCode, LogIn, LayoutDashboard, GalleryHorizontalEnd, Sheet, PanelLeftOpen, MessageSquareText, Loader, LayoutPanelTop } from 'lucide-react'
 import ScrollToTopButton from '../../ui-other/ScrollToTopButton'
 import { ButtonInfo, Section } from '@/types/all-component'
 
@@ -9,28 +9,27 @@ const sections: Section[] = [
     {
         title: 'Components',
         buttons: [
-            { name: 'Accordion', route: 'components/accordion', icon: ListCollapse },
-            { name: 'Alert', route: 'components/alert', icon: MessageCircleWarning },
-            { name: 'Carousel', route: 'components/carousel', icon: GalleryHorizontalEnd },
-            { name: 'Drawer', route: 'components/drawer', icon: PanelLeftOpen },
-            { name: 'Dialog', route: 'components/dialog', icon: MessageSquareText },
-            { name: 'Loading', route: 'components/loading', icon: Loader },
-            { name: 'Pagination', route: 'components/pagination', icon: LayoutPanelTop },
-            { name: 'Table', route: 'components/table', icon: Sheet },
+            { name: 'Accordion', route: '/components/accordion', icon: ListCollapse },
+            { name: 'Alert', route: '/components/alert', icon: MessageCircleWarning },
+            { name: 'Carousel', route: '/components/carousel', icon: GalleryHorizontalEnd },
+            { name: 'Drawer', route: '/components/drawer', icon: PanelLeftOpen },
+            { name: 'Dialog', route: '/components/dialog', icon: MessageSquareText },
+            { name: 'Loading', route: '/components/loading', icon: Loader },
+            { name: 'Pagination', route: '/components/pagination', icon: LayoutPanelTop },
+            { name: 'Table', route: '/components/table', icon: Sheet },
         ],
 
     },
     {
         title: 'Section',
         buttons: [
-            { name: 'Chat', route: 'section/chat', icon: MessageCircleCode },
-            { name: 'Sign in', route: 'section/sign-in', icon: LogIn },
-            { name: 'Dashboard', route: 'section/dashboard', icon: LayoutDashboard },
-            { name: 'Navbar', route: 'section/navbar', icon: StretchHorizontal },
-            { name: 'Heros', route: 'section/heros', icon: RectangleEllipsis },
-            { name: 'Footer', route: 'section/footer', icon: PanelBottom },
-            { name: 'Feedback & Rating', route: 'section/user-feedback-rating', icon: Star },
-            { name: 'User Profiles', route: 'section/user-profiles', icon: User },
+            { name: 'Chat', route: '/section/chat', icon: MessageCircleCode },
+            { name: 'Authentication', route: '/section/sign-in', icon: LogIn },
+            { name: 'Dashboard', route: '/section/dashboard', icon: LayoutDashboard },
+            // { name: 'Heros', route: '/section/heros', icon: RectangleEllipsis },
+            { name: 'Footer', route: '/section/footer', icon: PanelBottom },
+            { name: 'Feedback & Rating', route: '/section/user-feedback-rating', icon: Star },
+            { name: 'User Profiles', route: '/section/user-profiles', icon: User },
         ],
 
     },
