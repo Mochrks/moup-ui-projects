@@ -83,7 +83,7 @@ export const DashboardPage = () => {
     const [taskList, setTaskList] = useState(initialTasks)
     const [timer, setTimer] = useState(0)
     const [isTimerRunning, setIsTimerRunning] = useState(false)
-    const [tableData, setTableData] = useState(initialTableData)
+    const [tableData, setTableData] = useState<{ id: number; name: string; email: string; status: string }[]>(initialTableData)
     const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'ascending' | 'descending' } | null>(null)
     const [searchTerm, setSearchTerm] = useState("")
     const [statusFilter, setStatusFilter] = useState("all")
@@ -93,13 +93,13 @@ export const DashboardPage = () => {
     const [confirmPassword, setConfirmPassword] = useState("")
 
     const sortedData = useMemo(() => {
-        let sortableItems = [...tableData]
+        const sortableItems = [...tableData]
         if (sortConfig !== null) {
             sortableItems.sort((a, b) => {
-                if (a[sortConfig.key] < b[sortConfig.key]) {
+                if (a[sortConfig.key as keyof typeof tableData[0]] < b[sortConfig.key as keyof typeof tableData[0]]) {
                     return sortConfig.direction === 'ascending' ? -1 : 1
                 }
-                if (a[sortConfig.key] > b[sortConfig.key]) {
+                if (a[sortConfig.key as keyof typeof tableData[0]] < b[sortConfig.key as keyof typeof tableData[0]]) {
                     return sortConfig.direction === 'ascending' ? 1 : -1
                 }
                 return 0
@@ -412,7 +412,7 @@ export const DashboardPage = () => {
                                                     fill="#8884d8"
                                                     dataKey="value"
                                                 >
-                                                    {deviceData.map((entry, index) => (
+                                                    {deviceData.map((_, index) => (
                                                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                                     ))}
                                                 </Pie>
@@ -479,8 +479,12 @@ export const DashboardPage = () => {
                             <div className="mb-8">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle>User Data</CardTitle>
+                                        <div className='flex justify-between'>
+                                            <CardTitle>User Data</CardTitle>
+                                            <button onClick={() => setTableData([...tableData, { id: 11, name: 'John Doe', email: 'john@example.com', status: 'Active' }])}>Tambah Data</button>
+                                        </div>
                                     </CardHeader>
+
                                     <CardContent>
                                         <div className="flex flex-col md:flex-row justify-between mb-4 space-y-2 md:space-y-0">
                                             <Input

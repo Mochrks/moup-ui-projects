@@ -64,7 +64,7 @@ export const AIPoweredChatbot = () => {
 
 export const RenderChatLayoutOne = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [selectedChat, setSelectedChat] = useState(null)
+    const [selectedChat, setSelectedChat] = useState<number | null>(null)
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [messageInput, setMessageInput] = useState('')
 
