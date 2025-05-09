@@ -19,7 +19,7 @@
 ## Features
 
 - A collection of reusable UI components designed with **TailwindCSS** and **ShadCNUI**
-- Customizable and responsive components for various use cases
+- Customizable and responsive components for various use case
 - Fast development and optimized build with **Vite**
 - Interactive animations using **Framer Motion**
 
