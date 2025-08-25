@@ -14,7 +14,7 @@
 
 ## Overview
 
-**MoupUI** is a web UI component library built with **TailwindCSS** and **ShadCNUI**, designed to help developers create visually appealing, customizable, and responsives interfaces with ease. The library utilizes **React** as the main framework and incorporates **Vite** for fast development, along with **Framer Motions** for interactive animation.
+**MoupUI** is a web UI component library built with **TailwindCSS** and **ShadCNUI** , designed to help developers create visually appealing, customizable, and responsives interfaces with ease. The library utilizes **React** as the main framework and incorporates **Vite** for fast development, along with **Framer Motions** for interactive animation.
 
 ## Features
 
