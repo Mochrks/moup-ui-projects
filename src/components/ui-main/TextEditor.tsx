@@ -1,14 +1,10 @@
 import { useState } from 'react'
 import { Check, Copy } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { Highlight, themes, type Language } from 'prism-react-renderer'
+import { Button } from "@/components/ui-neobrutalism/button"
+import { ScrollArea, ScrollBar } from "@/components/ui-neobrutalism/scroll-area"
+import { Highlight, themes } from 'prism-react-renderer'
+import { VSCodeEditorProps } from '@/types/text-editor'
 
-interface VSCodeEditorProps {
-    code: string
-    language?: Language
-    nameFile: string
-}
 
 export default function VSCodeEditor({ code, language = 'javasciprt', nameFile }: VSCodeEditorProps) {
     const [isCopied, setIsCopied] = useState(false)

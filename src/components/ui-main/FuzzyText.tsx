@@ -1,15 +1,6 @@
+import { FuzzyTextProps } from "@/types/fuzzy-text";
 import React, { useEffect, useRef } from "react";
 
-interface FuzzyTextProps {
-    children: React.ReactNode;
-    fontSize?: number | string;
-    fontWeight?: string | number;
-    fontFamily?: string;
-    color?: string;
-    enableHover?: boolean;
-    baseIntensity?: number;
-    hoverIntensity?: number;
-}
 
 const FuzzyText: React.FC<FuzzyTextProps> = ({
     children,

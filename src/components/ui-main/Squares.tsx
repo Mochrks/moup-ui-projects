@@ -1,20 +1,5 @@
+import { GridOffset, SquaresProps } from "@/types/squares";
 import React, { useRef, useEffect } from "react";
-
-type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
-
-interface GridOffset {
-    x: number;
-    y: number;
-}
-
-interface SquaresProps {
-    direction?: "diagonal" | "up" | "right" | "down" | "left";
-    speed?: number;
-    borderColor?: CanvasStrokeStyle;
-    squareSize?: number;
-    hoverFillColor?: CanvasStrokeStyle;
-}
-
 const Squares: React.FC<SquaresProps> = ({
     direction = "right",
     speed = 1,

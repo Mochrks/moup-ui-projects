@@ -1,9 +1,17 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui-neobrutalism/button'
+import { useSmoothNavigate } from '@/hooks/useSmoothNavigate';
+import { ContentLayout } from '@/layout/ContentLayout';
 import { FaArrowRight } from "react-icons/fa6";
 
 export const IntroductionContent = () => {
+
+    const { smoothNavigate } = useSmoothNavigate();
+
+    const handleInstallationClick = () => {
+        smoothNavigate('/docs/installation');
+    };
     return (
-        <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-0 md:px-3 '>
+        <ContentLayout>
             <div className="p-6  text-start  w-full ">
                 <h2 className="mt-10 scroll-m-20 border-b text-start  text-3xl font-semibold tracking-tight transition-colors first:mt-0 ">
                     Introduction
@@ -21,13 +29,14 @@ export const IntroductionContent = () => {
             </div>
 
             <div className="flex px-10 py-10 justify-end w-full">
-                <Button className='px-4 py-2 text-md'>
-                    <a href="/docs/installation" className="hover:underline">
-                        Installation
-                    </a>
-                    < FaArrowRight className='m-2 w-4 h-4' />
+                <Button
+                    className='px-4 py-2 text-md cursor-pointer'
+                    onClick={handleInstallationClick}
+                >
+                    Installation
+                    <FaArrowRight className='m-2 w-4 h-4' />
                 </Button>
             </div>
-        </div>
+        </ContentLayout>
     )
 }

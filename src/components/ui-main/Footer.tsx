@@ -1,5 +1,5 @@
 
-import { Button } from '../ui/button';
+import { Button } from '../ui-neobrutalism/button';
 import { FaGithub } from 'react-icons/fa';
 import { logos } from '@/assets';
 

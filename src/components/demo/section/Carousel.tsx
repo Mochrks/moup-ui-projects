@@ -1,13 +1,14 @@
 'use client'
 
-import CodePreview from '@/components/ui-other/CodePriview'
+import CodePreview from '@/components/ui-main/CodePriview'
 import { BasicCarousel, CircularCarousel, CubeCarousel, ElasticCarousel, FadeCarousel, InfiniteCarousel, ParallaxCarousel, PerspectiveCarousel, StackedCarousel, ZoomCarousel } from '@/code/carousel'
+import { ContentLayout } from '@/layout/ContentLayout'
 
 export const Carousel = () => {
 
     const sampleCode = `sample code`.trim()
     return (
-        <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-3 '>
+        <ContentLayout>
             <div className="p-6 text-start w-full">
                 <h2 className="text-2xl font-bold mb-4">Carousel </h2>
                 <p className="mb-4">
@@ -114,7 +115,6 @@ export const Carousel = () => {
                     />
                 </div>
             </div>
-
-        </div>
+        </ContentLayout>
     )
 }

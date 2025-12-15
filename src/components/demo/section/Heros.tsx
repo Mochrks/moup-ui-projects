@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { Engine } from "@tsparticles/engine";
-import CodePreview from '../../ui-other/CodePriview';
+import CodePreview from '../../ui-main/CodePriview';
 import { sampleCodeHeros } from '@/code/heros';
+import { ContentLayout } from '@/layout/ContentLayout';
 
 const ParticleBackground: React.FC = () => {
     const [init, setInit] = useState(false);
@@ -150,9 +151,8 @@ const SampleComponent: React.FC = () => {
 
 export const Heros = () => {
 
-
     return (
-        <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-3 '>
+        <ContentLayout>
             <div className="p-6 text-start w-full">
                 <h2 className="text-2xl font-bold mb-4">Animated Hero Sections</h2>
                 <p className="mb-4">
@@ -179,7 +179,6 @@ export const Heros = () => {
                     preview={<SampleComponent />}
                 />
             </div>
-
-        </div>
+        </ContentLayout>
     )
 }

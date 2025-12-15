@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Sparkles } from 'lucide-react';
-import { Alert, AlertDescription } from '../ui/alert';
+import { Alert, AlertDescription } from '../ui-neobrutalism/alert';
 
 const AlertInformation: React.FC = () => {
     return (

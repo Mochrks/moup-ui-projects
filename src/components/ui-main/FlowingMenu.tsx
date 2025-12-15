@@ -1,15 +1,7 @@
 import React from "react";
 import { gsap } from "gsap";
+import { FlowingMenuProps, MenuItemProps } from "@/types/flowing-menu";
 
-interface MenuItemProps {
-    link: string;
-    text: string;
-    image: string;
-}
-
-interface FlowingMenuProps {
-    items?: MenuItemProps[];
-}
 
 const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [] }) => {
     return (

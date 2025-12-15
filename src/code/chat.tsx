@@ -2,9 +2,9 @@ import { useState } from "react"
 import { Button } from "@/components/ui-shadcn/button"
 import { Input } from "@/components/ui-shadcn/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui-shadcn/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui-neobrutalism/avatar"
+import { Badge } from "@/components/ui-neobrutalism/badge"
+import { ScrollArea } from "@/components/ui-neobrutalism/scroll-area"
 import { MessageCircle, Search, Send, Paperclip, MoreVertical, Phone, Video, Smile, } from 'lucide-react'
 import {
     DropdownMenu,

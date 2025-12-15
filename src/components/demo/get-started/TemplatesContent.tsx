@@ -1,10 +1,12 @@
 import { useState } from 'react'
 
-import CodePreview from '../../ui-other/CodePriview';
+import CodePreview from '../../ui-main/CodePriview';
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
-import { Button as Button2 } from "@/components/ui/button"
+import { Button as Button2 } from "@/components/ui-neobrutalism/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui-shadcn/tabs"
 import { CartPage, CheckoutPage, EcommerceLayout, OrderConfirmationPage, OrderHistoryPage, ProductDetailPage, ProductListingPage, sampleCodeECommerce } from '@/code/e-commerce';
+import { useSmoothNavigate } from '@/hooks/useSmoothNavigate';
+import { ContentLayout } from '@/layout/ContentLayout';
 
 
 const SampleComponent = () => {
@@ -50,9 +52,11 @@ const SampleComponent = () => {
 
 
 export const TemplatesContent = () => {
-
+    const { smoothNavigate } = useSmoothNavigate();
+    const handleBackInstallation = () => smoothNavigate('/docs/installation');
+    const handleNextComponents = () => smoothNavigate('/components/all-components');
     return (
-        <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-0 md:px-3 '>
+        <ContentLayout>
             <div className='p-6 text-start w-full'>
                 <h2 className="text-2xl font-bold ">Templates</h2>
                 <p className="leading-7 [&:not(:first-child)]:mt-6 max-w-full ">
@@ -61,16 +65,18 @@ export const TemplatesContent = () => {
             </div>
 
             <div className="flex px-6 py-2 mb-10 justify-between w-full">
-                <Button2 className='px-2 md:px-4 py-2 text-md'>
+                <Button2 className='px-2 md:px-4 py-2 text-md'
+                    onClick={handleBackInstallation}>
                     <FaArrowLeft className='m-2 w-4 h-4' />
-                    <a href="/docs/installation" className="hover:underline">
+                    <span>
                         Installation
-                    </a>
+                    </span>
                 </Button2>
-                <Button2 className='px-2 md:px-4 py-2 text-md'>
-                    <a href="/components/all-components" className="hover:underline">
+                <Button2 className='px-2 md:px-4 py-2 text-md'
+                    onClick={handleNextComponents}>
+                    <span>
                         Components
-                    </a>
+                    </span>
                     <FaArrowRight className='m-2 w-4 h-4' />
                 </Button2>
             </div>
@@ -86,7 +92,7 @@ export const TemplatesContent = () => {
                     />
                 </div>
             </div>
-        </div>
+        </ContentLayout>
 
     )
 }

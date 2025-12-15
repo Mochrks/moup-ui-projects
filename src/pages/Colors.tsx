@@ -1,17 +1,17 @@
-"use client"
+
 
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui-shadcn/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui-shadcn/select"
 import { Slider } from "@/components/ui-shadcn/slider"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui-neobrutalism/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui-shadcn/tabs"
 import { Label } from "@/components/ui-shadcn/label"
 import { Copy, Plus } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui-shadcn/tooltip"
 import { christmasColors, coffeeColors, coldColors, creamColors, cyberpunkColors, galaxyColors, goldColors, halloweenColors, initialTailwindColors, kidsColors, neonColors, pastelColors, rainbowColors, ramadhanColors, retroColors, seaColors, skyColors, spaceXColors, summerColors, sunsetColors, vintageColors, warmColors, weddingColors } from '@/utils/color'
-import { Navbar } from '@/components/ui-other/Navbar'
-import ScrollToTopButton from '@/components/ui-other/ScrollToTopButton'
+import { Navbar } from '@/components/ui-main/Navbar'
+import ScrollToTopButton from '@/components/ui-main/ScrollToTopButton'
 
 function hslToRgb(h: number, s: number, l: number) {
     s /= 100
@@ -363,7 +363,15 @@ export default function Colors() {
 
                     </div>
                 </main>
+
             </div>
+            <footer className="text-black py-1">
+                <div className="mx-auto px-4">
+                    <div className="text-end text-xs">
+                        © 2024 MoupUI . All rights reserved.
+                    </div>
+                </div>
+            </footer>
             <ScrollToTopButton />
         </div>
     )

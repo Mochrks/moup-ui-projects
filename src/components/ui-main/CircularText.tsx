@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-
-interface CircularTextProps {
-    text: string;
-    spinDuration?: number;
-    onHover?: "slowDown" | "speedUp" | "pause" | "goBonkers";
-    className?: string;
-}
+import { CircularTextProps } from "@/types/circular-text";
 
 const getRotationTransition = (
     duration: number,

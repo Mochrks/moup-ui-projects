@@ -1,10 +1,20 @@
-
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui-neobrutalism/button'
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
+import { useSmoothNavigate } from '@/hooks/useSmoothNavigate';
+import { ContentLayout } from '@/layout/ContentLayout';
 
 export const InstallationContent = () => {
+    const { smoothNavigate } = useSmoothNavigate();
+
+    const handleIntroductionClick = () => {
+        smoothNavigate('/docs/introduction');
+    };
+
+    const handleTemplatesClick = () => {
+        smoothNavigate('/docs/templates');
+    };
     return (
-        <div className='min-h-screen md:min-h-20 flex flex-col items-center justify-center py-20 px-0 md:px-3 '>
+        <ContentLayout>
             <div className="p-6 text-start w-full">
                 <h2 className="text-2xl font-bold mb-4">Getting Started with ShadCN Installation</h2>
                 <p className="leading-7 [&:not(:first-child)]:mt-6 max-w-full ">
@@ -43,19 +53,21 @@ export const InstallationContent = () => {
             </div>
 
             <div className="flex px-4 py-2 justify-between w-full">
-                <Button className='px-2 md:px-4 py-2 text-md'>
-                    <FaArrowLeft className='m-2 w-4 h-4' />
-                    <a href="/docs/introduction" className="hover:underline">
-                        introduction
-                    </a>
+                <Button
+                    className='px-2 md:px-4 py-2 text-md cursor-pointer flex items-center gap-2'
+                    onClick={handleIntroductionClick}
+                >
+                    <FaArrowLeft className='w-4 h-4' />
+                    <span>Introduction</span>
                 </Button>
-                <Button className='px-2 md:px-4 py-2 text-md'>
-                    <a href="/docs/templates" className="hover:underline">
-                        templates
-                    </a>
-                    < FaArrowRight className='m-2 w-4 h-4' />
+                <Button
+                    className='px-2 md:px-4 py-2 text-md cursor-pointer flex items-center gap-2'
+                    onClick={handleTemplatesClick}
+                >
+                    <span>Templates</span>
+                    <FaArrowRight className='w-4 h-4' />
                 </Button>
             </div>
-        </div>
+        </ContentLayout>
     )
 }

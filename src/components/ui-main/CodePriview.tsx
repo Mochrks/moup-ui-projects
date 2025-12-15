@@ -1,16 +1,11 @@
-import React, { useState } from 'react'
-import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import TextEditor from '@/components/ui-other/TextEditor';
+import { useState } from 'react'
+import { Card, CardContent, CardTitle } from "@/components/ui-neobrutalism/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui-neobrutalism/tabs"
+import TextEditor from '@/components/ui-main/TextEditor';
 import { AiOutlineEye } from "react-icons/ai";
 import { FaCode } from "react-icons/fa6";
-interface CodePreviewCardProps {
-    title: string
-    code: string
-    language?: string
-    preview: React.ReactNode
-    nameFile: string
-}
+import { CodePreviewCardProps } from '@/types/code-preview';
+
 
 export default function CodePreview({ title, code, language = 'tsx', preview, nameFile }: CodePreviewCardProps) {
     const [activeTab, setActiveTab] = useState<string>('preview')

@@ -28,8 +28,8 @@ const NotFound: React.FC = () => {
                             handleGoHome();
                         }
                     }}
-                    role="link" // Menambahkan peran untuk aksesibilitas
-                    tabIndex={0} // Memungkinkan elemen difokuskan
+                    role="link"
+                    tabIndex={0}
                 >
                     Home
                 </span>
