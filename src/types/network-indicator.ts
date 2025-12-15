@@ -1,6 +1,7 @@
-export interface NetworkIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
-  readonly className?: string;
+export interface NetworkIndicatorProps {
+  className?: string;
   onlineStatus?: boolean;
+  showDetails?: boolean;
 }
 
 export interface NetworkStatus {
@@ -9,9 +10,4 @@ export interface NetworkStatus {
   downlink?: number;
   rtt?: number;
   className?: string;
-}
-
-export interface NetworkIndicatorProps {
-  className?: string;
-  showDetails?: boolean;
 }
