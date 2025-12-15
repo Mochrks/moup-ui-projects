@@ -1,7 +1,3 @@
-
-
 export const Dialog = () => {
-    return (
-        <div>Dialog</div>
-    )
-}
+  return <div>Dialog</div>;
+};

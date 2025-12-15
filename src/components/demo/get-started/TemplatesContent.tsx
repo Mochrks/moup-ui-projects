@@ -1,98 +1,101 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import CodePreview from '../../ui-main/CodePriview';
+import CodePreview from "../../ui-main/CodePriview";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
-import { Button as Button2 } from "@/components/ui-neobrutalism/button"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui-shadcn/tabs"
-import { CartPage, CheckoutPage, EcommerceLayout, OrderConfirmationPage, OrderHistoryPage, ProductDetailPage, ProductListingPage, sampleCodeECommerce } from '@/code/e-commerce';
-import { useSmoothNavigate } from '@/hooks/useSmoothNavigate';
-import { ContentLayout } from '@/layout/ContentLayout';
-
+import { Button as Button2 } from "@/components/ui-neobrutalism/button";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui-shadcn/tabs";
+import {
+  CartPage,
+  CheckoutPage,
+  EcommerceLayout,
+  OrderConfirmationPage,
+  OrderHistoryPage,
+  ProductDetailPage,
+  ProductListingPage,
+  sampleCodeECommerce,
+} from "@/code/e-commerce";
+import { useSmoothNavigate } from "@/hooks/useSmoothNavigate";
+import { ContentLayout } from "@/layout/ContentLayout";
 
 const SampleComponent = () => {
-    const [currentPage, setCurrentPage] = useState('productListing')
+  const [currentPage, setCurrentPage] = useState("productListing");
 
-    const renderPage = () => {
-        switch (currentPage) {
-            case 'productListing':
-                return <ProductListingPage />
-            case 'productDetail':
-                return <ProductDetailPage />
-            case 'cart':
-                return <CartPage />
-            case 'checkout':
-                return <CheckoutPage />
-            case 'orderConfirmation':
-                return <OrderConfirmationPage />
-            case 'orderHistory':
-                return <OrderHistoryPage />
-            default:
-                return <ProductListingPage />
-        }
+  const renderPage = () => {
+    switch (currentPage) {
+      case "productListing":
+        return <ProductListingPage />;
+      case "productDetail":
+        return <ProductDetailPage />;
+      case "cart":
+        return <CartPage />;
+      case "checkout":
+        return <CheckoutPage />;
+      case "orderConfirmation":
+        return <OrderConfirmationPage />;
+      case "orderHistory":
+        return <OrderHistoryPage />;
+      default:
+        return <ProductListingPage />;
     }
+  };
 
-    return (
-        <div>
-            <EcommerceLayout>
-                <Tabs value={currentPage} onValueChange={setCurrentPage} className="w-full mb-8">
-                    <TabsList className="grid w-full grid-cols-6">
-                        <TabsTrigger value="productListing">Products</TabsTrigger>
-                        <TabsTrigger value="productDetail">Details</TabsTrigger>
-                        <TabsTrigger value="cart">Cart</TabsTrigger>
-                        <TabsTrigger value="checkout">Checkout</TabsTrigger>
-                        <TabsTrigger value="orderConfirmation">Confirmation</TabsTrigger>
-                        <TabsTrigger value="orderHistory">History</TabsTrigger>
-                    </TabsList>
-                </Tabs>
-                {renderPage()}
-            </EcommerceLayout>
-        </div>
-    )
-}
-
+  return (
+    <div>
+      <EcommerceLayout>
+        <Tabs value={currentPage} onValueChange={setCurrentPage} className="w-full mb-8">
+          <TabsList className="grid w-full grid-cols-6">
+            <TabsTrigger value="productListing">Products</TabsTrigger>
+            <TabsTrigger value="productDetail">Details</TabsTrigger>
+            <TabsTrigger value="cart">Cart</TabsTrigger>
+            <TabsTrigger value="checkout">Checkout</TabsTrigger>
+            <TabsTrigger value="orderConfirmation">Confirmation</TabsTrigger>
+            <TabsTrigger value="orderHistory">History</TabsTrigger>
+          </TabsList>
+        </Tabs>
+        {renderPage()}
+      </EcommerceLayout>
+    </div>
+  );
+};
 
 export const TemplatesContent = () => {
-    const { smoothNavigate } = useSmoothNavigate();
-    const handleBackInstallation = () => smoothNavigate('/docs/installation');
-    const handleNextComponents = () => smoothNavigate('/components/all-components');
-    return (
-        <ContentLayout>
-            <div className='p-6 text-start w-full'>
-                <h2 className="text-2xl font-bold ">Templates</h2>
-                <p className="leading-7 [&:not(:first-child)]:mt-6 max-w-full ">
-                    Discover our expertly crafted templates, designed to accelerate your development workflow. From sleek landing pages to full-fledged applications, MoupUI provides a comprehensive set of pre-built solutions tailored for modern web development. These templates not only save you time but also help you achieve stunning, professional results effortlessly.
-                </p>
-            </div>
+  const { smoothNavigate } = useSmoothNavigate();
+  const handleBackInstallation = () => smoothNavigate("/docs/installation");
+  const handleNextComponents = () => smoothNavigate("/components/all-components");
+  return (
+    <ContentLayout>
+      <div className="p-6 text-start w-full">
+        <h2 className="text-2xl font-bold ">Templates</h2>
+        <p className="leading-7 [&:not(:first-child)]:mt-6 max-w-full ">
+          Discover our expertly crafted templates, designed to accelerate your development workflow.
+          From sleek landing pages to full-fledged applications, MoupUI provides a comprehensive set
+          of pre-built solutions tailored for modern web development. These templates not only save
+          you time but also help you achieve stunning, professional results effortlessly.
+        </p>
+      </div>
 
-            <div className="flex px-6 py-2 mb-10 justify-between w-full">
-                <Button2 className='px-2 md:px-4 py-2 text-md'
-                    onClick={handleBackInstallation}>
-                    <FaArrowLeft className='m-2 w-4 h-4' />
-                    <span>
-                        Installation
-                    </span>
-                </Button2>
-                <Button2 className='px-2 md:px-4 py-2 text-md'
-                    onClick={handleNextComponents}>
-                    <span>
-                        Components
-                    </span>
-                    <FaArrowRight className='m-2 w-4 h-4' />
-                </Button2>
-            </div>
+      <div className="flex px-6 py-2 mb-10 justify-between w-full">
+        <Button2 className="px-2 md:px-4 py-2 text-md" onClick={handleBackInstallation}>
+          <FaArrowLeft className="m-2 w-4 h-4" />
+          <span>Installation</span>
+        </Button2>
+        <Button2 className="px-2 md:px-4 py-2 text-md" onClick={handleNextComponents}>
+          <span>Components</span>
+          <FaArrowRight className="m-2 w-4 h-4" />
+        </Button2>
+      </div>
 
-            <div className='sm:hidden md:block flex items-center justify-center w-full pt-5 px-5 '>
-                <div className='md:block hidden'>
-                    <CodePreview
-                        title="E-Commerce"
-                        code={sampleCodeECommerce}
-                        language="javascript"
-                        nameFile='e-commerce.tsx'
-                        preview={<SampleComponent />}
-                    />
-                </div>
-            </div>
-        </ContentLayout>
-
-    )
-}
+      <div className="sm:hidden md:block flex items-center justify-center w-full pt-5 px-5 ">
+        <div className="md:block hidden">
+          <CodePreview
+            title="E-Commerce"
+            code={sampleCodeECommerce}
+            language="javascript"
+            nameFile="e-commerce.tsx"
+            preview={<SampleComponent />}
+          />
+        </div>
+      </div>
+    </ContentLayout>
+  );
+};

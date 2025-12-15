@@ -1,7 +1,3 @@
-
-
 export const DrawerContent = () => {
-    return (
-        <div>Drawer</div>
-    )
-}
+  return <div>Drawer</div>;
+};

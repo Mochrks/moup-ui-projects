@@ -110,4 +110,4 @@ export default function AnimatedButtons() {
         </div>
     )
 }
-`.trim()
+`.trim();

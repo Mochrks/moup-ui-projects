@@ -1,6 +1,3 @@
-
 export const Accordion = () => {
-    return (
-        <div>Accordion</div>
-    )
-}
+  return <div>Accordion</div>;
+};

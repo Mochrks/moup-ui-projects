@@ -1,7 +1,3 @@
-
-
 export const Pagination = () => {
-    return (
-        <div>Pagination</div>
-    )
-}
+  return <div>Pagination</div>;
+};

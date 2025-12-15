@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
 export interface MainLayoutProps {
-    children: ReactNode;
-    showDrawer?: boolean;
+  children: ReactNode;
+  showDrawer?: boolean;
 }

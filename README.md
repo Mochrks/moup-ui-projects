@@ -22,8 +22,6 @@
 - Customizable and responsive components for various use case
 - Fast development and optimized build with **Vite**
 - Interactive animations using **Framer Motion**
-  
-
 
 ## Tech Stack
 
@@ -40,27 +38,27 @@
 
 - **Clone the repository**
 
-    ```bash
-    git clone https://github.com/mochrks/moup-ui-projects.git
-    cd moup-ui-projects
-    ```
+  ```bash
+  git clone https://github.com/mochrks/moup-ui-projects.git
+  cd moup-ui-projects
+  ```
 
 - **Install dependencies**
 
-    ```bash
-    npm install
-    ```
+  ```bash
+  npm install
+  ```
 
 - **Run the development server**
 
-    ```bash
-    npm run dev
-    ```
+  ```bash
+  npm run dev
+  ```
 
 - The application will be running on [http://localhost:port](http://localhost:port).
 
-
 ## Connect with me:
+
 [![GitHub](https://img.shields.io/badge/GitHub-333?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mochrks)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@Gdvisuel)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/mochrks)

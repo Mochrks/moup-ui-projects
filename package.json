@@ -7,8 +7,10 @@
     "start": "vite",
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
@@ -72,6 +74,8 @@
     "vite-project": "file:"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
     "@eslint/js": "^9.9.0",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.3",
@@ -79,13 +83,25 @@
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.9.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "postcss": "^8.4.47",
+    "prettier": "^3.7.4",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.{json,md,css,scss,mdx}": [
+      "prettier --write"
+    ]
   }
 }
