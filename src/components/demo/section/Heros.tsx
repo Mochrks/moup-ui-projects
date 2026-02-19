@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { Engine } from "@tsparticles/engine";
+import { Engine, Container } from "@tsparticles/engine";
 import CodePreview from "../../ui-main/CodePriview";
-import { sampleCodeHeros } from "@/code/heros";
+import { sampleCodeHeros, sampleCodeHerosNext, sampleCodeHerosHtml } from "@/data/code/heros";
 import { ContentLayout } from "@/layout/ContentLayout";
 
 const ParticleBackground: React.FC = () => {
@@ -17,7 +17,7 @@ const ParticleBackground: React.FC = () => {
     });
   }, []);
 
-  const particlesLoaded = async (container?: any): Promise<void> => {
+  const particlesLoaded = async (container?: Container): Promise<void> => {
     console.log(container);
   };
 
@@ -175,7 +175,9 @@ export const Heros = () => {
         <CodePreview
           title="Animation Hero Section"
           code={sampleCodeHeros}
-          language="javasciprt"
+          codeNext={sampleCodeHerosNext}
+          codeHtml={sampleCodeHerosHtml}
+          language="javascript"
           nameFile="hero-animation.tsx"
           preview={<SampleComponent />}
         />

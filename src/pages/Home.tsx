@@ -4,14 +4,12 @@ import { Navbar } from "@/components/ui-main/Navbar";
 import { Footer } from "@/components/ui-main/Footer";
 import CodePreview from "@/components/ui-main/CodePriview";
 import ScrollToTopButton from "@/components/ui-main/ScrollToTopButton";
+import { BorderButton, GlowButton, JellyButton, MorphButton, PulseButton } from "@/code/home";
 import {
-  BorderButton,
-  GlowButton,
-  JellyButton,
-  MorphButton,
-  PulseButton,
   sampleCodeButtonHome,
-} from "@/code/home";
+  sampleCodeButtonHomeNext,
+  sampleCodeButtonHomeHtml,
+} from "@/data/code/home";
 import CircularText from "@/components/ui-main/CircularText";
 import FlowingMenu from "@/components/ui-main/FlowingMenu";
 import { useSmoothNavigate } from "@/hooks/useSmoothNavigate";
@@ -100,7 +98,9 @@ const Home = () => {
               <CodePreview
                 title="Button"
                 code={sampleCodeButtonHome}
-                language="javascript"
+                codeNext={sampleCodeButtonHomeNext}
+                codeHtml={sampleCodeButtonHomeHtml}
+                language="tsx"
                 nameFile="Button.tsx"
                 preview={<SampleComponent />}
               />

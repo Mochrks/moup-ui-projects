@@ -4,4 +4,5 @@ export interface VSCodeEditorProps {
   code: string;
   language?: Language;
   nameFile: string;
+  headerAction?: React.ReactNode;
 }

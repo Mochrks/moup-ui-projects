@@ -9,6 +9,7 @@ export default function VSCodeEditor({
   code,
   language = "javasciprt",
   nameFile,
+  headerAction,
 }: VSCodeEditorProps) {
   const [isCopied, setIsCopied] = useState(false);
 
@@ -23,14 +24,17 @@ export default function VSCodeEditor({
     <div className="border rounded-md overflow-hidden bg-[#1E1E1E] text-[#D4D4D4]">
       <div className="flex justify-between items-center p-2 bg-[#252526]">
         <span className="text-sm font-mono ml-3">{nameFile}</span>
-        <Button
-          variant="neutral"
-          size="sm"
-          onClick={handleCopyCode}
-          className="text-black hover:text-black"
-        >
-          {isCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-        </Button>
+        <div className="flex items-center gap-2">
+          {headerAction}
+          <Button
+            variant="neutral"
+            size="sm"
+            onClick={handleCopyCode}
+            className="text-black hover:text-black"
+          >
+            {isCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          </Button>
+        </div>
       </div>
       <ScrollArea className="h-[600px] w-full">
         <div className="min-w-full inline-block">

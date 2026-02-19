@@ -9,6 +9,7 @@ const Docs = lazy(() => import("@/pages/Docs"));
 const Comp = lazy(() => import("@/pages/Comp"));
 const Color = lazy(() => import("@/pages/Colors"));
 const Section = lazy(() => import("@/pages/Section"));
+const FAQ = lazy(() => import("@/pages/SectionDetailPage"));
 const NotFound = lazy(() => import("@/components/ui-main/NotFound"));
 
 const AppRoutes: React.FC = () => {
@@ -44,6 +45,7 @@ const AppRoutes: React.FC = () => {
             <Route path="/docs/*" element={<Docs />} />
             <Route path="/components/*" element={<Comp />} />
             <Route path="/section/*" element={<Section />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/colors" element={<Color />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

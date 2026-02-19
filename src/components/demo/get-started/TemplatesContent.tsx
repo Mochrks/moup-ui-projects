@@ -12,8 +12,12 @@ import {
   OrderHistoryPage,
   ProductDetailPage,
   ProductListingPage,
-  sampleCodeECommerce,
 } from "@/code/e-commerce";
+import {
+  sampleCodeECommerce,
+  sampleCodeECommerceNext,
+  sampleCodeECommerceHtml,
+} from "@/data/code/e-commerce";
 import { useSmoothNavigate } from "@/hooks/useSmoothNavigate";
 import { ContentLayout } from "@/layout/ContentLayout";
 
@@ -90,6 +94,8 @@ export const TemplatesContent = () => {
           <CodePreview
             title="E-Commerce"
             code={sampleCodeECommerce}
+            codeNext={sampleCodeECommerceNext}
+            codeHtml={sampleCodeECommerceHtml}
             language="javascript"
             nameFile="e-commerce.tsx"
             preview={<SampleComponent />}

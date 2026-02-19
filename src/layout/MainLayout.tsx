@@ -41,7 +41,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, showDrawer = true }) 
 
       <footer className="text-black py-1">
         <div className="mx-auto px-4">
-          <div className="text-end text-xs">© 2024 MoupUI . All rights reserved.</div>
+          <div className="text-end text-xs">
+            © {new Date().getFullYear()} MoupUI . All rights reserved.
+          </div>
         </div>
       </footer>
     </div>

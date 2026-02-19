@@ -179,7 +179,7 @@ export const Footer = () => {
         </div>
         <div className="text-center ">
           <div className="mt-4  text-center md:text-start text-md text-white">
-            © 2024 MoupUI . All rights reserved.
+            © {new Date().getFullYear()} MoupUI . All rights reserved.
           </div>
         </div>
       </div>
