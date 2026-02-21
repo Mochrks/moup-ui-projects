@@ -3,8 +3,8 @@
 import CodePreview from "@/components/ui-main/CodePriview";
 import { SectionDoc, ComponentBlock } from "@/components/ui-main/SectionDoc";
 import { ContentLayout } from "@/layout/ContentLayout";
-import { StepIndicator } from "@/code/learning-steps";
-import { sampleCodeMultiSteps } from "@/data/code/learning";
+import { StepIndicator, VerticalStepper } from "@/code/learning-steps";
+import { sampleCodeMultiSteps, sampleCodeVerticalSteps } from "@/data/code/learning";
 
 const StepsIcon = () => (
   <svg
@@ -29,15 +29,15 @@ export const MultiSteps = () => (
       icon={<StepsIcon />}
       iconBg="bg-[#fef3c7]"
       title="Multi Steps"
-      componentCount={1}
-      description="Guide your users through complex flows with clear, sequential step indicators. This section provides high-visibility horizontal trackers with status states (Complete, Current, Pending), perfect for onboarding, checkouts, or long form submissions."
+      componentCount={2}
+      description="Guide your users through complex flows with clear, sequential step indicators. This section provides high-visibility horizontal trackers and vertical sequential flows with status states (Complete, Current, Pending)."
       features={[
         "Status-aware indicators (Complete, Current, Pending)",
         "Premium neobrutalist elevation and colored states",
         "Responsive horizontal connector systems",
+        "Vertical flow support with side descriptions",
         "Label support for step names and descriptions",
-        "Flexible grid arrangement for mobile devices",
-        "Integrated SVG icons for completed states",
+        "Icon support for completed and current states",
       ]}
       dependencies={["lucide-react"]}
       shadcnDeps={["button"]}
@@ -56,6 +56,29 @@ export const MultiSteps = () => (
             language="javascript"
             nameFile="step-indicator.tsx"
             preview={<StepIndicator />}
+          />
+        </div>
+      </ComponentBlock>
+
+      <ComponentBlock
+        title="Vertical Sequential Flow"
+        subtitle="Detailed step list with descriptive text sidebars"
+        features={[
+          "Vertical Timeline",
+          "Status Badges",
+          "Nested Content Support",
+          "Compact Mobile View",
+        ]}
+      >
+        <div className="w-full flex justify-center py-6">
+          <CodePreview
+            title="Vertical Stepper"
+            code={sampleCodeVerticalSteps}
+            codeNext={sampleCodeVerticalSteps}
+            codeHtml={sampleCodeVerticalSteps}
+            language="javascript"
+            nameFile="vertical-stepper.tsx"
+            preview={<VerticalStepper />}
           />
         </div>
       </ComponentBlock>

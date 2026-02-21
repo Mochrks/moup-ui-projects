@@ -3,7 +3,8 @@
 import CodePreview from "@/components/ui-main/CodePriview";
 import { SectionDoc, ComponentBlock } from "@/components/ui-main/SectionDoc";
 import { ContentLayout } from "@/layout/ContentLayout";
-import { CMSPostList, CMSEditorLayout } from "@/code/cms";
+import { CMSPostList, CMSEditorLayout, CMSSiteStats, CMSMediaGrid } from "@/code/cms";
+import { sampleCodeCMS, sampleCodeCMSStats, sampleCodeCMSMedia } from "@/data/code/cms";
 
 const CMSIcon = () => (
   <svg
@@ -25,37 +26,13 @@ const CMSIcon = () => (
   </svg>
 );
 
-const sampleCodeCMS = `
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
-
-export function CMSDemo() {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Title</TableHead>
-          <TableHead>Status</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableCell>Hello World</TableCell>
-          <TableCell><Badge>Published</Badge></TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  )
-}
-`;
-
 export const CMS = () => (
   <ContentLayout>
     <SectionDoc
       icon={<CMSIcon />}
       iconBg="bg-[#fce7f3]"
       title="CMS Interfaces"
-      componentCount={2}
+      componentCount={4}
       description="Streamlined Content Management System interfaces for creators and administrators. This section includes powerful post management tables with status tracking and a distraction-free editor layout with integrated publishing settings. Perfect for blogs, news portals, or documentation platforms."
       features={[
         "Interactive Post Management Table with status badges",
@@ -104,6 +81,40 @@ export const CMS = () => (
           language="javascript"
           nameFile="cms-editor.tsx"
           preview={<CMSEditorLayout />}
+        />
+      </ComponentBlock>
+
+      {/* Analytics */}
+      <ComponentBlock
+        title="Site Analytics"
+        subtitle="Visual performance metrics and user growth tracking"
+        features={["Metric Cards", "Growth Indicators", "Icon Support", "Shadow Depth"]}
+      >
+        <CodePreview
+          title="CMS Stats"
+          code={sampleCodeCMSStats}
+          codeNext={sampleCodeCMSStats}
+          codeHtml={sampleCodeCMSStats}
+          language="javascript"
+          nameFile="cms-stats.tsx"
+          preview={<CMSSiteStats />}
+        />
+      </ComponentBlock>
+
+      {/* Media Library */}
+      <ComponentBlock
+        title="Media Library"
+        subtitle="Grid-based asset management with filtering"
+        features={["File Grid", "Upload Button", "Asset Metadata", "Search Bar"]}
+      >
+        <CodePreview
+          title="Media Library"
+          code={sampleCodeCMSMedia}
+          codeNext={sampleCodeCMSMedia}
+          codeHtml={sampleCodeCMSMedia}
+          language="javascript"
+          nameFile="cms-media.tsx"
+          preview={<CMSMediaGrid />}
         />
       </ComponentBlock>
     </SectionDoc>

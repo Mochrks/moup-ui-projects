@@ -170,7 +170,7 @@ export const SectionDoc = ({
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
                 {features.map((f, i) => (
                   <motion.li
-                    key={f}
+                    key={`${f}-${i}`}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + i * 0.05 }}
@@ -281,9 +281,9 @@ export const ComponentBlock = ({
         <div className="flex flex-col gap-4 mb-8">
           {features.length > 0 && (
             <div className="flex flex-wrap gap-2 w-full overflow-hidden">
-              {features.map((f) => (
+              {features.map((f, i) => (
                 <span
-                  key={f}
+                  key={`${f}-${i}`}
                   className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 bg-white text-zinc-600 border-2 border-zinc-200 rounded-lg hover:border-black transition-colors"
                 >
                   <div className="w-1.5 h-1.5 bg-[#ffe135] rounded-full ring-2 ring-[#ffe135]/20" />

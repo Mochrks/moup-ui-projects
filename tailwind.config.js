@@ -50,9 +50,19 @@ module.exports = {
           from: { transform: "translateX(0%)" },
           to: { transform: "translateX(-50%)" },
         },
+        shimmer: {
+          "100%": { transform: "translateX(100%)" },
+        },
+        "progress-indeterminate": {
+          "0%": { left: "-35%", right: "100%" },
+          "60%": { left: "100%", right: "-90%" },
+          "100%": { left: "100%", right: "-90%" },
+        },
       },
       animation: {
         marquee: "marquee 15s linear infinite",
+        shimmer: "shimmer 2s infinite",
+        "progress-indeterminate": "progress-indeterminate 1.5s infinite linear",
       },
     },
   },

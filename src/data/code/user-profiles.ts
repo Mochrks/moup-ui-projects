@@ -14,56 +14,54 @@ export const UserProfilePage = () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <Card className="border-2 border-black shadow-[4px_4px_0_0_#000] rounded-xl overflow-hidden">
-        <div className="h-28 bg-gradient-to-r from-black to-gray-800 relative">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,225,53,0.3),transparent)]" />
+      <Card className="border shadow-sm rounded-xl overflow-hidden">
+        <div className="h-28 bg-gradient-to-r from-zinc-800 to-zinc-950 relative">
           <div className="absolute top-3 right-3">
-            <Badge className="bg-[#ffe135] text-black border-2 border-black font-black text-xs">Pro Member</Badge>
+            <Badge variant="secondary" className="text-xs">Pro Member</Badge>
           </div>
         </div>
-        <div className="px-6 pb-4">
-          <div className="flex items-end justify-between -mt-10 mb-4">
-            <Avatar className="w-20 h-20 border-4 border-white shadow-[3px_3px_0_0_#000]">
-              <AvatarFallback className="bg-[#ffe135] text-black font-black text-2xl">AJ</AvatarFallback>
+        <div className="px-6 pb-6">
+          <div className="flex items-end justify-between -mt-10 mb-6">
+            <Avatar className="w-20 h-20 border-4 border-white shadow-sm transition-transform hover:scale-105">
+              <AvatarFallback className="bg-primary text-primary-foreground font-semibold text-2xl">AJ</AvatarFallback>
             </Avatar>
             <Button
               variant="outline"
+              size="sm"
               onClick={() => setEditing(!editing)}
-              className="border-2 border-black font-bold shadow-[2px_2px_0_0_#000] hover:shadow-none transition-all text-sm"
+              className="rounded-full px-4"
             >
-              {editing ? "Cancel" : "✏️ Edit Profile"}
+              {editing ? "Cancel" : "Edit Profile"}
             </Button>
           </div>
-          <div className="mb-5">
-            <h2 className="text-2xl font-black">Alex Johnson</h2>
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold tracking-tight">Alex Johnson</h2>
             <p className="text-muted-foreground text-sm">Senior UI/UX Designer at PixelCraft Studio</p>
           </div>
           {editing ? (
             <form className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-1.5">
-                  <Label className="text-xs font-black uppercase tracking-wide">First Name</Label>
-                  <Input defaultValue="Alex" className="border-2 border-black" />
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>First Name</Label>
+                  <Input defaultValue="Alex" />
                 </div>
-                <div className="space-y-1.5">
-                  <Label className="text-xs font-black uppercase tracking-wide">Last Name</Label>
-                  <Input defaultValue="Johnson" className="border-2 border-black" />
+                <div className="space-y-2">
+                  <Label>Last Name</Label>
+                  <Input defaultValue="Johnson" />
                 </div>
               </div>
-              <div className="space-y-1.5">
-                <Label className="text-xs font-black uppercase tracking-wide">Bio</Label>
-                <Textarea className="border-2 border-black resize-none" rows={3} />
+              <div className="space-y-2">
+                <Label>Bio</Label>
+                <Textarea className="resize-none" rows={3} />
               </div>
-              <Button className="font-black border-2 border-black shadow-[3px_3px_0_0_#000] hover:shadow-none transition-all bg-[#ffe135] text-black">
-                Save Changes →
-              </Button>
+              <Button>Save Changes</Button>
             </form>
           ) : (
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-4">
               {[{ label: "Projects", value: "48" }, { label: "Followers", value: "2.4K" }, { label: "Following", value: "183" }].map((s) => (
-                <div key={s.label} className="text-center p-3 rounded-xl border-2 border-black bg-gray-50 shadow-[2px_2px_0_0_#000]">
-                  <p className="text-2xl font-black">{s.value}</p>
-                  <p className="text-xs text-muted-foreground font-bold">{s.label}</p>
+                <div key={s.label} className="text-center p-4 rounded-xl border bg-zinc-50 hover:bg-zinc-100/50 transition-colors">
+                  <p className="text-2xl font-bold">{s.value}</p>
+                  <p className="text-xs text-muted-foreground font-medium">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -80,38 +78,33 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const AccountSettingsPage = () => {
-  const [notifications, setNotifications] = useState({ email: true, push: false, marketing: true });
-
   return (
-    <div className="w-full max-w-xl mx-auto space-y-4">
-      <Card className="border-2 border-black shadow-[4px_4px_0_0_#000] rounded-xl">
-        <CardHeader className="pb-3">
-          <CardTitle className="font-black text-lg">🔒 Security</CardTitle>
-          <CardDescription>Manage your password and authentication</CardDescription>
+    <div className="w-full max-w-xl mx-auto space-y-6">
+      <Card className="border shadow-sm overflow-hidden">
+        <CardHeader>
+          <CardTitle className="text-lg font-bold">Security</CardTitle>
+          <CardDescription>Manage your authentication settings</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-1.5">
-            <Label className="text-xs font-black uppercase">Current Password</Label>
-            <Input type="password" placeholder="••••••••" className="border-2 border-black" />
+          <div className="space-y-2">
+            <Label>Current Password</Label>
+            <Input type="password" placeholder="••••••••" />
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-1.5">
-              <Label className="text-xs font-black uppercase">New Password</Label>
-              <Input type="password" placeholder="New password" className="border-2 border-black" />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label>New Password</Label>
+              <Input type="password" />
             </div>
-            <div className="space-y-1.5">
-              <Label className="text-xs font-black uppercase">Confirm</Label>
-              <Input type="password" placeholder="Confirm" className="border-2 border-black" />
+            <div className="space-y-2">
+              <Label>Confirm</Label>
+              <Input type="password" />
             </div>
           </div>
         </CardContent>
-        <CardFooter>
-          <Button className="font-black border-2 border-black shadow-[2px_2px_0_0_#000] hover:shadow-none transition-all bg-black text-white">
-            Update Password →
-          </Button>
+        <CardFooter className="bg-zinc-50 border-t py-3">
+          <Button size="sm">Update Password</Button>
         </CardFooter>
       </Card>
     </div>
@@ -119,53 +112,53 @@ export const AccountSettingsPage = () => {
 };`.trim();
 
 export const sampleCodeUserDashboard = `import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const orders = [
-  { id: "#MUI-8821", date: "Feb 18, 2025", amount: "$149", status: "Completed", color: "bg-[#d1fae5] text-green-700" },
-  { id: "#MUI-8820", date: "Feb 15, 2025", amount: "$79", status: "Processing", color: "bg-[#dbeafe] text-blue-700" },
-  { id: "#MUI-8818", date: "Feb 10, 2025", amount: "$249", status: "Shipped", color: "bg-[#fef3c7] text-yellow-800" },
+  { id: "#ORD-8821", date: "Feb 18, 2025", amount: "$149", status: "Delivered" },
+  { id: "#ORD-8820", date: "Feb 15, 2025", amount: "$79", status: "In Transit" },
 ];
 
 export const UserDashboard = () => (
-  <div className="w-full max-w-2xl mx-auto space-y-4">
-    <div className="bg-black text-white rounded-xl border-2 border-black p-5 flex items-center justify-between">
+  <div className="w-full max-w-2xl mx-auto space-y-6">
+    <div className="bg-primary text-primary-foreground rounded-2xl p-6 flex items-center justify-between shadow-lg">
       <div>
-        <p className="text-white/60 text-xs font-bold uppercase">Welcome back</p>
-        <h2 className="text-xl font-black mt-1">Alex Johnson 👋</h2>
-        <p className="text-white/60 text-sm mt-1">Member since Jan 2024 · Pro Plan</p>
+        <p className="text-primary-foreground/70 text-xs font-semibold uppercase tracking-wider">Welcome back</p>
+        <h2 className="text-2xl font-bold mt-1">Alex Johnson 👋</h2>
+        <p className="text-primary-foreground/70 text-sm mt-1">Premium Member · Since 2024</p>
       </div>
-      <div className="w-14 h-14 rounded-xl bg-[#ffe135] flex items-center justify-center">
-        <span className="text-black font-black text-2xl">AJ</span>
+      <div className="w-14 h-14 rounded-full bg-primary-foreground/10 flex items-center justify-center border border-primary-foreground/20">
+        <span className="font-bold text-xl">AJ</span>
       </div>
     </div>
-    <div className="grid grid-cols-3 gap-3">
-      {[
-        { label: "Total Orders", value: "24", icon: "📦", color: "bg-[#dbeafe]" },
-        { label: "Total Spent", value: "$1.2K", icon: "💳", color: "bg-[#fef3c7]" },
-        { label: "Saved Items", value: "17", icon: "❤️", color: "bg-[#fce7f3]" },
-      ].map((s) => (
-        <div key={s.label} className={\`\${s.color} border-2 border-black rounded-xl p-4 shadow-[3px_3px_0_0_#000]\`}>
-          <p className="text-2xl mb-1">{s.icon}</p>
-          <p className="text-2xl font-black">{s.value}</p>
-          <p className="text-xs font-bold text-muted-foreground">{s.label}</p>
-        </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[{ label: "Total Orders", value: "24" }, { label: "Total Spent", value: "$3.5K" }, { label: "Saved Items", value: "12" }].map((s) => (
+        <Card key={s.label} className="border shadow-sm">
+          <CardContent className="p-4">
+            <p className="text-sm font-medium text-muted-foreground mb-1">{s.label}</p>
+            <h3 className="text-2xl font-bold">{s.value}</h3>
+          </CardContent>
+        </Card>
       ))}
     </div>
-    <Card className="border-2 border-black shadow-[4px_4px_0_0_#000] rounded-xl">
-      <CardHeader className="pb-3">
-        <CardTitle className="font-black text-lg">Recent Orders</CardTitle>
+
+    <Card className="border shadow-sm overflow-hidden">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle className="text-lg font-semibold">Recent Activity</CardTitle>
+        <Button variant="ghost" size="sm" className="h-8">View all</Button>
       </CardHeader>
-      <CardContent className="space-y-2">
+      <CardContent className="p-0">
         {orders.map((order) => (
-          <div key={order.id} className="flex items-center justify-between p-3 rounded-xl border-2 border-black bg-gray-50">
+          <div key={order.id} className="flex items-center justify-between p-4 border-t hover:bg-zinc-50 transition-colors">
             <div>
-              <p className="font-black text-sm">{order.id}</p>
+              <p className="font-semibold text-sm">{order.id}</p>
               <p className="text-xs text-muted-foreground">{order.date}</p>
             </div>
             <div className="text-right">
-              <p className="font-black text-sm">{order.amount}</p>
-              <span className={\`text-xs font-black px-2 py-0.5 rounded-full border border-black \${order.color}\`}>{order.status}</span>
+              <p className="font-semibold text-sm">{order.amount}</p>
+              <Badge variant="outline" className="text-[10px] uppercase font-bold">{order.status}</Badge>
             </div>
           </div>
         ))}
@@ -176,18 +169,18 @@ export const UserDashboard = () => (
 
 export const sampleCodeProfileHtml = `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>User Profile — MoupUI</title></head>
-<body style="background:#f9fafb;min-height:100vh;display:flex;align-items:center;justify-content:center;margin:0;padding:16px;">
-  <div style="width:100%;max-width:600px;border:2px solid black;border-radius:12px;box-shadow:4px 4px 0 0 #000;overflow:hidden;background:white;">
-    <div style="height:96px;background:linear-gradient(to right,#000,#1f2937);position:relative;"></div>
-    <div style="padding:0 24px 24px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:-40px;margin-bottom:16px;">
-        <div style="width:80px;height:80px;border-radius:50%;background:#ffe135;border:4px solid white;box-shadow:3px 3px 0 0 #000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;">AJ</div>
-        <button style="padding:8px 16px;border:2px solid black;border-radius:8px;font-weight:700;background:white;cursor:pointer;box-shadow:2px 2px 0 0 #000;">✏️ Edit Profile</button>
+<head><meta charset="UTF-8"><title>Profile — MoupUI</title></head>
+<body style="background:#fafafa;font-family:system-ui;margin:0;padding:2rem;display:flex;justify-content:center;">
+  <div style="width:100%;max-width:600px;background:white;border:1px solid #e5e7eb;border-radius:1rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);overflow:hidden;">
+    <div style="height:120px;background:#18181b;"></div>
+    <div style="padding:0 1.5rem 1.5rem;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:-2.5rem;margin-bottom:1.5rem;">
+        <div style="width:5rem;height:5rem;border-radius:50%;background:#18181b;border:4px solid white;color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:1.5rem;">AJ</div>
+        <button style="padding:0.5rem 1rem;border:1px solid #e5e7eb;border-radius:9999px;font-weight:500;background:white;cursor:pointer;font-size:0.875rem;">Edit Profile</button>
       </div>
-      <h2 style="font-weight:900;font-size:1.5rem;margin:0 0 4px;">Alex Johnson</h2>
-      <p style="color:#6b7280;font-size:.875rem;margin:0;">Senior UI/UX Designer at PixelCraft Studio</p>
+      <h2 style="font-weight:700;font-size:1.5rem;margin:0;">Alex Johnson</h2>
+      <p style="color:#71717a;font-size:0.875rem;margin:0.25rem 0 1.5rem;">Senior Software Engineer</p>
     </div>
   </div>
 </body>
-</html>`.trim();
+</html>`;

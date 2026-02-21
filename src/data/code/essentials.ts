@@ -5,16 +5,16 @@ import { Github, Twitter, Mail } from "lucide-react"
 
 export function FooterDemo() {
   return (
-    <footer className="w-full bg-white border-t-4 border-black py-12 px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-black">
+    <footer className="w-full bg-white border-t py-12 px-6">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
         <div className="space-y-4">
-          <h3 className="text-2xl font-black italic tracking-tighter">MoupUI.</h3>
-          <p className="text-sm font-bold text-muted-foreground leading-relaxed">
-            Premium neobrutalist UI components for the modern web. Built by designers for developers.
+          <h3 className="text-xl font-bold tracking-tight">MoupUI.</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Premium UI components for the modern web. Built with focus on accessibility and performance.
           </p>
           <div className="flex gap-4 pt-2">
             {[Twitter, Github, Mail].map((Icon, i) => (
-              <Button key={i} variant="outline" size="icon" className="h-10 w-10 border-2 border-black shadow-[3px_3px_0_0_#000] hover:translate-y-[-2px] transition-all">
+              <Button key={i} variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
                 <Icon size={18} />
               </Button>
             ))}
@@ -23,30 +23,28 @@ export function FooterDemo() {
         
         <div className="grid grid-cols-2 col-span-2 gap-8">
           <div className="space-y-4">
-            <h4 className="font-black text-xs uppercase tracking-widest text-[#6366F1]">Product</h4>
-            <ul className="space-y-2 text-sm font-bold text-muted-foreground">
-              <li className="hover:text-black cursor-pointer transition-colors">Components</li>
-              <li className="hover:text-black cursor-pointer transition-colors">Templates</li>
-              <li className="hover:text-black cursor-pointer transition-colors">Design Kit</li>
+            <h4 className="font-semibold text-sm">Product</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="hover:text-foreground cursor-pointer transition-colors">Components</li>
+              <li className="hover:text-foreground cursor-pointer transition-colors">Templates</li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h4 className="font-black text-xs uppercase tracking-widest text-[#6366F1]">Resources</h4>
-            <ul className="space-y-2 text-sm font-bold text-muted-foreground">
-              <li className="hover:text-black cursor-pointer transition-colors">Docs</li>
-              <li className="hover:text-black cursor-pointer transition-colors">Community</li>
-              <li className="hover:text-black cursor-pointer transition-colors">Changelog</li>
+            <h4 className="font-semibold text-sm">Resources</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="hover:text-foreground cursor-pointer transition-colors">Docs</li>
+              <li className="hover:text-foreground cursor-pointer transition-colors">Community</li>
             </ul>
           </div>
         </div>
 
         <div className="space-y-4">
-          <h4 className="font-black text-sm uppercase text-black">Join our newsletter</h4>
+          <h4 className="font-semibold text-sm text-foreground">Subscribe</h4>
           <div className="flex gap-2">
-            <Input placeholder="email@example.com" className="border-2 border-black shadow-[2px_2px_0_0_#000]" />
-            <Button className="bg-black text-[#ffe135] border-2 border-black shadow-[2px_2px_0_0_#000] font-black hover:bg-zinc-800 uppercase text-xs">Join</Button>
+            <Input placeholder="email@example.com" className="h-9 bg-zinc-50 border-none focus-visible:ring-1" />
+            <Button size="sm">Join</Button>
           </div>
-          <p className="text-[10px] font-medium text-muted-foreground">No spam. Only updates on new components.</p>
+          <p className="text-[10px] text-muted-foreground">Monthly updates on new components.</p>
         </div>
       </div>
     </footer>
@@ -61,20 +59,19 @@ import { Search } from "lucide-react"
 
 export function HelpSearchHero() {
   return (
-    <div className="w-full bg-[#6366F1] border-4 border-black p-8 md:p-16 rounded-3xl shadow-[8px_8px_0_0_#000] text-center space-y-8 relative overflow-hidden">
-      <div className="absolute top-[-50px] left-[-50px] w-40 h-40 bg-white/10 rounded-full blur-3xl" />
-      <div className="relative z-10 max-w-2xl mx-auto space-y-4">
-        <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">How can we help?</h2>
-        <div className="relative max-w-xl mx-auto pt-4 text-black">
-          <Search className="absolute left-4 top-[50%] -translate-y-[2px] h-5 w-5 text-zinc-400" />
+    <div className="w-full bg-primary py-12 md:py-20 px-8 rounded-3xl text-center space-y-8 relative overflow-hidden text-primary-foreground border shadow-lg">
+      <div className="relative z-10 max-w-2xl mx-auto space-y-6">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight">How can we help?</h2>
+        <div className="relative max-w-xl mx-auto">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-400" />
           <Input 
-            placeholder="Search documentation, guides, and tutorials..." 
-            className="h-14 pl-12 pr-4 border-4 border-black shadow-[6px_6px_0_0_#000] text-lg font-bold rounded-2xl bg-white" 
+            placeholder="Search documentation..." 
+            className="h-14 pl-12 pr-4 text-lg border-none rounded-2xl bg-white text-zinc-900 focus-visible:ring-offset-2 ring-primary" 
           />
         </div>
-        <div className="flex flex-wrap justify-center gap-2 pt-4">
-          {["Account", "Billing", "Components", "Security"].map((tag) => (
-            <Badge key={tag} className="bg-black/20 text-white border-2 border-white/30 px-3 py-1 font-bold text-xs hover:bg-black/40 cursor-pointer">
+        <div className="flex flex-wrap justify-center gap-2">
+          {["Account", "Billing", "Security"].map((tag) => (
+            <Badge key={tag} variant="secondary" className="bg-primary-foreground/10 text-primary-foreground border-transparent">
               {tag}
             </Badge>
           ))}
@@ -91,21 +88,20 @@ import { Book, LifeBuoy, MessageCircle, ArrowRight } from "lucide-react"
 
 export function SupportGrid() {
   const categories = [
-    { title: "Getting Started", icon: Book, items: 12, color: "bg-green-400" },
-    { title: "Technical Support", icon: LifeBuoy, items: 15, color: "bg-blue-400" },
+    { title: "Getting Started", icon: Book, items: 12 },
+    { title: "Technical Support", icon: LifeBuoy, items: 15 },
   ];
 
   return (
     <div className="grid sm:grid-cols-2 gap-6 w-full max-w-4xl mx-auto">
       {categories.map((cat, i) => (
-        <Card key={i} className="border-2 border-black shadow-[4px_4px_0_0_#000] group cursor-pointer hover:translate-y-[-4px] transition-transform bg-white overflow-hidden">
-           <div className={\`h-2 \${cat.color} border-b-2 border-black\`} />
+        <Card key={i} className="group cursor-pointer hover:border-primary transition-all bg-white border shadow-sm">
            <CardContent className="p-6">
-              <div className={\`w-12 h-12 rounded-xl border-2 border-black \${cat.color} flex items-center justify-center mb-4 shadow-[2px_2px_0_0_#000]\`}>
-                 <cat.icon size={20} className="text-black" />
+              <div className="w-12 h-12 rounded-xl bg-zinc-50 border flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                 <cat.icon size={20} />
               </div>
-              <h4 className="text-lg font-black mb-1">{cat.title}</h4>
-              <p className="text-xs font-bold text-muted-foreground uppercase">{cat.items} Articles</p>
+              <h4 className="text-base font-semibold mb-1">{cat.title}</h4>
+              <p className="text-xs text-muted-foreground font-medium">{cat.items} Articles</p>
            </CardContent>
         </Card>
       ))}
@@ -118,36 +114,38 @@ export const sampleCodeNotification = `
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Bell, CheckCircle2, Info, AlertCircle, ArrowRight } from "lucide-react"
+import { Bell, CheckCircle2, Info, ArrowRight } from "lucide-react"
 
 export function NotificationCenter() {
   const notifications = [
-    { title: "Project Deployment", text: "Successfully deployed to production.", type: "success", icon: CheckCircle2, color: "bg-green-400" },
-    { title: "Security Alert", text: "New login from unknown device.", type: "error", icon: AlertCircle, color: "bg-red-400" },
+    { title: "Deployment", text: "Successfully deployed to production.", status: "success", icon: CheckCircle2 },
+    { title: "Billing", text: "Subscription has been renewed.", status: "info", icon: Info },
   ];
 
   return (
-    <Card className="w-full max-w-md border-2 border-black shadow-[6px_6px_0_0_#000] bg-white overflow-hidden text-black">
-      <CardHeader className="flex flex-row items-center justify-between border-b-2 border-zinc-100 py-3">
+    <Card className="w-full max-w-md border bg-white shadow-sm overflow-hidden">
+      <CardHeader className="flex flex-row items-center justify-between border-b py-3 px-4">
          <div className="flex items-center gap-2">
-            <Bell size={18} className="text-[#6366F1]" />
-            <CardTitle className="text-sm font-black uppercase tracking-widest text-black">Notifications</CardTitle>
-            <Badge className="bg-red-500 text-white border-none text-[9px] h-4 min-w-[16px] flex items-center justify-center p-0">3</Badge>
+            <Bell size={18} className="text-primary" />
+            <CardTitle className="text-sm font-semibold">Notifications</CardTitle>
+            <Badge className="bg-destructive text-destructive-foreground h-4 min-w-[16px] text-[10px] rounded-full">3</Badge>
          </div>
-         <Button variant="ghost" size="sm" className="h-8 text-[10px] font-black uppercase text-muted-foreground hover:bg-zinc-50">Mark All Read</Button>
+         <Button variant="outline" size="sm" className="h-7 text-[10px] font-medium">Mark All Read</Button>
       </CardHeader>
       <CardContent className="p-0">
         {notifications.map((n, i) => (
-          <div key={i} className="p-4 border-b border-zinc-100 flex gap-4 hover:bg-[#6366F1]/5 transition-colors group cursor-pointer text-black">
-             <div className={\`shrink-0 w-10 h-10 rounded-xl border-2 border-black flex items-center justify-center shadow-[2px_2px_0_0_#000] \${n.color}\`}>
+          <div key={i} className="p-4 border-b last:border-0 flex gap-4 hover:bg-zinc-50 transition-colors cursor-pointer group">
+             <div className={\`shrink-0 w-10 h-10 rounded-full flex items-center justify-center border \${
+               n.status === 'success' ? 'bg-green-50 text-green-600 border-green-100' : 'bg-blue-50 text-blue-600 border-blue-100'
+             }\`}>
                 <n.icon size={18} />
              </div>
-             <div className="flex-1 space-y-1 text-black">
+             <div className="flex-1 space-y-1">
                 <div className="flex justify-between items-start">
-                   <h4 className="text-sm font-black text-black">{n.title}</h4>
-                   <span className="text-[10px] font-bold text-muted-foreground uppercase text-black">2m ago</span>
+                   <h4 className="text-sm font-semibold group-hover:text-primary transition-colors">{n.title}</h4>
+                   <span className="text-[10px] text-muted-foreground">2m ago</span>
                 </div>
-                <p className="text-xs font-medium text-muted-foreground line-clamp-2 leading-relaxed text-black/60">{n.text}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">{n.text}</p>
              </div>
           </div>
         ))}

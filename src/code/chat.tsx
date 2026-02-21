@@ -314,8 +314,7 @@ export const RenderChatLayoutTwo = () => {
 
   const [input, setInput] = useState("");
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sendMessage = (e: any) => {
+  const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim()) {
       setMessages([

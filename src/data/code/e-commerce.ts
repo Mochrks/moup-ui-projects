@@ -1,73 +1,70 @@
-export const sampleCodeECommerce =
-  "import React, { useState } from 'react'\n" +
-  'import { Button } from "@/components/ui/button"\n' +
-  'import { Input } from "@/components/ui/input"\n' +
-  'import { Label } from "@/components/ui/label"\n' +
-  'import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"\n' +
-  'import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"\n' +
-  'import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"\n' +
-  'import { Badge } from "@/components/ui/badge"\n' +
-  'import { Separator } from "@/components/ui/separator"\n' +
-  "import { Star, ChevronLeft, ChevronRight, Plus, Minus, Trash2, CheckCircle } from 'lucide-react'\n\n" +
-  "const ProductListingPage = () => {\n" +
-  "    const [view, setView] = useState('grid')\n" +
-  "    const products = [\n" +
-  '        { id: 1, name: "Modern Desk Lamp", price: 59.99, image: "https://picsum.photos/id/1018/600/400", rating: 4.5 },\n' +
-  '        { id: 2, name: "Ergonomic Chair", price: 199.99, image: "https://picsum.photos/id/1018/600/400", rating: 4.8 },\n' +
-  "    ]\n\n" +
-  "    return (\n" +
-  '        <div className="text-black">\n' +
-  '            <div className="flex justify-between items-center mb-10">\n' +
-  '                <h2 className="text-3xl font-black uppercase tracking-tighter">New Arrivals</h2>\n' +
-  '                <div className="flex items-center space-x-4">\n' +
-  '                    <Select defaultValue="featured">\n' +
-  '                        <SelectTrigger className="w-[180px] border-2 border-black font-bold shadow-[2px_2px_0_0_#000]">\n' +
-  '                            <SelectValue placeholder="Sort by" />\n' +
-  "                        </SelectTrigger>\n" +
-  '                        <SelectContent className="border-2 border-black">\n' +
-  '                            <SelectItem value="featured">Featured</SelectItem>\n' +
-  '                            <SelectItem value="price-low-high">Price: Low to High</SelectItem>\n' +
-  "                        </SelectContent>\n" +
-  "                    </Select>\n" +
-  "                </div>\n" +
-  "            </div>\n" +
-  "            <div className={`grid gap-8 ${view === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'}`}>\n" +
-  "                {products.map((product) => (\n" +
-  '                    <Card key={product.id} className="border-2 border-black shadow-[6px_6px_0_0_#000] overflow-hidden group hover:translate-y-[-2px] transition-transform">\n' +
-  '                        <div className="aspect-[4/3] bg-zinc-100 border-b-2 border-black relative">\n' +
-  '                            <img src={product.image} alt={product.name} className="object-cover w-full h-full" />\n' +
-  '                            <Badge className="absolute top-4 left-4 bg-[#ffe135] text-black border-2 border-black font-black uppercase shadow-[2px_2px_0_0_#000]">New</Badge>\n' +
-  "                        </div>\n" +
-  '                        <CardContent className="p-5 flex flex-col justify-between h-full bg-white">\n' +
-  "                            <div>\n" +
-  '                                <h3 className="font-black text-xl mb-1">{product.name}</h3>\n' +
-  '                                <div className="flex items-center mb-4">\n' +
-  '                                    <Star className="h-4 w-4 text-yellow-500 fill-current" />\n' +
-  '                                    <span className="ml-2 font-bold text-sm">{product.rating}</span>\n' +
-  "                                </div>\n" +
-  "                            </div>\n" +
-  '                            <div className="flex justify-between items-center mt-auto pt-4 border-t-2 border-black/5">\n' +
-  '                                <span className="font-black text-2xl tracking-tighter">$ {product.price}</span>\n' +
-  '                                <Button className="border-2 border-black shadow-[3px_3px_0_0_#000] hover:shadow-none font-black uppercase transition-all">Add</Button>\n' +
-  "                            </div>\n" +
-  "                        </CardContent>\n" +
-  "                    </Card>\n" +
-  "                ))}\n" +
-  "            </div>\n" +
-  "        </div>\n" +
-  "    )\n" +
-  "}\n";
+export const sampleCodeECommerce = `
+import React, { useState } from 'react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
+import { Star, Plus, Minus, Trash2 } from 'lucide-react'
+
+export function ProductListing() {
+    const products = [
+        { id: 1, name: "Modern Desk Lamp", price: 59.99, image: "https://picsum.photos/id/1018/600/400", rating: 4.5 },
+        { id: 2, name: "Ergonomic Chair", price: 199.99, image: "https://picsum.photos/id/1018/600/400", rating: 4.8 },
+    ];
+
+    return (
+        <div className="space-y-6">
+            <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold tracking-tight">New Arrivals</h2>
+                <Select defaultValue="featured">
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Sort by" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="featured">Featured</SelectItem>
+                        <SelectItem value="price-low-high">Price: Low to High</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                {products.map((product) => (
+                    <Card key={product.id} className="overflow-hidden border shadow-sm group">
+                        <div className="aspect-[4/3] bg-zinc-100 relative">
+                            <img src={product.image} alt={product.name} className="object-cover w-full h-full group-hover:scale-105 transition-transform" />
+                            <Badge className="absolute top-3 left-3" variant="secondary">New</Badge>
+                        </div>
+                        <CardContent className="p-4 flex flex-col h-full bg-white">
+                            <h3 className="font-semibold text-lg mb-1">{product.name}</h3>
+                            <div className="flex items-center mb-4">
+                                <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                                <span className="ml-1.5 text-sm text-muted-foreground">{product.rating}</span>
+                            </div>
+                            <div className="flex justify-between items-center mt-auto pt-4 border-t">
+                                <span className="font-bold text-xl">$ {product.price}</span>
+                                <Button size="sm">Add to Cart</Button>
+                            </div>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
+        </div>
+    )
+}
+`.trim();
 
 export const sampleCodeECommerceNext = '"use client"\n\n' + sampleCodeECommerce;
 
-export const sampleCodeECommerceHtml = `<div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-mono">
-  <div class="border-2 border-black shadow-[6px_6px_0_0_#000] bg-white overflow-hidden">
-    <div class="aspect-video bg-zinc-100 border-b-2 border-black"></div>
-    <div class="p-5">
-      <h3 class="font-black text-xl mb-2 italic">Product Name</h3>
+export const sampleCodeECommerceHtml = `<div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+  <div class="border rounded-lg shadow-sm bg-white overflow-hidden">
+    <div class="aspect-video bg-zinc-100"></div>
+    <div class="p-4 border-t">
+      <h3 class="font-semibold text-lg mb-1">Product Name</h3>
       <div class="flex justify-between items-center mt-4">
-        <span class="font-black text-2xl">$99.99</span>
-        <button class="bg-[#ffe135] border-2 border-black px-4 py-2 font-black shadow-[3px_3px_0_0_#000]">ADD</button>
+        <span class="font-bold text-xl">$99.99</span>
+        <button class="bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium text-sm">Add to Cart</button>
       </div>
     </div>
   </div>

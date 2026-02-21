@@ -67,66 +67,76 @@ export default function CodePreview({
           {/* Content Area */}
           <div className="relative">
             <AnimatePresence mode="wait">
-              <TabsContent value="preview" className="m-0 focus-visible:ring-0 outline-none">
-                <motion.div
+              {activeTab === "preview" ? (
+                <TabsContent
+                  value="preview"
                   key="preview"
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="p-4 md:p-8 min-h-[300px] flex items-center justify-center bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] bg-zinc-50/30"
+                  forceMount
+                  className="m-0 focus-visible:ring-0 outline-none"
                 >
-                  <div className="w-full max-w-full overflow-x-auto py-2 flex justify-center">
-                    <div className="w-full">{preview}</div>
-                  </div>
-                </motion.div>
-              </TabsContent>
-
-              <TabsContent value="code" className="m-0 focus-visible:ring-0 outline-none">
-                <motion.div
+                  <motion.div
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="p-4 md:p-8 min-h-[300px] flex items-center justify-center bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] bg-zinc-50/30"
+                  >
+                    <div className="w-full max-w-full overflow-x-auto py-2 flex justify-center">
+                      <div className="w-full">{preview}</div>
+                    </div>
+                  </motion.div>
+                </TabsContent>
+              ) : (
+                <TabsContent
+                  value="code"
                   key="code"
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.2 }}
+                  forceMount
+                  className="m-0 focus-visible:ring-0 outline-none"
                 >
-                  <TextEditor
-                    code={currentCode}
-                    language={currentLanguage}
-                    nameFile={currentFileName}
-                    headerAction={
-                      <Select
-                        value={codeType}
-                        onValueChange={(v: "react" | "next" | "html") => setCodeType(v)}
-                      >
-                        <SelectTrigger className="w-[110px] h-8 bg-[#252526] text-white border-2 border-white/10 shadow-none focus:ring-0 focus:ring-offset-0 px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-md hover:bg-[#323233] transition-colors">
-                          <SelectValue placeholder="Format" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-[#252526] text-white border-2 border-white/20 shadow-2xl rounded-xl">
-                          <SelectItem
-                            value="react"
-                            className="text-[11px] font-bold py-2 focus:bg-white/10"
-                          >
-                            REACT / VITE
-                          </SelectItem>
-                          <SelectItem
-                            value="next"
-                            className="text-[11px] font-bold py-2 focus:bg-white/10"
-                          >
-                            NEXT.JS (APP)
-                          </SelectItem>
-                          <SelectItem
-                            value="html"
-                            className="text-[11px] font-bold py-2 focus:bg-white/10"
-                          >
-                            VANILLA HTML
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    }
-                  />
-                </motion.div>
-              </TabsContent>
+                  <motion.div
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <TextEditor
+                      code={currentCode}
+                      language={currentLanguage}
+                      nameFile={currentFileName}
+                      headerAction={
+                        <Select
+                          value={codeType}
+                          onValueChange={(v: "react" | "next" | "html") => setCodeType(v)}
+                        >
+                          <SelectTrigger className="w-[110px] h-8 bg-[#252526] text-white border-2 border-white/10 shadow-none focus:ring-0 focus:ring-offset-0 px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-md hover:bg-[#323233] transition-colors">
+                            <SelectValue placeholder="Format" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-[#252526] text-white border-2 border-white/20 shadow-2xl rounded-xl">
+                            <SelectItem
+                              value="react"
+                              className="text-[11px] font-bold py-2 focus:bg-white/10"
+                            >
+                              REACT / VITE
+                            </SelectItem>
+                            <SelectItem
+                              value="next"
+                              className="text-[11px] font-bold py-2 focus:bg-white/10"
+                            >
+                              NEXT.JS (APP)
+                            </SelectItem>
+                            <SelectItem
+                              value="html"
+                              className="text-[11px] font-bold py-2 focus:bg-white/10"
+                            >
+                              VANILLA HTML
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                      }
+                    />
+                  </motion.div>
+                </TabsContent>
+              )}
             </AnimatePresence>
           </div>
         </Tabs>

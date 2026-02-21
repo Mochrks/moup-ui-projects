@@ -28,41 +28,37 @@ export const SimplePricing = () => (
     ].map((plan) => (
       <Card
         key={plan.name}
-        className={`relative border-2 border-black shadow-[4px_4px_0_0_#000] overflow-hidden ${plan.featured ? "bg-[#ffe135]" : "bg-white"}`}
+        className={`relative border shadow-sm transition-all hover:shadow-md ${plan.featured ? "border-primary ring-1 ring-primary" : "bg-white"}`}
       >
         {plan.featured && (
-          <div className="absolute top-4 right-[-35px] rotate-45 bg-black text-white px-10 py-1 text-[10px] font-black uppercase tracking-widest">
+          <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-[10px] font-semibold uppercase rounded-bl-lg">
             Popular
           </div>
         )}
-        <CardHeader className="text-center pb-2">
+        <CardHeader className="text-center pb-2 pt-8">
           <div
-            className={`w-12 h-12 rounded-xl border-2 border-black flex items-center justify-center mx-auto mb-4 shadow-[2px_2px_0_0_#000] ${plan.featured ? "bg-white" : "bg-[#ffe135]"}`}
+            className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 ${plan.featured ? "bg-primary text-primary-foreground" : "bg-zinc-100 text-zinc-600"}`}
           >
-            <plan.icon size={20} className="text-black" />
+            <plan.icon size={18} />
           </div>
-          <CardTitle className="text-2xl font-black">{plan.name}</CardTitle>
+          <CardTitle className="text-xl font-bold">{plan.name}</CardTitle>
           <div className="mt-4 flex items-baseline justify-center gap-1">
-            <span className="text-4xl font-black">${plan.price}</span>
-            <span className="text-muted-foreground font-bold">/mo</span>
+            <span className="text-4xl font-bold">${plan.price}</span>
+            <span className="text-muted-foreground text-sm font-medium">/mo</span>
           </div>
         </CardHeader>
         <CardContent className="pt-6">
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {plan.features.map((f) => (
-              <li key={f} className="flex items-center gap-3 text-sm font-bold">
-                <div className="shrink-0 w-5 h-5 rounded-full bg-black text-white flex items-center justify-center">
-                  <Check size={12} strokeWidth={3} />
-                </div>
+              <li key={f} className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Check size={14} className="text-primary shrink-0" />
                 {f}
               </li>
             ))}
           </ul>
         </CardContent>
         <CardFooter className="pt-8">
-          <Button
-            className={`w-full h-11 border-2 border-black font-black uppercase tracking-wider transition-all transform hover:-translate-y-1 hover:shadow-none shadow-[2px_2px_0_0_#000] ${plan.featured ? "bg-black text-white" : "bg-[#ffe135] text-black hover:bg-black hover:text-[#ffe135]"}`}
-          >
+          <Button variant={plan.featured ? "default" : "outline"} className="w-full">
             Get Started
           </Button>
         </CardFooter>
@@ -78,22 +74,22 @@ export const PricingWithToggle = () => {
     <div className="space-y-12 w-full max-w-6xl mx-auto">
       <div className="flex items-center justify-center gap-4">
         <span
-          className={`text-sm font-black uppercase ${!isYearly ? "text-black" : "text-muted-foreground"}`}
+          className={`text-sm font-medium ${!isYearly ? "text-foreground" : "text-muted-foreground"}`}
         >
           Monthly
         </span>
         <button
           onClick={() => setIsYearly(!isYearly)}
-          className="w-14 h-8 bg-black rounded-full p-1 relative transition-colors"
+          className="w-11 h-6 bg-zinc-200 rounded-full p-1 relative transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
           <div
-            className={`w-6 h-6 bg-[#ffe135] rounded-full border-2 border-black absolute top-1 transition-all ${isYearly ? "left-7" : "left-1"}`}
+            className={`w-4 h-4 bg-white rounded-full shadow-sm absolute top-1 transition-all ${isYearly ? "left-6" : "left-1"}`}
           />
         </button>
         <span
-          className={`text-sm font-black uppercase ${isYearly ? "text-black" : "text-muted-foreground"}`}
+          className={`text-sm font-medium ${isYearly ? "text-foreground" : "text-muted-foreground"}`}
         >
-          Yearly (Save 20%)
+          Yearly <span className="text-green-600 text-[10px] font-bold">(-20%)</span>
         </span>
       </div>
 
@@ -104,34 +100,34 @@ export const PricingWithToggle = () => {
         ].map((plan) => (
           <Card
             key={plan.name}
-            className={`border-2 border-black shadow-[6px_6px_0_0_#000] p-8 ${plan.featured ? "bg-white" : "bg-white"}`}
+            className={`border shadow-sm p-6 bg-white ${plan.featured ? "border-primary" : ""}`}
           >
             <div className="flex justify-between items-start mb-6">
               <div>
-                <h3 className="text-xl font-black mb-1">{plan.name}</h3>
-                <p className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase">
-                  Best for {plan.name === "Personal" ? "Creators" : "Teams"}
+                <h3 className="text-lg font-bold">{plan.name}</h3>
+                <p className="text-xs text-muted-foreground">
+                  Perfect for {plan.name === "Personal" ? "individuals" : "scaling teams"}
                 </p>
               </div>
-              <div className="w-10 h-10 rounded-lg border-2 border-black bg-[#ffe135] flex items-center justify-center">
-                <plan.icon size={20} />
+              <div className="w-9 h-9 rounded-md bg-zinc-50 border flex items-center justify-center text-primary">
+                <plan.icon size={18} />
               </div>
             </div>
-            <div className="flex items-baseline gap-1 mb-8">
-              <span className="text-5xl font-black">${isYearly ? plan.yearly : plan.monthly}</span>
-              <span className="text-muted-foreground font-black uppercase text-xs">
-                / {isYearly ? "year" : "month"}
+            <div className="flex items-baseline gap-1 mb-6">
+              <span className="text-4xl font-bold">${isYearly ? plan.yearly : plan.monthly}</span>
+              <span className="text-muted-foreground text-sm font-medium">
+                / {isYearly ? "yr" : "mo"}
               </span>
             </div>
-            <ul className="space-y-4 mb-8">
-              {["Custom Branding", "Email Support", "Advanced Security"].map((f) => (
-                <li key={f} className="flex items-center gap-2 text-sm font-bold">
-                  <Check size={16} className="text-green-500" strokeWidth={3} /> {f}
+            <ul className="space-y-3 mb-8">
+              {["Custom Branding", "Priority Support", "Advanced Analytics"].map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Check size={14} className="text-green-600" /> {f}
                 </li>
               ))}
             </ul>
-            <Button className="w-full h-12 bg-black text-white border-2 border-black shadow-[4px_4px_0_0_#000] font-black uppercase tracking-widest hover:bg-[#ffe135] hover:text-black transition-all">
-              Select {plan.name}
+            <Button className="w-full" variant={plan.featured ? "default" : "outline"}>
+              Subscribe
             </Button>
           </Card>
         ))}
@@ -142,30 +138,37 @@ export const PricingWithToggle = () => {
 
 export const ComparisonPricing = () => (
   <div className="w-full max-w-4xl mx-auto space-y-4 overflow-x-auto">
-    <div className="min-w-[600px] border-2 border-black rounded-xl shadow-[4px_4px_0_0_#000] bg-white overflow-hidden">
+    <div className="min-w-[600px] border rounded-lg shadow-sm bg-white overflow-hidden">
       <table className="w-full border-collapse">
         <thead>
-          <tr className="bg-zinc-50 border-b-2 border-black">
-            <th className="p-4 text-left font-black uppercase text-xs">Features</th>
-            <th className="p-4 text-center font-black uppercase text-xs">Free</th>
-            <th className="p-4 text-center font-black uppercase text-xs bg-[#ffe135]/20">Pro</th>
-            <th className="p-4 text-center font-black uppercase text-xs">Enterprise</th>
+          <tr className="bg-zinc-50/50 border-b">
+            <th className="p-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              Features
+            </th>
+            <th className="p-4 text-center text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              Free
+            </th>
+            <th className="p-4 text-center text-xs font-semibold text-muted-foreground uppercase tracking-wider bg-primary/5">
+              Pro
+            </th>
+            <th className="p-4 text-center text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              Enterprise
+            </th>
           </tr>
         </thead>
-        <tbody className="divide-y-2 divide-zinc-100">
+        <tbody className="divide-y text-zinc-600">
           {[
             { name: "API Access", free: true, pro: true, ent: true },
             { name: "Custom Domains", free: false, pro: true, ent: true },
-            { name: "Custom Code", free: false, pro: "Advanced", ent: "Full" },
             { name: "Team Members", free: "1", pro: "10", ent: "Unlimited" },
-            { name: "Support", free: "Email", pro: "Priority", ent: "24/7 Dedicated" },
+            { name: "Support", free: "Email", pro: "Priority", ent: "24/7" },
           ].map((row) => (
             <tr key={row.name}>
-              <td className="p-4 text-sm font-bold">{row.name}</td>
+              <td className="p-4 text-sm font-medium text-foreground">{row.name}</td>
               <td className="p-4 text-center text-sm">
                 {typeof row.free === "boolean" ? (
                   row.free ? (
-                    <Check className="mx-auto" size={16} />
+                    <Check className="mx-auto text-primary" size={16} />
                   ) : (
                     "—"
                   )
@@ -173,10 +176,10 @@ export const ComparisonPricing = () => (
                   row.free
                 )}
               </td>
-              <td className="p-4 text-center text-sm bg-[#ffe135]/10 font-black">
+              <td className="p-4 text-center text-sm bg-primary/5 font-semibold text-foreground">
                 {typeof row.pro === "boolean" ? (
                   row.pro ? (
-                    <Check className="mx-auto" size={16} />
+                    <Check className="mx-auto text-primary" size={16} />
                   ) : (
                     "—"
                   )
@@ -187,7 +190,7 @@ export const ComparisonPricing = () => (
               <td className="p-4 text-center text-sm">
                 {typeof row.ent === "boolean" ? (
                   row.ent ? (
-                    <Check className="mx-auto" size={16} />
+                    <Check className="mx-auto text-primary" size={16} />
                   ) : (
                     "—"
                   )

@@ -3,8 +3,8 @@
 import CodePreview from "@/components/ui-main/CodePriview";
 import { SectionDoc, ComponentBlock } from "@/components/ui-main/SectionDoc";
 import { ContentLayout } from "@/layout/ContentLayout";
-import { CourseCard } from "@/code/learning-steps";
-import { sampleCodeLMS } from "@/data/code/learning";
+import { CourseCard, LMSCourseModules, LessonCard } from "@/code/learning-steps";
+import { sampleCodeLMS, sampleCodeLMSModules, sampleCodeLessonCard } from "@/data/code/learning";
 
 const LMSIcon = () => (
   <svg
@@ -29,14 +29,14 @@ export const LMS = () => (
       icon={<LMSIcon />}
       iconBg="bg-[#d1fae5]"
       title="Learning Management"
-      componentCount={1}
+      componentCount={3}
       description="Build modern educational platforms with dedicated LMS components. This section provides high-quality course cards with integrated progress tracking, difficulty badges, and session tracking features. Optimized for visual clarity and student engagement."
       features={[
         "Interactive Course Cards with visual progress indicators",
         "Difficulty and Level badges (Beginner, Intermediate, Advanced)",
         "Lesson count and Duration tracking metadata",
         "Responsive grid support for course catalogs",
-        "Neobrutalist hover effects and premium typography",
+        "Clean Shadcn UI hover effects and premium typography",
         "Accessible progress bar components powered by Radix UI",
       ]}
       dependencies={["lucide-react"]}
@@ -56,6 +56,44 @@ export const LMS = () => (
             language="javascript"
             nameFile="course-card.tsx"
             preview={<CourseCard />}
+          />
+        </div>
+      </ComponentBlock>
+
+      {/* Curriculum Module List */}
+      <ComponentBlock
+        title="Curriculum Module List"
+        subtitle="Detailed list of lessons with status indicators"
+        features={["Status Icons", "Progress Tracking", "Duration Labels", "Chevron Group"]}
+      >
+        <div className="w-full flex justify-center">
+          <CodePreview
+            title="Course Modules"
+            code={sampleCodeLMSModules}
+            codeNext={sampleCodeLMSModules}
+            codeHtml={sampleCodeLMSModules}
+            language="javascript"
+            nameFile="course-modules.tsx"
+            preview={<LMSCourseModules />}
+          />
+        </div>
+      </ComponentBlock>
+
+      {/* Lesson Details Card */}
+      <ComponentBlock
+        title="Lesson Details Card"
+        subtitle="Individual lesson preview with play button and stats"
+        features={["Play Button", "Rating Support", "Student Count", "Category Badges"]}
+      >
+        <div className="w-full flex justify-center">
+          <CodePreview
+            title="Lesson Card"
+            code={sampleCodeLessonCard}
+            codeNext={sampleCodeLessonCard}
+            codeHtml={sampleCodeLessonCard}
+            language="javascript"
+            nameFile="lesson-card.tsx"
+            preview={<LessonCard />}
           />
         </div>
       </ComponentBlock>
