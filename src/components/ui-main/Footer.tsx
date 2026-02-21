@@ -1,6 +1,5 @@
 import { Button } from "../ui-neobrutalism/button";
 import { FaGithub } from "react-icons/fa";
-import { logos } from "@/assets";
 
 export const Footer = () => {
   return (
@@ -9,9 +8,6 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="space-y-7 text-center md:text-start">
             <div className="flex space-x-5 mb-4 md:mb-0 justify-center md:justify-start">
-              <Button variant="neutral" size="icon">
-                <img src={logos} alt="logo" className="w-7 h-7" />
-              </Button>
               <Button variant="neutral" size="icon">
                 <a
                   href="https://www.github.com/mochrks"

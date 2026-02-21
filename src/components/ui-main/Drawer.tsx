@@ -72,7 +72,7 @@ export const Drawer = () => {
   };
 
   return (
-    <ScrollArea className="h-full w-full">
+    <ScrollArea data-lenis-prevent className="h-full w-full">
       <div className="pt-2 w-full h-full transition-all duration-300">
         <div className="h-full w-full border-2 border-border dark:border-darkBorder font-base">
           {menuData.map((section, index) => (

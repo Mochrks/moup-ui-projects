@@ -7,15 +7,18 @@ import { store } from "@/lib/redux/store";
 import "./App.css";
 import { ThemeProvider } from "next-themes";
 import { NetworkIndicator } from "./components/ui-main/NetworkIndicator";
+import { LenisProvider } from "@/providers/LenisProvider";
 
 const App: React.FC = () => {
   return (
     <Provider store={store}>
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <TooltipProvider>
-          <AppRoutes />
-          <Toaster />
-          <NetworkIndicator />
+          <LenisProvider>
+            <AppRoutes />
+            <Toaster />
+            <NetworkIndicator />
+          </LenisProvider>
         </TooltipProvider>
       </ThemeProvider>
     </Provider>

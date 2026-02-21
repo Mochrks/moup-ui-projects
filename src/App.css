@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Monserat";
-  src: url("../assets/font/Montserrat-Regular.woff") format("woff");
+  src: url("./assets/font/Montserrat-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }

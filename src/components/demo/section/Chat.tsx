@@ -1,69 +1,113 @@
 "use client";
 
 import CodePreview from "@/components/ui-main/CodePriview";
+import { SectionDoc, ComponentBlock } from "@/components/ui-main/SectionDoc";
 import { AIPoweredChatbot, RenderChatLayoutOne, RenderChatLayoutTwo } from "@/code/chat";
 import { ContentLayout } from "@/layout/ContentLayout";
+import { sampleCodeAIChat, sampleCodeChatNext, sampleCodeChatHtml } from "@/data/code/chat";
 
-export const Chat = () => {
-  const sampleCode = `sample code`.trim();
-  return (
-    <ContentLayout>
-      <div className="p-6 text-start w-full">
-        <h2 className="text-2xl font-bold mb-4">Chat</h2>
-        <p className="mb-4">
-          Enhance your application's communication features with our versatile and customizable chat
-          components. MoupUI offers responsive, modern chat interfaces that integrate seamlessly
-          with React, Tailwind CSS, and ShadCN UI.
-        </p>
+const ChatIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+  </svg>
+);
 
-        <h3 className="text-xl font-semibold mb-4">Key Features</h3>
-        <p className="mb-4">
-          Our chat components come with real-time messaging, message bubbles, typing indicators, and
-          file-sharing capabilities. Whether you're building a customer support system, a team
-          collaboration tool, or a social messaging app, these components will help you create a
-          smooth and engaging chat experience.
-        </p>
-
-        <p className="mb-4">
-          Simply copy the chat components into your project and customize them to match your brand
-          and requirements. With MoupUI, you can have a fully functional chat system up and running
-          in no time.
-        </p>
-
-        <div className="flex mt-10 w-full items-center justify-center">
-          <div className="md: w-full lg:w-[80%]">
-            <CodePreview
-              title="AI chat"
-              code={sampleCode}
-              language="javascript"
-              nameFile="AI-chats.tsx"
-              preview={<AIPoweredChatbot />}
-            />
-          </div>
+export const Chat = () => (
+  <ContentLayout>
+    <SectionDoc
+      icon={<ChatIcon />}
+      iconBg="bg-[#d1fae5]"
+      title="Chat Interfaces"
+      componentCount={3}
+      description="Modern chat UI kits ready for production. This section features interactive AI-powered chatbots with typing simulations, a professional two-panel chat application layout with contact lists, and a responsive full-width messaging interface. All interfaces are optimized for readability, mobile responsiveness, and easy integration with WebSocket or LLM backends."
+      features={[
+        "AI Chatbot with random bot replies and typing '...' indicators",
+        "Two-panel layout with searchable contact list and message window",
+        "Full-page responsive chat layout for web applications",
+        "Auto-scrolling message area using Radix ScrollArea",
+        "Rich message bubbles with Avatars and Badge status indicators",
+        "Neobrutalist shadow effects and clean Shadcn UI typography",
+      ]}
+      dependencies={["lucide-react"]}
+      shadcnDeps={["card", "avatar", "badge", "input", "scroll-area", "button"]}
+    >
+      {/* AI Chatbot */}
+      <ComponentBlock
+        title="AI Chat Assistant"
+        subtitle="Typing simulation + interactive bot replies"
+        features={[
+          "Shared AI context",
+          "Simulated typing state",
+          "Auto-scroll to bottom",
+          "Lucide icons (Bot, User, Sparkles)",
+        ]}
+      >
+        <div className="w-full lg:w-[70%] mx-auto">
+          <CodePreview
+            title="AI Chat Assistant"
+            code={sampleCodeAIChat}
+            codeNext={sampleCodeChatNext}
+            codeHtml={sampleCodeChatHtml}
+            language="javascript"
+            nameFile="ai-chatbot.tsx"
+            preview={<AIPoweredChatbot />}
+          />
         </div>
-        <div className="flex mt-10 w-full items-center justify-center">
-          <div className="md: w-full lg:w-[80%]">
-            <CodePreview
-              title="Dynamic Chat"
-              code={sampleCode}
-              language="javascript"
-              nameFile="dynamic-chats.tsx"
-              preview={<RenderChatLayoutOne />}
-            />
-          </div>
-        </div>
-        <div className="flex mt-10 w-full items-center justify-center">
-          <div className="md: w-full lg:w-[80%]">
-            <CodePreview
-              title="Grid chat"
-              code={sampleCode}
-              language="javascript"
-              nameFile="grid-chats.tsx"
-              preview={<RenderChatLayoutTwo />}
-            />
-          </div>
-        </div>
-      </div>
-    </ContentLayout>
-  );
-};
+      </ComponentBlock>
+
+      {/* Chat Layout One */}
+      <ComponentBlock
+        title="Two-Panel Chat App"
+        subtitle="Contact list + active message window"
+        features={[
+          "Active conversation tracking",
+          "Sidebar contact items",
+          "Searchable contacts",
+          "Shared state between panels",
+        ]}
+      >
+        <CodePreview
+          title="Two-Panel Chat App"
+          code={sampleCodeAIChat}
+          codeNext={sampleCodeChatNext}
+          codeHtml={sampleCodeChatHtml}
+          language="javascript"
+          nameFile="chat-two-panel.tsx"
+          preview={<RenderChatLayoutOne />}
+        />
+      </ComponentBlock>
+
+      {/* Chat Layout Two */}
+      <ComponentBlock
+        title="Full-Width Chat Layout"
+        subtitle="Responsive single-column messaging viewport"
+        features={[
+          "Max-width container style",
+          "Floating send area",
+          "Top navigation bar",
+          "Mobile-optimized spacing",
+        ]}
+      >
+        <CodePreview
+          title="Full-Width Chat Layout"
+          code={sampleCodeAIChat}
+          codeNext={sampleCodeChatNext}
+          codeHtml={sampleCodeChatHtml}
+          language="javascript"
+          nameFile="chat-full-layout.tsx"
+          preview={<RenderChatLayoutTwo />}
+        />
+      </ComponentBlock>
+    </SectionDoc>
+  </ContentLayout>
+);

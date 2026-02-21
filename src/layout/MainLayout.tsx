@@ -17,6 +17,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, showDrawer = true }) 
         {showDrawer && (
           <div className="hidden md:block">
             <aside
+              data-lenis-prevent
               className={`fixed left-0 w-64 overflow-y-auto overflow-x-hidden border-r-2 border-border bg-white z-40`}
               style={{
                 top: NAVBAR_HEIGHT,

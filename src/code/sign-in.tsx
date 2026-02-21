@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui-shadcn/button";
 import { Input } from "@/components/ui-shadcn/input";
 import { Label } from "@/components/ui-shadcn/label";
@@ -10,192 +11,387 @@ import {
   CardTitle,
 } from "@/components/ui-shadcn/card";
 import { Switch } from "@/components/ui-shadcn/switch";
+import { Badge } from "@/components/ui-shadcn/badge";
 
+// ─── Register Page ────────────────────────────────────────────────────────────
 export const RegisterPage = () => (
-  <div>
-    <CardHeader>
-      <CardTitle>Register</CardTitle>
-      <CardDescription>Create a new account</CardDescription>
-    </CardHeader>
-    <CardContent>
-      <form>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" placeholder="Enter your name" />
+  <div className="w-full max-w-md mx-auto">
+    <Card>
+      <CardHeader className="space-y-1 pb-4">
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
+            M
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" placeholder="youremail@example.com" type="email" />
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" placeholder="Create a password" type="password" />
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="confirm-password">Confirm Password</Label>
-            <Input id="confirm-password" placeholder="Confirm your password" type="password" />
-          </div>
+          <Badge variant="secondary" className="text-xs">
+            MoupUI
+          </Badge>
         </div>
-      </form>
-    </CardContent>
-    <CardFooter>
-      <Button className="w-full">Register</Button>
-    </CardFooter>
+        <CardTitle className="text-2xl">Create account</CardTitle>
+        <CardDescription>Join thousands of developers building with MoupUI.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form className="space-y-4">
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="reg-firstname">First Name</Label>
+              <Input id="reg-firstname" placeholder="Alex" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="reg-lastname">Last Name</Label>
+              <Input id="reg-lastname" placeholder="Johnson" />
+            </div>
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="reg-email">Email</Label>
+            <Input id="reg-email" placeholder="alex@company.com" type="email" />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="reg-password">Password</Label>
+            <Input id="reg-password" placeholder="Min. 8 characters" type="password" />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="reg-confirm">Confirm Password</Label>
+            <Input id="reg-confirm" placeholder="Repeat your password" type="password" />
+          </div>
+          <div className="flex items-center space-x-2 pt-1">
+            <Switch id="terms" />
+            <Label htmlFor="terms" className="text-sm text-muted-foreground font-normal">
+              I agree to the{" "}
+              <span className="font-medium text-foreground underline cursor-pointer">
+                Terms of Service
+              </span>
+            </Label>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex flex-col gap-3">
+        <Button className="w-full">Create Account</Button>
+        <p className="text-sm text-center text-muted-foreground">
+          Already have an account?{" "}
+          <span className="font-medium text-foreground underline cursor-pointer">Sign in</span>
+        </p>
+      </CardFooter>
+    </Card>
   </div>
 );
 
-export const LoginPage = () => (
-  <div>
-    <CardHeader>
-      <CardTitle>Login</CardTitle>
-      <CardDescription>Enter your credentials to access your account</CardDescription>
-    </CardHeader>
-    <CardContent>
-      <form>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" placeholder="youremail@example.com" type="email" />
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" placeholder="Enter your password" type="password" />
-          </div>
-        </div>
-      </form>
-    </CardContent>
-    <CardFooter className="flex ">
-      <Button className="w-full">Login</Button>
-    </CardFooter>
-  </div>
-);
-
-export const ForgotPasswordPage = () => (
-  <div>
-    <CardHeader>
-      <CardTitle>Forgot Password</CardTitle>
-      <CardDescription>Enter your email to reset your password</CardDescription>
-    </CardHeader>
-    <CardContent>
-      <form>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" placeholder="Enter your email" type="email" />
-          </div>
-        </div>
-      </form>
-    </CardContent>
-    <CardFooter>
-      <Button className="w-full">Send Reset Link</Button>
-    </CardFooter>
-  </div>
-);
-export const ResetPasswordPage = () => (
-  <div>
-    <CardHeader>
-      <CardTitle>Reset Password</CardTitle>
-      <CardDescription>Enter your new password</CardDescription>
-    </CardHeader>
-    <CardContent>
-      <form>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="old-password">Old Password</Label>
-            <Input id="old-password" placeholder="Enter old password" type="password" />
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="new-password">New Password</Label>
-            <Input id="new-password" placeholder="Enter new password" type="password" />
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="confirm-new-password">Confirm New Password</Label>
-            <Input id="confirm-new-password" placeholder="Confirm new password" type="password" />
-          </div>
-        </div>
-      </form>
-    </CardContent>
-    <CardFooter>
-      <Button className="w-full">Reset Password</Button>
-    </CardFooter>
-  </div>
-);
-
-export const SocialLogin = () => {
+// ─── Login Page ───────────────────────────────────────────────────────────────
+export const LoginPage = () => {
+  const [showPass, setShowPass] = useState(false);
   return (
-    <div>
+    <div className="w-full max-w-md mx-auto">
       <Card>
-        <CardHeader>
-          <CardTitle>Login with Social Media</CardTitle>
-          <CardDescription>Choose your preferred social login method</CardDescription>
+        <CardHeader className="space-y-1 pb-4">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
+              M
+            </div>
+            <Badge variant="outline" className="text-xs">
+              Welcome back
+            </Badge>
+          </div>
+          <CardTitle className="text-2xl">Sign in</CardTitle>
+          <CardDescription>Enter your credentials to continue.</CardDescription>
         </CardHeader>
-        <CardContent className="flex justify-center space-x-4">
-          <Button variant="outline">
-            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-              />
-              <path
-                fill="currentColor"
-                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-              />
-              <path
-                fill="currentColor"
-                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-              />
-              <path
-                fill="currentColor"
-                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-              />
-              <path fill="currentColor" d="M1 1h22v22H1z" />
-            </svg>
-            Google
-          </Button>
-          <Button variant="outline">
-            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"
-              />
-            </svg>
-            Facebook
-          </Button>
-          <Button variant="outline">
-            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"
-              />
-            </svg>
-            Twitter
-          </Button>
+        <CardContent>
+          <form className="space-y-4">
+            <div className="space-y-1.5">
+              <Label htmlFor="login-email">Email</Label>
+              <Input id="login-email" placeholder="alex@company.com" type="email" />
+            </div>
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="login-password">Password</Label>
+                <span className="text-xs text-muted-foreground underline cursor-pointer hover:text-foreground">
+                  Forgot?
+                </span>
+              </div>
+              <div className="relative">
+                <Input
+                  id="login-password"
+                  placeholder="Your password"
+                  type={showPass ? "text" : "password"}
+                  className="pr-16"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPass(!showPass)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground text-xs"
+                >
+                  {showPass ? "Hide" : "Show"}
+                </button>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Switch id="remember" />
+              <Label htmlFor="remember" className="text-sm text-muted-foreground font-normal">
+                Remember me for 30 days
+              </Label>
+            </div>
+          </form>
         </CardContent>
+        <CardFooter className="flex flex-col gap-3">
+          <Button className="w-full">Sign In</Button>
+          <p className="text-sm text-center text-muted-foreground">
+            Don't have an account?{" "}
+            <span className="font-medium text-foreground underline cursor-pointer">Create one</span>
+          </p>
+        </CardFooter>
       </Card>
     </div>
   );
 };
 
-export const TwoFactor = () => {
-  return (
-    <div>
-      <Card>
-        <CardHeader>
-          <CardTitle>Two-Factor Authentication</CardTitle>
-          <CardDescription>Enhance your account security</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center space-x-2">
-            <Switch id="2fa" />
-            <Label htmlFor="2fa">Enable 2FA</Label>
+// ─── Forgot Password Page ─────────────────────────────────────────────────────
+export const ForgotPasswordPage = () => (
+  <div className="w-full max-w-md mx-auto">
+    <Card>
+      <CardHeader className="space-y-1 pb-4">
+        <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mb-2 text-2xl">
+          🔐
+        </div>
+        <CardTitle className="text-2xl">Forgot password?</CardTitle>
+        <CardDescription>
+          No worries! Enter your email and we'll send you a reset link.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form className="space-y-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="forgot-email">Email Address</Label>
+            <Input id="forgot-email" placeholder="alex@company.com" type="email" />
           </div>
-          <p className="text-sm text-muted-foreground mt-2">
-            We'll send a code to your phone each time you log in.
-          </p>
+          <div className="rounded-md bg-muted p-3">
+            <p className="text-xs text-muted-foreground">
+              💡 Check your spam folder if you don't receive the email within 5 minutes.
+            </p>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex flex-col gap-3">
+        <Button className="w-full">Send Reset Link</Button>
+        <p className="text-sm text-center text-muted-foreground">
+          Remembered it?{" "}
+          <span className="font-medium text-foreground underline cursor-pointer">
+            Back to sign in
+          </span>
+        </p>
+      </CardFooter>
+    </Card>
+  </div>
+);
+
+// ─── Reset Password Page ──────────────────────────────────────────────────────
+export const ResetPasswordPage = () => (
+  <div className="w-full max-w-md mx-auto">
+    <Card>
+      <CardHeader className="space-y-1 pb-4">
+        <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mb-2 text-2xl">
+          🔑
+        </div>
+        <CardTitle className="text-2xl">Set new password</CardTitle>
+        <CardDescription>
+          Must be at least 8 characters and include uppercase letters and numbers.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form className="space-y-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="new-pass">New Password</Label>
+            <Input id="new-pass" placeholder="Create strong password" type="password" />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="confirm-pass">Confirm Password</Label>
+            <Input id="confirm-pass" placeholder="Repeat new password" type="password" />
+          </div>
+          <div className="space-y-2">
+            <p className="text-xs text-muted-foreground">Password strength</p>
+            <div className="flex gap-1">
+              {["bg-red-400", "bg-yellow-400", "bg-yellow-400", "bg-muted"].map((c, i) => (
+                <div key={i} className={`flex-1 h-1.5 rounded-full ${c}`} />
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground">Medium — add numbers to strengthen</p>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Update Password</Button>
+      </CardFooter>
+    </Card>
+  </div>
+);
+
+// ─── SVG Brand Icons ──────────────────────────────────────────────────────────
+const GoogleIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fill="#EA4335"
+      d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+    />
+    <path
+      fill="#4285F4"
+      d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+    />
+    <path
+      fill="#FBBC05"
+      d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+    />
+    <path
+      fill="#34A853"
+      d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+    />
+  </svg>
+);
+
+const GitHubIcon = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+  >
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+  </svg>
+);
+
+const DiscordIcon = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 127.14 96.36"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="#5865F2"
+  >
+    <path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15zM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69z" />
+  </svg>
+);
+
+// ─── Social Login ─────────────────────────────────────────────────────────────
+export const SocialLogin = () => (
+  <div className="w-full max-w-md mx-auto">
+    <Card>
+      <CardHeader className="text-center pb-4">
+        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
+        </div>
+        <CardTitle className="text-2xl">Continue with</CardTitle>
+        <CardDescription>Choose your preferred sign-in method.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-2.5">
+        <Button
+          variant="outline"
+          className="w-full justify-start gap-3 h-11 border hover:bg-gray-50 transition-colors"
+        >
+          <GoogleIcon />
+          <span className="flex-1 text-left font-medium">Continue with Google</span>
+        </Button>
+        <Button
+          variant="outline"
+          className="w-full justify-start gap-3 h-11 border hover:bg-gray-50 transition-colors"
+        >
+          <GitHubIcon />
+          <span className="flex-1 text-left font-medium">Continue with GitHub</span>
+        </Button>
+        <Button
+          variant="outline"
+          className="w-full justify-start gap-3 h-11 border hover:bg-gray-50 transition-colors"
+        >
+          <DiscordIcon />
+          <span className="flex-1 text-left font-medium">Continue with Discord</span>
+        </Button>
+        <div className="relative my-3">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t" />
+          </div>
+          <div className="relative flex justify-center text-xs">
+            <span className="bg-card px-3 text-muted-foreground tracking-wide uppercase">or</span>
+          </div>
+        </div>
+        <Button variant="secondary" className="w-full h-11">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mr-2"
+          >
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          Sign in with Email
+        </Button>
+      </CardContent>
+    </Card>
+  </div>
+);
+
+// ─── Two-Factor Authentication ─────────────────────────────────────────────────
+export const TwoFactor = () => {
+  const [code, setCode] = useState(["", "", "", "", "", ""]);
+  return (
+    <div className="w-full max-w-md mx-auto">
+      <Card>
+        <CardHeader className="text-center space-y-1 pb-4">
+          <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-2 text-3xl">
+            🛡️
+          </div>
+          <CardTitle className="text-2xl">Two-Factor Auth</CardTitle>
+          <CardDescription>
+            Enter the 6-digit code sent to{" "}
+            <span className="font-medium text-foreground">al***@company.com</span>
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-5">
+          <div className="flex justify-center gap-2">
+            {code.map((val, i) => (
+              <input
+                key={i}
+                value={val}
+                maxLength={1}
+                onChange={(e) => {
+                  const next = [...code];
+                  next[i] = e.target.value;
+                  setCode(next);
+                }}
+                className="w-11 h-12 text-center text-xl font-semibold border rounded-md focus:outline-none focus:ring-2 focus:ring-ring bg-background transition-all"
+              />
+            ))}
+          </div>
+          <div className="rounded-md bg-muted p-3 flex items-center gap-2">
+            <span>⏱️</span>
+            <p className="text-xs text-muted-foreground">
+              Code expires in <strong className="text-foreground">04:32</strong>
+            </p>
+          </div>
         </CardContent>
-        <CardFooter>
-          <Button className="w-full">Set Up 2FA</Button>
+        <CardFooter className="flex flex-col gap-3">
+          <Button className="w-full">Verify Code</Button>
+          <p className="text-sm text-center text-muted-foreground">
+            Didn't receive it?{" "}
+            <span className="font-medium text-foreground underline cursor-pointer">
+              Resend code
+            </span>
+          </p>
         </CardFooter>
       </Card>
     </div>

@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui-shadcn/button";
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui-shadcn/tabs";
 import {
   Select,
   SelectContent,
@@ -7,471 +7,136 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui-shadcn/select";
-import { Slider } from "@/components/ui-shadcn/slider";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui-neobrutalism/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui-shadcn/tabs";
-import { Label } from "@/components/ui-shadcn/label";
-import { Copy, Plus } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui-shadcn/tooltip";
-import {
-  christmasColors,
-  coffeeColors,
-  coldColors,
-  creamColors,
-  cyberpunkColors,
-  galaxyColors,
-  goldColors,
-  halloweenColors,
-  initialTailwindColors,
-  kidsColors,
-  neonColors,
-  pastelColors,
-  rainbowColors,
-  ramadhanColors,
-  retroColors,
-  seaColors,
-  skyColors,
-  spaceXColors,
-  summerColors,
-  sunsetColors,
-  vintageColors,
-  warmColors,
-  weddingColors,
-} from "@/utils/color";
+  SlidersHorizontal,
+  Layers,
+  Palette,
+  Contrast,
+  Blend,
+  Droplets,
+  Image as ImageIcon,
+  Heart,
+} from "lucide-react";
 import { Navbar } from "@/components/ui-main/Navbar";
 import ScrollToTopButton from "@/components/ui-main/ScrollToTopButton";
 
-function hslToRgb(h: number, s: number, l: number) {
-  s /= 100;
-  l /= 100;
-  const k = (n: number) => (n + h / 30) % 12;
-  const a = s * Math.min(l, 1 - l);
-  const f = (n: number) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-  return [255 * f(0), 255 * f(8), 255 * f(4)].map(Math.round);
-}
+// ─── Tab imports ───────────────────────────────────────────────────────────
+import { ColorPickerTab } from "@/utils/colors/ColorPickerTab";
+import { GradientTab } from "@/utils/colors/GradientTab";
+import { HarmonyTab } from "@/utils/colors/HarmonyTab";
+import { ContrastTab } from "@/utils/colors/ContrastTab";
+import { BlenderTab } from "@/utils/colors/BlenderTab";
+import { PalettesTab } from "@/utils/colors/PalettesTab";
+import { ExtractorTab } from "@/utils/colors/ExtractorTab";
+import { SavedTab } from "@/utils/colors/SavedTab";
+import { getSavedColors } from "@/utils/colors/color-utils";
+import type { ColorFormat } from "@/utils/colors/color-utils";
 
-function rgbToHex(r: number, g: number, b: number) {
-  return "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
-}
+// ─── Tab config ────────────────────────────────────────────────────────────
+const TABS = [
+  { value: "picker", icon: <SlidersHorizontal className="h-3 w-3" />, label: "Picker" },
+  { value: "gradient", icon: <Layers className="h-3 w-3" />, label: "Gradient" },
+  { value: "harmony", icon: <Palette className="h-3 w-3" />, label: "Harmony" },
+  { value: "contrast", icon: <Contrast className="h-3 w-3" />, label: "Contrast" },
+  { value: "blender", icon: <Blend className="h-3 w-3" />, label: "Blender" },
+  { value: "palettes", icon: <Droplets className="h-3 w-3" />, label: "Palettes" },
+  { value: "extractor", icon: <ImageIcon className="h-3 w-3" />, label: "Extract" },
+  { value: "saved", icon: <Heart className="h-3 w-3" />, label: "Saved" },
+];
 
-function hexToRgb(hex: string): [number, number, number] {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!result) {
-    throw new Error(`Invalid hex color: ${hex}`);
-  }
-  return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)];
-}
-
-function rgbToHsl(r: number, g: number, b: number) {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-  const max = Math.max(r, g, b),
-    min = Math.min(r, g, b);
-  let h: number = 0;
-  let s;
-  const l = (max + min) / 2;
-
-  if (max === min) {
-    h = s = 0;
-  } else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
-        break;
-      case g:
-        h = (b - r) / d + 2;
-        break;
-      case b:
-        h = (r - g) / d + 4;
-        break;
-    }
-    h /= 6;
-  }
-
-  return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
-}
-
-function generateGradation(hex: string) {
-  const rgb = hexToRgb(hex);
-  if (!rgb) return [];
-  const [h, s, l] = rgbToHsl(...rgb);
-  return [
-    { h, s, l: Math.max(0, l - 30) },
-    { h, s, l: Math.max(0, l - 15) },
-    { h, s, l },
-    { h, s, l: Math.min(100, l + 15) },
-    { h, s, l: Math.min(100, l + 30) },
-  ];
-}
-
-function generateRandomColor() {
-  return (
-    "#" +
-    Math.floor(Math.random() * 16777215)
-      .toString(16)
-      .padStart(6, "0")
-  );
-}
-
+// ═══════════════════════════════════════════════════════════════════════════
 export default function Colors() {
-  const [color, setColor] = useState({ h: 180, s: 50, l: 50 });
-  const [format, setFormat] = useState<"hsl" | "rgb" | "hex">("hex");
-  const [tailwindColors, setTailwindColors] = useState(initialTailwindColors);
-  const [colorPalettes, setColorPalettes] = useState<{ h: number; s: number; l: number }[][]>([]);
+  const [format, setFormat] = useState<ColorFormat>("hex");
+  const [savedColors, setSavedColors] = useState<string[]>(getSavedColors);
 
-  useEffect(() => {
-    generateColorPalettes();
-  }, []);
-
-  const generateColorPalettes = () => {
-    const newPalettes = Object.values(tailwindColors).map((hex) => generateGradation(hex));
-    setColorPalettes(newPalettes);
-  };
-
-  const addNewColor = () => {
-    const newColor = generateRandomColor();
-    const newColorName = `Custom ${Object.keys(tailwindColors).length + 1}`;
-    setTailwindColors((prev) => ({ ...prev, [newColorName]: newColor }));
-    setColorPalettes((prev) => [...prev, generateGradation(newColor)]);
-  };
-
-  const getColorString = (
-    h: number,
-    s: number,
-    l: number,
-    format: "hsl" | "rgb" | "hex" = "hsl"
-  ) => {
-    const rgb = hslToRgb(h, s, l);
-    const [r, g, b] = rgb;
-    const hex = rgbToHex(r, g, b);
-    switch (format) {
-      case "hsl":
-        return `hsl(${h}, ${s}%, ${l}%)`;
-      case "rgb":
-        return `rgb(${rgb.join(", ")})`;
-      case "hex":
-        return hex;
-    }
-  };
-
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
-
-  const renderColorPalette = (colors: Record<string, string>, title: string) => (
-    <Card className="mt-8 bg-white py-5">
-      <CardHeader>
-        <CardTitle>{title} Color Palette</CardTitle>
-        <CardDescription>A selection of {title.toLowerCase()} colors</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-6">
-          {Object.entries(colors).map(([name, hex], index) => {
-            const gradation = generateGradation(hex);
-            return (
-              <div key={index} className="space-y-2">
-                <h3 className="text-lg font-semibold">{name}</h3>
-                <div className="grid grid-cols-5 gap-2">
-                  {gradation.map((color, colorIndex) => (
-                    <TooltipProvider key={colorIndex}>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <div className="space-y-1">
-                            <div
-                              className="h-12 rounded-md shadow-md cursor-pointer"
-                              style={{
-                                backgroundColor: getColorString(color.h, color.s, color.l, "hex"),
-                              }}
-                            ></div>
-                            <div className="text-xs text-center font-mono">
-                              {getColorString(color.h, color.s, color.l, format)}
-                            </div>
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>HEX: {getColorString(color.h, color.s, color.l, "hex")}</p>
-                          <p>RGB: {getColorString(color.h, color.s, color.l, "rgb")}</p>
-                          <p>HSL: {getColorString(color.h, color.s, color.l, "hsl")}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </CardContent>
-    </Card>
-  );
+  const refreshSaved = () => setSavedColors(getSavedColors());
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* navbar */}
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <header>
         <Navbar />
       </header>
-      <div className="flex flex-1 py-6">
-        {/* Content */}
-        <main className="flex-1 ml-1 py-4 px-7 pt-20 overflow-auto">
-          <div className="container mx-auto space-y-8 pt-20 ">
-            <Card className="bg-white">
-              <CardHeader>
-                <CardTitle>Color Generator</CardTitle>
-                <CardDescription>Generate and explore colors in different formats</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-4">
-                  <div className="flex items-center gap-4">
-                    <div
-                      className="w-24 h-24 rounded-md shadow-md"
-                      style={{ backgroundColor: getColorString(color.h, color.s, color.l) }}
-                    ></div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <span className="font-mono">
-                          {getColorString(color.h, color.s, color.l, format)}
-                        </span>
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          onClick={() =>
-                            copyToClipboard(getColorString(color.h, color.s, color.l, format))
-                          }
-                        >
-                          <Copy className="h-4 w-4" />
-                        </Button>
-                      </div>
-                      <Select
-                        value={format}
-                        onValueChange={(value: "hsl" | "rgb" | "hex") => setFormat(value)}
-                      >
-                        <SelectTrigger className="w-[180px]">
-                          <SelectValue placeholder="Color format" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="hsl">HSL</SelectItem>
-                          <SelectItem value="rgb">RGB</SelectItem>
-                          <SelectItem value="hex">HEX</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="grid gap-2">
-                      <Label>Hue</Label>
-                      <Slider
-                        min={0}
-                        max={360}
-                        step={1}
-                        value={[color.h]}
-                        onValueChange={(value) => setColor({ ...color, h: value[0] })}
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label>Saturation</Label>
-                      <Slider
-                        min={0}
-                        max={100}
-                        step={1}
-                        value={[color.s]}
-                        onValueChange={(value) => setColor({ ...color, s: value[0] })}
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label>Lightness</Label>
-                      <Slider
-                        min={0}
-                        max={100}
-                        step={1}
-                        value={[color.l]}
-                        onValueChange={(value) => setColor({ ...color, l: value[0] })}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
-            <Card className="bg-white">
-              <CardHeader>
-                <CardTitle>Theme Preview</CardTitle>
-                <CardDescription>Preview generated colors in a theme</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Tabs defaultValue="light" className="w-full">
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="light">Light</TabsTrigger>
-                    <TabsTrigger value="dark">Dark</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="light">
-                    <div
-                      className="p-4 space-y-4"
-                      style={{ backgroundColor: `hsl(${color.h}, ${color.s}%, 95%)` }}
-                    >
-                      <h2
-                        className="text-2xl font-bold"
-                        style={{ color: `hsl(${color.h}, ${color.s}%, 20%)` }}
-                      >
-                        Light Theme
-                      </h2>
-                      <p style={{ color: `hsl(${color.h}, ${color.s}%, 30%)` }}>
-                        This is how your theme might look in light mode.
-                      </p>
-                      <Button
-                        style={{
-                          backgroundColor: `hsl(${color.h}, ${color.s}%, 50%)`,
-                          color: "white",
-                        }}
-                      >
-                        Sample Button
-                      </Button>
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="dark">
-                    <div
-                      className="p-4 space-y-4"
-                      style={{ backgroundColor: `hsl(${color.h}, ${color.s}%, 20%)` }}
-                    >
-                      <h2
-                        className="text-2xl font-bold"
-                        style={{ color: `hsl(${color.h}, ${color.s}%, 90%)` }}
-                      >
-                        Dark Theme
-                      </h2>
-                      <p style={{ color: `hsl(${color.h}, ${color.s}%, 80%)` }}>
-                        This is how your theme might look in dark mode.
-                      </p>
-                      <Button
-                        style={{
-                          backgroundColor: `hsl(${color.h}, ${color.s}%, 60%)`,
-                          color: "black",
-                        }}
-                      >
-                        Sample Button
-                      </Button>
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white">
-              <CardHeader>
-                <CardTitle>Tailwind Color Palettes</CardTitle>
-                <CardDescription>
-                  Color palettes based on Tailwind CSS colors with 5 gradations each
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  {Object.entries(tailwindColors).map(([name], paletteIndex) => (
-                    <div key={paletteIndex} className="space-y-2">
-                      <h3 className="text-lg font-semibold">{name}</h3>
-                      <div className="grid grid-cols-5 gap-2">
-                        {colorPalettes[paletteIndex]?.map((color, colorIndex) => (
-                          <TooltipProvider key={colorIndex}>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <div className="space-y-1">
-                                  <div
-                                    className="h-12 rounded-md shadow-md cursor-pointer"
-                                    style={{
-                                      backgroundColor: getColorString(
-                                        color.h,
-                                        color.s,
-                                        color.l,
-                                        "hex"
-                                      ),
-                                    }}
-                                  ></div>
-                                  <div className="text-xs text-center font-mono">
-                                    {getColorString(color.h, color.s, color.l, format)}
-                                  </div>
-                                </div>
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>HEX: {getColorString(color.h, color.s, color.l, "hex")}</p>
-                                <p>RGB: {getColorString(color.h, color.s, color.l, "rgb")}</p>
-                                <p>HSL: {getColorString(color.h, color.s, color.l, "hsl")}</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex justify-between items-center mt-4">
-                  <div className="space-x-2">
-                    <Button onClick={addNewColor}>
-                      <Plus className="w-4 h-4 mr-2" />
-                      Add New Color
-                    </Button>
-                  </div>
-                  <Select
-                    value={format}
-                    onValueChange={(value: "hsl" | "rgb" | "hex") => setFormat(value)}
-                  >
-                    <SelectTrigger className="w-[120px]">
-                      <SelectValue placeholder="Color format" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="hsl">HSL</SelectItem>
-                      <SelectItem value="rgb">RGB</SelectItem>
-                      <SelectItem value="hex">HEX</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </CardContent>
-            </Card>
-
-            {renderColorPalette(pastelColors, "Pastel")}
-            {renderColorPalette(retroColors, "Retro")}
-            {renderColorPalette(vintageColors, "Vintage")}
-            {renderColorPalette(neonColors, "Neon")}
-            {renderColorPalette(goldColors, "Gold")}
-            {renderColorPalette(warmColors, "Warm")}
-            {renderColorPalette(coldColors, "Cold")}
-            {renderColorPalette(summerColors, "Summer")}
-            {renderColorPalette(sunsetColors, "Sunset")}
-            {renderColorPalette(skyColors, "Sky")}
-            {renderColorPalette(seaColors, "Sea")}
-            {renderColorPalette(coffeeColors, "Coffee")}
-            {renderColorPalette(creamColors, "Cream")}
-            {renderColorPalette(kidsColors, "Kids")}
-            {renderColorPalette(rainbowColors, "Rainbow")}
-            {renderColorPalette(spaceXColors, "Space")}
-            {renderColorPalette(galaxyColors, "Galaxy")}
-            {renderColorPalette(cyberpunkColors, "Cyberpunk")}
-            {renderColorPalette(weddingColors, "Wedding")}
-            {renderColorPalette(halloweenColors, "Halloween")}
-            {renderColorPalette(christmasColors, "Christmas")}
-            {renderColorPalette(ramadhanColors, "Ramadhan")}
+      <main className="flex-1 py-6 px-4 sm:px-7 pt-28">
+        <div className="container mx-auto max-w-6xl space-y-4">
+          {/* Hero */}
+          <div className="text-center mb-6 pt-16">
+            <h1 className="text-4xl font-black tracking-tight">🎨 Color Generator</h1>
+            <p className="text-gray-500 mt-1">
+              Pick, convert, blend, contrast &amp; explore colors
+            </p>
+            <div className="flex items-center justify-center gap-2 mt-3">
+              <span className="text-xs text-gray-400">Output format:</span>
+              <Select value={format} onValueChange={(v: ColorFormat) => setFormat(v)}>
+                <SelectTrigger className="w-28 h-7 text-xs bg-white">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  <SelectItem value="hex">HEX</SelectItem>
+                  <SelectItem value="rgb">RGB</SelectItem>
+                  <SelectItem value="hsl">HSL</SelectItem>
+                  <SelectItem value="cmyk">CMYK</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
-        </main>
-      </div>
-      <footer className="text-black py-1">
-        <div className="mx-auto px-4">
-          <div className="text-end text-xs">
-            © {new Date().getFullYear()} MoupUI . All rights reserved.
-          </div>
+
+          {/* Tab navigation */}
+          <Tabs defaultValue="picker" className="w-full">
+            <TabsList className="grid grid-cols-4 sm:grid-cols-8 h-auto gap-1 bg-white border-2 border-black p-1 rounded-xl mb-4">
+              {TABS.map((tab) => (
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className="flex flex-col items-center gap-0.5 py-1.5 text-[10px] font-semibold data-[state=active]:bg-black data-[state=active]:text-white rounded-lg"
+                >
+                  {tab.icon}
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            <TabsContent value="picker">
+              <ColorPickerTab format={format} onSaved={refreshSaved} />
+            </TabsContent>
+
+            <TabsContent value="gradient">
+              <GradientTab />
+            </TabsContent>
+
+            <TabsContent value="harmony">
+              <HarmonyTab format={format} />
+            </TabsContent>
+
+            <TabsContent value="contrast">
+              <ContrastTab />
+            </TabsContent>
+
+            <TabsContent value="blender">
+              <BlenderTab format={format} />
+            </TabsContent>
+
+            <TabsContent value="palettes">
+              <PalettesTab format={format} />
+            </TabsContent>
+
+            <TabsContent value="extractor">
+              <ExtractorTab format={format} />
+            </TabsContent>
+
+            <TabsContent value="saved">
+              <SavedTab savedColors={savedColors} onRefresh={refreshSaved} />
+            </TabsContent>
+          </Tabs>
+        </div>
+      </main>
+
+      <footer className="text-black py-2">
+        <div className="mx-auto px-4 text-end text-xs">
+          © {new Date().getFullYear()} MoupUI. All rights reserved.
         </div>
       </footer>
+
       <ScrollToTopButton />
     </div>
   );

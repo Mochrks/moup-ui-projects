@@ -9,9 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui-shadcn/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui-neobrutalism/avatar";
-import { Badge } from "@/components/ui-neobrutalism/badge";
-import { ScrollArea } from "@/components/ui-neobrutalism/scroll-area";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui-shadcn/avatar";
+import { Badge } from "@/components/ui-shadcn/badge";
+import { ScrollArea } from "@/components/ui-shadcn/scroll-area";
 import {
   MessageCircle,
   Search,
@@ -91,9 +91,7 @@ export const AIPoweredChatbot = () => {
 };
 
 export const RenderChatLayoutOne = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectedChat, setSelectedChat] = useState<number | null>(null);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [messageInput, setMessageInput] = useState("");
 
   const chats = [

@@ -36,7 +36,7 @@ export default function VSCodeEditor({
           </Button>
         </div>
       </div>
-      <ScrollArea className="h-[600px] w-full">
+      <ScrollArea data-lenis-prevent className="h-[600px] w-full">
         <div className="min-w-full inline-block">
           <Highlight theme={themes.oneDark} code={code} language={language}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
