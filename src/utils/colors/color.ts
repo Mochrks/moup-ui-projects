@@ -24,7 +24,7 @@ export const pastelColors = {
   green: "#C1FFC1",
   yellow: "#FFFACD",
   purple: "#E6E6FA",
-  orange: "#FFDAB9",
+  peach: "#FFDAB9",
   red: "#FFA07A",
   mint: "#98FF98",
 };
@@ -32,7 +32,7 @@ export const pastelColors = {
 export const retroColors = {
   mustard: "#FFD800",
   avocado: "#568203",
-  orange: "#FF7518",
+  amber: "#FF7518",
   brown: "#8B4513",
   teal: "#008080",
   rust: "#B7410E",
@@ -55,8 +55,8 @@ export const neonColors = {
   pink: "#FF6EC7",
   blue: "#00FFFF",
   green: "#39FF14",
-  yellow: "#FFFF00",
-  orange: "#FF9933",
+  pure_yellow: "#FFFF00",
+  orange_neon: "#FF9933",
   purple: "#FF00FF",
   red: "#FF3131",
   lime: "#CCFF00",
@@ -110,7 +110,7 @@ export const sunsetColors = {
   tangerine: "#FFA500",
   crimson: "#DC143C",
   lavender_pink: "#FFC0CB",
-  deep_orange: "#FF4500",
+  deep_yellow: "#FF4500",
   soft_purple: "#9370DB",
   salmon: "#FA8072",
   golden_yellow: "#FFD700",
@@ -174,7 +174,7 @@ export const kidsColors = {
 
 export const rainbowColors = {
   red: "#FF0000",
-  orange: "#FF7F00",
+  orange_rainbow: "#FF7F00",
   yellow: "#FFFF00",
   green: "#00FF00",
   blue: "#0000FF",
@@ -228,7 +228,7 @@ export const weddingColors = {
 };
 
 export const halloweenColors = {
-  pumpkin_orange: "#FF7518",
+  pumpkin_yellow: "#FF7518",
   dark_purple: "#4B0082",
   blood_red: "#8B0000",
   midnight_black: "#121212",
@@ -254,7 +254,7 @@ export const ramadhanColors = {
   crescent_blue: "#4169E1",
   prayer_white: "#FFFFFF",
   arabic_gold: "#FFD700",
-  sunset_orange: "#FF4500",
+  sunset_yellow: "#FF4500",
   night_purple: "#4B0082",
   peace_blue: "#87CEEB",
   lantern_yellow: "#FFA500",

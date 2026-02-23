@@ -22,7 +22,7 @@ export const BasicCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-[20px] border-4 border-black shadow-[8px_8px_0_0_#000]">
       <AnimatePresence initial={false} custom={currentIndex}>
         <motion.img
           key={currentIndex}
@@ -36,13 +36,13 @@ export const BasicCarousel: React.FC = () => {
         />
       </AnimatePresence>
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />
@@ -51,8 +51,10 @@ export const BasicCarousel: React.FC = () => {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === currentIndex ? "bg-white" : "bg-gray-400"
+            className={`w-3 h-3 rounded-sm border-2 border-black transition-all ${
+              index === currentIndex
+                ? "bg-[#ffe135] shadow-[2px_2px_0_0_#000] scale-125"
+                : "bg-white"
             }`}
             onClick={() => setCurrentIndex(index)}
           />
@@ -74,7 +76,7 @@ export const ZoomCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-[20px] border-4 border-black shadow-[8px_8px_0_0_#000]">
       <AnimatePresence initial={false}>
         <motion.img
           key={currentIndex}
@@ -88,13 +90,13 @@ export const ZoomCarousel: React.FC = () => {
         />
       </AnimatePresence>
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />
@@ -103,8 +105,10 @@ export const ZoomCarousel: React.FC = () => {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === currentIndex ? "bg-white" : "bg-gray-400"
+            className={`w-3 h-3 rounded-sm border-2 border-black transition-all ${
+              index === currentIndex
+                ? "bg-[#ffe135] shadow-[2px_2px_0_0_#000] scale-125"
+                : "bg-white"
             }`}
             onClick={() => setCurrentIndex(index)}
           />
@@ -144,13 +148,13 @@ export const CubeCarousel: React.FC = () => {
         ))}
       </div>
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />
@@ -159,8 +163,10 @@ export const CubeCarousel: React.FC = () => {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === currentIndex ? "bg-white" : "bg-gray-400"
+            className={`w-3 h-3 rounded-sm border-2 border-black transition-all ${
+              index === currentIndex
+                ? "bg-[#ffe135] shadow-[2px_2px_0_0_#000] scale-125"
+                : "bg-white"
             }`}
             onClick={() => setCurrentIndex(index)}
           />
@@ -187,7 +193,7 @@ export const InfiniteCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-[20px] border-4 border-black shadow-[8px_8px_0_0_#000]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.img
           key={currentIndex}
@@ -243,7 +249,7 @@ export const FadeCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-[20px] border-4 border-black shadow-[8px_8px_0_0_#000]">
       <AnimatePresence>
         <motion.img
           key={currentIndex}
@@ -257,13 +263,13 @@ export const FadeCarousel: React.FC = () => {
         />
       </AnimatePresence>
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />
@@ -272,8 +278,10 @@ export const FadeCarousel: React.FC = () => {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === currentIndex ? "bg-white" : "bg-gray-400"
+            className={`w-3 h-3 rounded-sm border-2 border-black transition-all ${
+              index === currentIndex
+                ? "bg-[#ffe135] shadow-[2px_2px_0_0_#000] scale-125"
+                : "bg-white"
             }`}
             onClick={() => setCurrentIndex(index)}
           />
@@ -295,7 +303,7 @@ export const ParallaxCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-[20px] border-4 border-black shadow-[8px_8px_0_0_#000]">
       {images.map((image, index) => (
         <motion.div
           key={index}
@@ -311,13 +319,13 @@ export const ParallaxCarousel: React.FC = () => {
         </motion.div>
       ))}
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />
@@ -326,8 +334,10 @@ export const ParallaxCarousel: React.FC = () => {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === currentIndex ? "bg-white" : "bg-gray-400"
+            className={`w-3 h-3 rounded-sm border-2 border-black transition-all ${
+              index === currentIndex
+                ? "bg-[#ffe135] shadow-[2px_2px_0_0_#000] scale-125"
+                : "bg-white"
             }`}
             onClick={() => setCurrentIndex(index)}
           />
@@ -349,7 +359,7 @@ export const ElasticCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-[20px] border-4 border-black shadow-[8px_8px_0_0_#000]">
       <AnimatePresence initial={false}>
         <motion.img
           key={currentIndex}
@@ -366,13 +376,13 @@ export const ElasticCarousel: React.FC = () => {
         />
       </AnimatePresence>
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />
@@ -407,13 +417,13 @@ export const PerspectiveCarousel: React.FC = () => {
         />
       </AnimatePresence>
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />
@@ -434,7 +444,7 @@ export const CircularCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-[20px] border-4 border-black shadow-[8px_8px_0_0_#000]">
       <div className="absolute w-full h-full flex items-center justify-center">
         {images.map((image, index) => (
           <motion.div
@@ -453,13 +463,13 @@ export const CircularCarousel: React.FC = () => {
         ))}
       </div>
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />
@@ -480,7 +490,7 @@ export const StackedCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-[20px] border-4 border-black shadow-[8px_8px_0_0_#000]">
       {images.map((image, index) => (
         <motion.div
           key={index}
@@ -502,13 +512,13 @@ export const StackedCarousel: React.FC = () => {
         </motion.div>
       ))}
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffe135] text-black p-2 border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-[#ffe135] p-2 border-4 border-black shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[calc(-50%+2px)] rounded-xl transition-all"
         onClick={nextSlide}
       >
         <ChevronRight size={24} />

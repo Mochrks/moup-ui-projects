@@ -152,7 +152,7 @@ export const FormSecurity = () => (
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
-              className={`h-1 flex-1 rounded-full ${i <= 2 ? "bg-orange-400" : "bg-zinc-100"}`}
+              className={`h-1 flex-1 rounded-full ${i <= 2 ? "bg-yellow-400" : "bg-zinc-100"}`}
             ></div>
           ))}
         </div>
@@ -254,7 +254,7 @@ export const FormSettings = () => (
     <div className="space-y-2">
       {[
         { label: "Product Updates", icon: Smartphone, color: "bg-blue-100 text-blue-600" },
-        { label: "Security Logs", icon: Shield, color: "bg-orange-100 text-orange-600" },
+        { label: "Security Logs", icon: Shield, color: "bg-yellow-100 text-yellow-600" },
         { label: "Critical Alerts", icon: Bell, color: "bg-red-100 text-red-600" },
         { label: "Team Messages", icon: MessageSquare, color: "bg-main/20 text-mainAccent" },
       ].map((item) => (

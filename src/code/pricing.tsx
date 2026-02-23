@@ -1,65 +1,86 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui-shadcn/card";
-import { Button } from "@/components/ui-shadcn/button";
-import { Check, Zap, Shield, Crown } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui-neobrutalism/card";
+import { Button } from "@/components/ui-neobrutalism/button";
+import { Badge } from "@/components/ui-neobrutalism/badge";
+import { Check, Zap, Shield, Crown, Globe, MessageSquare, Terminal, Server } from "lucide-react";
 
 export const SimplePricing = () => (
-  <div className="grid md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
+  <div className="grid md:grid-cols-3 gap-10 w-full max-w-6xl mx-auto p-4">
     {[
       {
-        name: "Starter",
+        name: "CORE_STARTER",
         price: "0",
         icon: Zap,
-        features: ["Up to 5 projects", "Basic analytics", "Community support"],
+        color: "bg-white",
+        features: ["UP_TO_5_NODES", "BASE_TELEMETRY", "GRID_RELAY_SYNC"],
       },
       {
-        name: "Pro",
+        name: "CORE_PHALANX",
         price: "29",
         icon: Shield,
         featured: true,
-        features: ["Unlimited projects", "Advanced stats", "Priority email", "Custom domains"],
+        color: "bg-[#ffe135]",
+        features: ["UNLIMITED_NODES", "ADV_SPECTRAL_STATS", "PRIORITY_RELAY", "CUSTOM_IDENTITY"],
       },
       {
-        name: "Team",
+        name: "CORE_DOMINION",
         price: "99",
         icon: Crown,
-        features: ["Up to 20 users", "Roles & permissions", "24/7 Support", "SLA guarantee"],
+        color: "bg-indigo-400",
+        features: ["UP_TO_20_UNITS", "ACL_POLICIES", "24/7_UPTIME_SYNC", "SLA_ENFORCED"],
       },
     ].map((plan) => (
       <Card
         key={plan.name}
-        className={`relative border shadow-sm transition-all hover:shadow-md ${plan.featured ? "border-primary ring-1 ring-primary" : "bg-white"}`}
+        className={`relative border-4 border-black shadow-[12px_12px_0_0_#000] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none rounded-3xl overflow-hidden ${plan.color}`}
       >
         {plan.featured && (
-          <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-[10px] font-semibold uppercase rounded-bl-lg">
-            Popular
+          <div className="absolute top-0 right-0 bg-black text-white px-6 py-2 text-[10px] font-black uppercase italic tracking-widest rounded-bl-3xl border-l-4 border-b-4 border-black animate-pulse">
+            MAX_EFFICIENCY
           </div>
         )}
-        <CardHeader className="text-center pb-2 pt-8">
+        <CardHeader className="text-center pb-6 pt-12 border-b-4 border-black/10">
           <div
-            className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 ${plan.featured ? "bg-primary text-primary-foreground" : "bg-zinc-100 text-zinc-600"}`}
+            className={`w-16 h-16 rounded-2xl border-4 border-black flex items-center justify-center mx-auto mb-6 shadow-[4px_4px_0_0_#000] transition-transform hover:rotate-12 bg-white`}
           >
-            <plan.icon size={18} />
+            <plan.icon size={32} className="text-black" />
           </div>
-          <CardTitle className="text-xl font-bold">{plan.name}</CardTitle>
-          <div className="mt-4 flex items-baseline justify-center gap-1">
-            <span className="text-4xl font-bold">${plan.price}</span>
-            <span className="text-muted-foreground text-sm font-medium">/mo</span>
+          <CardTitle className="text-2xl font-black italic uppercase tracking-tighter">
+            {plan.name}
+          </CardTitle>
+          <div className="mt-6 flex items-baseline justify-center gap-2 bg-black/5 py-4 border-y-2 border-black/5">
+            <span className="text-6xl font-black italic tracking-tighter leading-none">
+              ${plan.price}
+            </span>
+            <span className="text-black/60 text-xs font-black uppercase italic tracking-widest">
+              /CYCLE
+            </span>
           </div>
         </CardHeader>
-        <CardContent className="pt-6">
-          <ul className="space-y-3">
+        <CardContent className="pt-10 px-8">
+          <ul className="space-y-4">
             {plan.features.map((f) => (
-              <li key={f} className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Check size={14} className="text-primary shrink-0" />
+              <li
+                key={f}
+                className="flex items-center gap-4 text-xs font-black uppercase italic tracking-tighter text-black/70"
+              >
+                <div className="w-6 h-6 rounded-lg bg-black text-white flex items-center justify-center shadow-[2px_2px_0_0_#ffe135] shrink-0">
+                  <Check size={14} strokeWidth={4} />
+                </div>
                 {f}
               </li>
             ))}
           </ul>
         </CardContent>
-        <CardFooter className="pt-8">
-          <Button variant={plan.featured ? "default" : "outline"} className="w-full">
-            Get Started
+        <CardFooter className="p-8 pt-4">
+          <Button className="w-full h-14 bg-black text-white border-2 border-black font-black uppercase italic text-lg shadow-[4px_4px_0_0_#fff] hover:shadow-none transition-all">
+            INIT_INTAKE
           </Button>
         </CardFooter>
       </Card>
@@ -71,63 +92,97 @@ export const PricingWithToggle = () => {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <div className="space-y-12 w-full max-w-6xl mx-auto">
-      <div className="flex items-center justify-center gap-4">
-        <span
-          className={`text-sm font-medium ${!isYearly ? "text-foreground" : "text-muted-foreground"}`}
-        >
-          Monthly
-        </span>
-        <button
-          onClick={() => setIsYearly(!isYearly)}
-          className="w-11 h-6 bg-zinc-200 rounded-full p-1 relative transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-        >
-          <div
-            className={`w-4 h-4 bg-white rounded-full shadow-sm absolute top-1 transition-all ${isYearly ? "left-6" : "left-1"}`}
-          />
-        </button>
-        <span
-          className={`text-sm font-medium ${isYearly ? "text-foreground" : "text-muted-foreground"}`}
-        >
-          Yearly <span className="text-green-600 text-[10px] font-bold">(-20%)</span>
-        </span>
+    <div className="space-y-16 w-full max-w-6xl mx-auto p-10 bg-white border-4 border-black rounded-[40px] shadow-[15px_15px_0_0_#000]">
+      <div className="flex flex-col items-center gap-6">
+        <h3 className="text-3xl font-black italic uppercase tracking-tighter border-b-4 border-black pb-2">
+          PLAN_SELECTION_PROTOCOL
+        </h3>
+        <div className="flex items-center gap-6 bg-zinc-100 p-2 border-4 border-black rounded-2xl shadow-[4px_4px_0_0_#000]">
+          <button
+            onClick={() => setIsYearly(false)}
+            className={`px-8 py-3 rounded-xl font-black uppercase italic text-xs transition-all ${!isYearly ? "bg-black text-white shadow-[4px_4px_0_0_#ffe135]" : "bg-transparent text-black/40"}`}
+          >
+            CYCLE_MONTHLY
+          </button>
+          <button
+            onClick={() => setIsYearly(true)}
+            className={`px-8 py-3 rounded-xl font-black uppercase italic text-xs transition-all relative ${isYearly ? "bg-black text-white shadow-[4px_4px_0_0_#pink-400] shadow-[#F472B6]" : "bg-transparent text-black/40"}`}
+          >
+            ANNUAL_COMMIT
+            {isYearly && (
+              <Badge className="absolute -top-4 -right-4 bg-pink-400 text-black border-2 border-black font-black italic uppercase text-[9px] animate-bounce">
+                SAVE_20%
+              </Badge>
+            )}
+          </button>
+        </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
         {[
-          { name: "Personal", monthly: 15, yearly: 120, icon: Shield },
-          { name: "Business", monthly: 45, yearly: 380, icon: Crown, featured: true },
+          {
+            name: "CORE_UNIT",
+            monthly: 15,
+            yearly: 120,
+            icon: Shield,
+            color: "bg-white",
+            border: "border-black",
+          },
+          {
+            name: "APEX_COMMAND",
+            monthly: 45,
+            yearly: 380,
+            icon: Crown,
+            featured: true,
+            color: "bg-[#ffe135]",
+            border: "border-black",
+          },
         ].map((plan) => (
           <Card
             key={plan.name}
-            className={`border shadow-sm p-6 bg-white ${plan.featured ? "border-primary" : ""}`}
+            className={`border-4 ${plan.border} shadow-[12px_12px_0_0_#000] p-10 rounded-[32px] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none ${plan.color}`}
           >
-            <div className="flex justify-between items-start mb-6">
+            <div className="flex justify-between items-start mb-8">
               <div>
-                <h3 className="text-lg font-bold">{plan.name}</h3>
-                <p className="text-xs text-muted-foreground">
-                  Perfect for {plan.name === "Personal" ? "individuals" : "scaling teams"}
+                <h3 className="text-3xl font-black italic uppercase tracking-tighter mb-1 leading-none underline decoration-4 underline-offset-4">
+                  {plan.name}
+                </h3>
+                <p className="text-[10px] font-black uppercase italic text-black/40 tracking-widest mt-2 px-3 py-1 bg-black/5 border border-black/10 inline-block rounded-lg">
+                  {plan.name === "CORE_UNIT" ? "INDIVIDUAL_DEPLOYMENT" : "SCALING_FORCE_OPS"}
                 </p>
               </div>
-              <div className="w-9 h-9 rounded-md bg-zinc-50 border flex items-center justify-center text-primary">
-                <plan.icon size={18} />
+              <div className="w-14 h-14 rounded-2xl bg-black border-2 border-white flex items-center justify-center text-white shadow-[4px_4px_0_0_#000]">
+                <plan.icon size={28} />
               </div>
             </div>
-            <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-4xl font-bold">${isYearly ? plan.yearly : plan.monthly}</span>
-              <span className="text-muted-foreground text-sm font-medium">
-                / {isYearly ? "yr" : "mo"}
+            <div className="flex items-baseline gap-2 mb-10 bg-white/50 p-6 border-4 border-black/5 rounded-3xl">
+              <span className="text-7xl font-black italic tracking-tighter leading-none">
+                ${isYearly ? plan.yearly : plan.monthly}
+              </span>
+              <span className="text-black/60 text-sm font-black uppercase italic tracking-widest">
+                / {isYearly ? "ANNUAL" : "CYCLE"}
               </span>
             </div>
-            <ul className="space-y-3 mb-8">
-              {["Custom Branding", "Priority Support", "Advanced Analytics"].map((f) => (
-                <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Check size={14} className="text-green-600" /> {f}
+            <ul className="space-y-4 mb-10">
+              {[
+                "CUSTOM_IDENTITY_SYNC",
+                "PRIORITY_PULSE_SUPPORT",
+                "ADV_TELEMETRY_GRID",
+                "ZERO_LATENCY_OPS",
+              ].map((f) => (
+                <li
+                  key={f}
+                  className="flex items-center gap-4 text-xs font-black uppercase italic tracking-tighter"
+                >
+                  <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center shadow-[2px_2px_0_0_#fff] shrink-0">
+                    <Check size={12} strokeWidth={4} className="text-white" />
+                  </div>
+                  {f}
                 </li>
               ))}
             </ul>
-            <Button className="w-full" variant={plan.featured ? "default" : "outline"}>
-              Subscribe
+            <Button className="w-full h-16 bg-black text-white border-2 border-black font-black uppercase italic text-xl shadow-[6px_6px_0_0_#fff] hover:shadow-none transition-all">
+              INITIALIZE_LINK
             </Button>
           </Card>
         ))}
@@ -137,65 +192,101 @@ export const PricingWithToggle = () => {
 };
 
 export const ComparisonPricing = () => (
-  <div className="w-full max-w-4xl mx-auto space-y-4 overflow-x-auto">
-    <div className="min-w-[600px] border rounded-lg shadow-sm bg-white overflow-hidden">
+  <div className="w-full max-w-5xl mx-auto space-y-8 p-6">
+    <div className="text-center space-y-4 mb-10">
+      <div className="inline-block px-4 py-1 bg-black text-white font-black italic uppercase text-xs rounded border-2 border-black">
+        GRID_MATRIX_VAL
+      </div>
+      <h2 className="text-5xl font-black italic uppercase tracking-tighter">CAPABILITY_MATRIX</h2>
+    </div>
+
+    <div className="min-w-[700px] border-4 border-black shadow-[15px_15px_0_0_#000] bg-white rounded-[40px] overflow-hidden">
       <table className="w-full border-collapse">
         <thead>
-          <tr className="bg-zinc-50/50 border-b">
-            <th className="p-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-              Features
+          <tr className="bg-zinc-50 border-b-4 border-black">
+            <th className="p-8 text-left text-[11px] font-black uppercase italic tracking-[0.2em] text-black">
+              UNIT_CAPABILITIES
             </th>
-            <th className="p-4 text-center text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-              Free
+            <th className="p-8 text-center text-[11px] font-black uppercase italic tracking-[0.2em] text-black border-l-4 border-black">
+              ENTRY_NODE
             </th>
-            <th className="p-4 text-center text-xs font-semibold text-muted-foreground uppercase tracking-wider bg-primary/5">
-              Pro
+            <th className="p-8 text-center text-[11px] font-black uppercase italic tracking-[0.2em] text-black border-l-4 border-black bg-[#ffe135]">
+              APEX_CORE
             </th>
-            <th className="p-4 text-center text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-              Enterprise
+            <th className="p-8 text-center text-[11px] font-black uppercase italic tracking-[0.2em] text-black border-l-4 border-black bg-indigo-400">
+              DOMINION
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y text-zinc-600">
+        <tbody className="divide-y-2 divide-black/10 font-bold uppercase italic text-black/60">
           {[
-            { name: "API Access", free: true, pro: true, ent: true },
-            { name: "Custom Domains", free: false, pro: true, ent: true },
-            { name: "Team Members", free: "1", pro: "10", ent: "Unlimited" },
-            { name: "Support", free: "Email", pro: "Priority", ent: "24/7" },
+            { name: "CORE_API_ACCESS", icon: Terminal, free: true, pro: true, ent: true },
+            { name: "IDENTITY_DOMAINS", icon: Globe, free: false, pro: true, ent: true },
+            {
+              name: "UNIT_CAPACITY",
+              icon: Server,
+              free: "1_NODE",
+              pro: "10_NODES",
+              ent: "UNLIMITED",
+            },
+            {
+              name: "PULSE_SUPPORT",
+              icon: MessageSquare,
+              free: "ASYNC_RELAY",
+              pro: "PRIORITY_L1",
+              ent: "SYNC_24/7",
+            },
           ].map((row) => (
-            <tr key={row.name}>
-              <td className="p-4 text-sm font-medium text-foreground">{row.name}</td>
-              <td className="p-4 text-center text-sm">
+            <tr key={row.name} className="hover:bg-zinc-50 transition-colors group">
+              <td className="p-8 text-sm font-black flex items-center gap-4 text-black group-hover:pl-10 transition-all border-r-4 border-black/5">
+                <div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center shadow-[2px_2px_0_0_#ffe135]">
+                  <row.icon size={16} />
+                </div>
+                {row.name}
+              </td>
+              <td className="p-8 text-center text-xs border-l-4 border-black/5">
                 {typeof row.free === "boolean" ? (
                   row.free ? (
-                    <Check className="mx-auto text-primary" size={16} />
+                    <div className="w-8 h-8 rounded-lg bg-green-400 border-2 border-black flex items-center justify-center mx-auto shadow-[2px_2px_0_0_#000]">
+                      <Check size={18} strokeWidth={4} className="text-black" />
+                    </div>
                   ) : (
-                    "—"
+                    <div className="opacity-20">—</div>
                   )
                 ) : (
-                  row.free
+                  <span className="bg-black/5 px-4 py-1 border border-black/10 rounded-lg">
+                    {row.free}
+                  </span>
                 )}
               </td>
-              <td className="p-4 text-center text-sm bg-primary/5 font-semibold text-foreground">
+              <td className="p-8 text-center text-xs border-l-4 border-black/5 bg-[#ffe135]/10 font-black text-black">
                 {typeof row.pro === "boolean" ? (
                   row.pro ? (
-                    <Check className="mx-auto text-primary" size={16} />
+                    <div className="w-8 h-8 rounded-lg bg-green-400 border-2 border-black flex items-center justify-center mx-auto shadow-[2px_2px_0_0_#000]">
+                      <Check size={18} strokeWidth={4} className="text-black" />
+                    </div>
                   ) : (
                     "—"
                   )
                 ) : (
-                  row.pro
+                  <span className="bg-white px-4 py-1 border-2 border-black rounded-lg shadow-[2px_2px_0_0_#000]">
+                    {row.pro}
+                  </span>
                 )}
               </td>
-              <td className="p-4 text-center text-sm">
+              <td className="p-8 text-center text-xs border-l-4 border-black/5 bg-indigo-50">
                 {typeof row.ent === "boolean" ? (
                   row.ent ? (
-                    <Check className="mx-auto text-primary" size={16} />
+                    <div className="w-8 h-8 rounded-lg bg-green-400 border-2 border-black flex items-center justify-center mx-auto shadow-[2px_2px_0_0_#000]">
+                      <Check size={18} strokeWidth={4} className="text-black" />
+                    </div>
                   ) : (
                     "—"
                   )
                 ) : (
-                  row.ent
+                  <span className="bg-indigo-400 text-white px-4 py-1 border-2 border-black rounded-lg shadow-[2px_2px_0_0_#000] tracking-widest">
+                    {row.ent}
+                  </span>
                 )}
               </td>
             </tr>

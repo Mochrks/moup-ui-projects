@@ -69,7 +69,7 @@ export const Footer = () => (
         features={[
           "Centered Navigation",
           "Bold Social Icons",
-          "Vibrant Yellow Branding",
+          "Vibrant yellow Branding",
           "Clean Typography",
         ]}
       >

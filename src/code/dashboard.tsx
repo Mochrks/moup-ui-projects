@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
-import { Button } from "@/components/ui-shadcn/button";
-import { Input } from "@/components/ui-shadcn/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui-shadcn/card";
+import { Button } from "@/components/ui-neobrutalism/button";
+import { Input } from "@/components/ui-neobrutalism/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui-neobrutalism/card";
 import {
   BarChart,
   Bar,
@@ -27,16 +27,16 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui-shadcn/table";
+} from "@/components/ui-neobrutalism/table";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui-shadcn/select";
+} from "@/components/ui-neobrutalism/select";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui-shadcn/avatar";
-import { Switch } from "@/components/ui-shadcn/switch";
+import { Switch } from "@/components/ui-neobrutalism/switch";
 import { Checkbox } from "@/components/ui-shadcn/checkbox";
 import {
   DropdownMenu,
@@ -54,7 +54,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui-shadcn/dialog";
-import { Label } from "@/components/ui-shadcn/label";
+import { Label } from "@/components/ui-neobrutalism/label";
 import {
   BarChart3,
   Home,
@@ -70,6 +70,8 @@ import {
   User,
   Key,
   LogOut,
+  DollarSign,
+  ShoppingCart,
 } from "lucide-react";
 
 const monthlyData = [
@@ -134,7 +136,7 @@ export const DashboardPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage] = useState(5);
   const [newTask, setNewTask] = useState("");
   const [taskList, setTaskList] = useState(initialTasks);
   const [timer, setTimer] = useState(0);
@@ -265,16 +267,25 @@ export const DashboardPage = () => {
               <h2 className=" text-2xl font-semibold dark:text-white ">Dashboard</h2>
             </div>
             <nav>
-              <Button variant="ghost" className="w-full justify-start mb-2 dark:hover:bg-gray-600">
+              <Button
+                variant="noShadow"
+                className="w-full justify-start mb-2 dark:hover:bg-gray-600"
+              >
                 <Home className="mr-2 h-4 w-4" /> Home
               </Button>
-              <Button variant="ghost" className="w-full justify-start mb-2 dark:hover:bg-gray-600">
+              <Button
+                variant="noShadow"
+                className="w-full justify-start mb-2 dark:hover:bg-gray-600"
+              >
                 <Users className="mr-2 h-4 w-4" /> Users
               </Button>
-              <Button variant="ghost" className="w-full justify-start mb-2 dark:hover:bg-gray-600">
+              <Button
+                variant="noShadow"
+                className="w-full justify-start mb-2 dark:hover:bg-gray-600"
+              >
                 <BarChart3 className="mr-2 h-4 w-4" /> Analytics
               </Button>
-              <Button variant="ghost" className="w-full justify-start dark:hover:bg-gray-600">
+              <Button variant="noShadow" className="w-full justify-start dark:hover:bg-gray-600">
                 <Settings className="mr-2 h-4 w-4" /> Settings
               </Button>
             </nav>
@@ -287,7 +298,7 @@ export const DashboardPage = () => {
             <div className="flex flex-row w-full">
               <div className="flex text-center items-center dark:text-white ml-5 ">
                 <Button
-                  variant="ghost"
+                  variant="noShadow"
                   onClick={() => setSidebarOpen(!sidebarOpen)}
                   className="dark:hover:bg-gray-600"
                 >
@@ -345,111 +356,116 @@ export const DashboardPage = () => {
 
               {/* Overview Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <Card>
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                    </svg>
+                    <CardTitle className="text-sm font-black uppercase italic">
+                      Total Revenue
+                    </CardTitle>
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 border-2 border-black flex items-center justify-center">
+                      <DollarSign className="h-4 w-4 text-black" />
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">$45,231.89</div>
-                    <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+                    <div className="text-2xl font-black">$45,231.89</div>
+                    <p className="text-[10px] font-bold text-green-600 tracking-wider uppercase">
+                      +20.1% from last month
+                    </p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Subscriptions</CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
+                    <CardTitle className="text-sm font-black uppercase italic">
+                      Subscriptions
+                    </CardTitle>
+                    <div className="w-8 h-8 rounded-lg bg-green-100 border-2 border-black flex items-center justify-center">
+                      <Users className="h-4 w-4 text-black" />
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+2350</div>
-                    <p className="text-xs text-muted-foreground">+180.1% from last month</p>
+                    <div className="text-2xl font-black">+2,350</div>
+                    <p className="text-[10px] font-bold text-green-600 tracking-wider uppercase">
+                      +180.1% from last month
+                    </p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Sales</CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <rect width="20" height="14" x="2" y="5" rx="2" />
-                      <path d="M2 10h20" />
-                    </svg>
+                    <CardTitle className="text-sm font-black uppercase italic">Sales</CardTitle>
+                    <div className="w-8 h-8 rounded-lg bg-purple-100 border-2 border-black flex items-center justify-center">
+                      <ShoppingCart className="h-4 w-4 text-black" />
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+12,234</div>
-                    <p className="text-xs text-muted-foreground">+19% from last month</p>
+                    <div className="text-2xl font-black">+12,234</div>
+                    <p className="text-[10px] font-bold text-green-600 tracking-wider uppercase">
+                      +19% from last month
+                    </p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Active Now</CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                    </svg>
+                    <CardTitle className="text-sm font-black uppercase italic">
+                      Active Now
+                    </CardTitle>
+                    <div className="w-8 h-8 rounded-lg bg-yellow-100 border-2 border-black flex items-center justify-center">
+                      <Clock className="h-4 w-4 text-black" />
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+573</div>
-                    <p className="text-xs text-muted-foreground">+201 since last hour</p>
+                    <div className="text-2xl font-black">+573</div>
+                    <p className="text-[10px] font-bold text-green-600 tracking-wider uppercase">
+                      +201 since last hour
+                    </p>
                   </CardContent>
                 </Card>
               </div>
 
               {/* Charts */}
               <div className="mb-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Monthly Performance</CardTitle>
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
+                  <CardHeader className="border-b-4 border-black bg-zinc-50">
+                    <CardTitle className="font-black uppercase tracking-tight">
+                      Monthly Performance
+                    </CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="pt-6">
                     <ResponsiveContainer width="100%" height={300}>
                       <BarChart data={monthlyData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <Bar dataKey="pv" fill="#8884d8" />
-                        <Bar dataKey="uv" fill="#82ca9d" />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#eee" vertical={false} />
+                        <XAxis
+                          dataKey="name"
+                          axisLine={{ stroke: "#000", strokeWidth: 2 }}
+                          tickLine={false}
+                          tick={{ fontWeight: "bold" }}
+                        />
+                        <YAxis
+                          axisLine={{ stroke: "#000", strokeWidth: 2 }}
+                          tickLine={false}
+                          tick={{ fontWeight: "bold" }}
+                        />
+                        <Tooltip
+                          contentStyle={{
+                            border: "4px solid #000",
+                            borderRadius: "8px",
+                            fontWeight: "bold",
+                          }}
+                          cursor={{ fill: "#ffe135", opacity: 0.1 }}
+                        />
+                        <Legend wrapperStyle={{ fontWeight: "bold", paddingTop: "20px" }} />
+                        <Bar
+                          dataKey="pv"
+                          fill="#ffe135"
+                          stroke="#000"
+                          strokeWidth={2}
+                          radius={[4, 4, 0, 0]}
+                        />
+                        <Bar
+                          dataKey="uv"
+                          fill="#34A853"
+                          stroke="#000"
+                          strokeWidth={2}
+                          radius={[4, 4, 0, 0]}
+                        />
                       </BarChart>
                     </ResponsiveContainer>
                   </CardContent>
@@ -577,11 +593,14 @@ export const DashboardPage = () => {
 
               {/* Data Table with Filtering, Sorting, and Pagination */}
               <div className="mb-8">
-                <Card>
-                  <CardHeader>
-                    <div className="flex justify-between">
-                      <CardTitle>User Data</CardTitle>
-                      <button
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
+                  <CardHeader className="border-b-4 border-black bg-[#ffe135]">
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="font-black uppercase italic text-2xl">
+                        User Data
+                      </CardTitle>
+                      <Button
+                        className="bg-black text-white hover:bg-zinc-800 border-2 border-black shadow-[2px_2px_0_0_#000]"
                         onClick={() =>
                           setTableData([
                             ...tableData,
@@ -594,91 +613,102 @@ export const DashboardPage = () => {
                           ])
                         }
                       >
-                        Tambah Data
-                      </button>
+                        <Plus className="mr-2 h-4 w-4" /> Add Row
+                      </Button>
                     </div>
                   </CardHeader>
 
-                  <CardContent>
-                    <div className="flex flex-col md:flex-row justify-between mb-4 space-y-2 md:space-y-0">
+                  <CardContent className="pt-6">
+                    <div className="flex flex-col md:flex-row justify-between mb-6 gap-4">
                       <Input
                         type="text"
                         placeholder="Search users..."
-                        className="max-w-sm"
+                        className="max-w-sm border-2 border-black shadow-[2px_2px_0_0_#000] font-bold"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
-                      <div className="flex space-x-2">
+                      <div className="flex gap-2">
                         <Select value={statusFilter} onValueChange={setStatusFilter}>
-                          <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Filter by status" />
+                          <SelectTrigger className="w-[180px] border-2 border-black font-bold shadow-[2px_2px_0_0_#000]">
+                            <SelectValue placeholder="Status" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="border-2 border-black bg-white">
                             <SelectItem value="all">All</SelectItem>
                             <SelectItem value="Active">Active</SelectItem>
                             <SelectItem value="Inactive">Inactive</SelectItem>
                           </SelectContent>
                         </Select>
-                        <Select
-                          value={itemsPerPage.toString()}
-                          onValueChange={(value) => setItemsPerPage(Number(value))}
-                        >
-                          <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Items per page" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="5">5 per page</SelectItem>
-                            <SelectItem value="10">10 per page</SelectItem>
-                            <SelectItem value="20">20 per page</SelectItem>
-                          </SelectContent>
-                        </Select>
                       </div>
                     </div>
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead onClick={() => requestSort("name")} className="cursor-pointer">
-                            Name {getSortIcon("name")}
-                          </TableHead>
-                          <TableHead
-                            onClick={() => requestSort("email")}
-                            className="cursor-pointer"
-                          >
-                            Email {getSortIcon("email")}
-                          </TableHead>
-                          <TableHead
-                            onClick={() => requestSort("status")}
-                            className="cursor-pointer"
-                          >
-                            Status {getSortIcon("status")}
-                          </TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {currentItems.map((row) => (
-                          <TableRow key={row.id}>
-                            <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.email}</TableCell>
-                            <TableCell>{row.status}</TableCell>
+                    <div className="border-4 border-black rounded-lg overflow-hidden shadow-[4px_4px_0_0_#000]">
+                      <Table>
+                        <TableHeader className="bg-zinc-100 border-b-2 border-black">
+                          <TableRow>
+                            <TableHead
+                              onClick={() => requestSort("name")}
+                              className="cursor-pointer font-black text-black"
+                            >
+                              <div className="flex items-center gap-2">
+                                Name {getSortIcon("name")}
+                              </div>
+                            </TableHead>
+                            <TableHead
+                              onClick={() => requestSort("email")}
+                              className="cursor-pointer font-black text-black"
+                            >
+                              <div className="flex items-center gap-2">
+                                Email {getSortIcon("email")}
+                              </div>
+                            </TableHead>
+                            <TableHead
+                              onClick={() => requestSort("status")}
+                              className="cursor-pointer font-black text-black"
+                            >
+                              <div className="flex items-center gap-2">
+                                Status {getSortIcon("status")}
+                              </div>
+                            </TableHead>
                           </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                    <div className="flex justify-between items-center mt-4">
-                      <div>
+                        </TableHeader>
+                        <TableBody>
+                          {currentItems.map((row) => (
+                            <TableRow
+                              key={row.id}
+                              className="border-b border-black/10 hover:bg-zinc-50"
+                            >
+                              <TableCell className="font-bold">{row.name}</TableCell>
+                              <TableCell>{row.email}</TableCell>
+                              <TableCell>
+                                <span
+                                  className={`px-2 py-1 rounded-md border-2 border-black text-[10px] font-black uppercase ${row.status === "Active" ? "bg-green-400" : "bg-red-400"}`}
+                                >
+                                  {row.status}
+                                </span>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </div>
+                    <div className="flex justify-between items-center mt-6">
+                      <div className="text-xs font-bold text-zinc-500">
                         Showing{" "}
-                        {Math.min((currentPage - 1) * itemsPerPage + 1, filteredData.length)} to{" "}
+                        {Math.min((currentPage - 1) * itemsPerPage + 1, filteredData.length)}-
                         {Math.min(currentPage * itemsPerPage, filteredData.length)} of{" "}
                         {filteredData.length} entries
                       </div>
                       <div className="flex space-x-2">
                         <Button
+                          variant="neutral"
+                          className="border-2 border-black font-black uppercase text-xs"
                           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                           disabled={currentPage === 1}
                         >
-                          Previous
+                          Prev
                         </Button>
                         <Button
+                          variant="neutral"
+                          className="border-2 border-black font-black uppercase text-xs"
                           onClick={() =>
                             setCurrentPage((prev) =>
                               Math.min(prev + 1, Math.ceil(filteredData.length / itemsPerPage))
@@ -696,66 +726,81 @@ export const DashboardPage = () => {
 
               {/* Tasks */}
               <div className="mb-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Tasks</CardTitle>
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
+                  <CardHeader className="border-b-4 border-black bg-indigo-500 text-white">
+                    <CardTitle className="font-black uppercase tracking-widest italic">
+                      Tasks & Workflow
+                    </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <form onSubmit={handleAddTask} className="flex space-x-2 mb-4">
+                  <CardContent className="pt-6">
+                    <form onSubmit={handleAddTask} className="flex space-x-2 mb-6">
                       <Input
                         type="text"
                         placeholder="Add a new task..."
+                        className="border-2 border-black font-bold shadow-[2px_2px_0_0_#000]"
                         value={newTask}
                         onChange={(e) => setNewTask(e.target.value)}
                       />
-                      <Button type="submit">
-                        <Plus className="h-4 w-4" />
-                        Add Task
+                      <Button
+                        type="submit"
+                        className="bg-[#ffe135] text-black border-2 border-black shadow-[2px_2px_0_0_#000] font-black uppercase italic active:shadow-none active:translate-x-[1px] active:translate-y-[1px]"
+                      >
+                        <Plus className="h-4 w-4 mr-1" /> Add
                       </Button>
                     </form>
-                    {taskList.map((task) => (
-                      <div key={task.id} className="flex items-center space-x-2 mb-2">
-                        <Checkbox
-                          id={`task-${task.id}`}
-                          checked={task.completed}
-                          onCheckedChange={() => toggleTaskCompletion(task.id)}
-                        />
-                        <label
-                          htmlFor={`task-${task.id}`}
-                          className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${
-                            task.completed ? "line-through text-muted-foreground" : ""
-                          }`}
+                    <div className="space-y-3">
+                      {taskList.map((task) => (
+                        <div
+                          key={task.id}
+                          className="flex items-center space-x-3 p-3 border-2 border-black rounded-lg bg-zinc-50 shadow-[2px_2px_0_0_#000]"
                         >
-                          {task.title}
-                        </label>
-                      </div>
-                    ))}
+                          <Checkbox
+                            id={`task-${task.id}`}
+                            checked={task.completed}
+                            onCheckedChange={() => toggleTaskCompletion(task.id)}
+                            className="border-2 border-black data-[state=checked]:bg-[#ffe135]"
+                          />
+                          <label
+                            htmlFor={`task-${task.id}`}
+                            className={`text-sm font-black uppercase tracking-tight leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${
+                              task.completed
+                                ? "line-through text-black/40 decoration-black/40 decoration-2"
+                                : "text-black"
+                            }`}
+                          >
+                            {task.title}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
               </div>
 
               {/* Calendar, Timer, and Gallery */}
               <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Calendar</CardTitle>
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
+                  <CardHeader className="border-b-4 border-black bg-pink-400">
+                    <CardTitle className="font-black uppercase italic">Calendar</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      className="rounded-md border"
-                    />
+                  <CardContent className="pt-6">
+                    <div className="border-2 border-black rounded-lg p-2 shadow-[2px_2px_0_0_#000]">
+                      <Calendar
+                        mode="single"
+                        selected={date}
+                        onSelect={setDate}
+                        className="rounded-md"
+                      />
+                    </div>
                   </CardContent>
                 </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Timer and Gallery</CardTitle>
+                <Card className="border-4 border-black shadow-[4px_4px_0_0_#000]">
+                  <CardHeader className="border-b-4 border-black bg-yellow-400">
+                    <CardTitle className="font-black uppercase italic">Tools & Gallery</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="mb-4">
-                      <div className="text-4xl font-bold mb-2">
+                  <CardContent className="pt-6 space-y-6">
+                    <div className="p-4 border-4 border-black bg-zinc-900 text-white rounded-xl shadow-[4px_4px_0_0_#ffe135]">
+                      <div className="text-5xl font-black mb-4 font-mono tracking-tighter">
                         {Math.floor(timer / 3600)
                           .toString()
                           .padStart(2, "0")}
@@ -765,27 +810,49 @@ export const DashboardPage = () => {
                           .padStart(2, "0")}
                         :{(timer % 60).toString().padStart(2, "0")}
                       </div>
-                      <div className="flex space-x-2">
-                        <Button onClick={startTimer} disabled={isTimerRunning}>
-                          <Clock className="h-4 w-4 mr-2" />
+                      <div className="flex gap-2">
+                        <Button
+                          onClick={startTimer}
+                          disabled={isTimerRunning}
+                          className="bg-[#ffe135] text-black border-2 border-black font-black uppercase text-xs"
+                        >
                           Start
                         </Button>
-                        <Button onClick={stopTimer} disabled={!isTimerRunning}>
+                        <Button
+                          onClick={stopTimer}
+                          disabled={!isTimerRunning}
+                          className="bg-red-500 text-white border-2 border-black font-black uppercase text-xs"
+                        >
                           Stop
                         </Button>
-                        <Button onClick={resetTimer}>Reset</Button>
+                        <Button
+                          onClick={resetTimer}
+                          variant="neutral"
+                          className="border-2 border-white text-white font-black uppercase text-xs hover:bg-white hover:text-black"
+                        >
+                          Reset
+                        </Button>
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">Gallery</h3>
-                      <div className="grid grid-cols-2 gap-2">
+                      <h3 className="text-sm font-black uppercase tracking-widest mb-3 italic underline decoration-4 decoration-[#ffe135] underline-offset-4">
+                        Media Assets
+                      </h3>
+                      <div className="grid grid-cols-2 gap-3">
                         {[1, 2, 3, 4].map((id) => (
-                          <img
+                          <div
                             key={id}
-                            src="https://picsum.photos/id/1018/600/400"
-                            alt={`Gallery photo ${id}`}
-                            className="w-full h-auto rounded-md"
-                          />
+                            className="group relative border-2 border-black rounded-lg overflow-hidden shadow-[2px_2px_0_0_#000] hover:shadow-[4px_4px_0_0_#000] transition-all"
+                          >
+                            <img
+                              src={`https://picsum.photos/id/${10 + id}/400/300`}
+                              alt={`Gallery photo ${id}`}
+                              className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-300"
+                            />
+                            <div className="absolute top-2 left-2 px-2 py-0.5 bg-white border-2 border-black text-[10px] font-black uppercase">
+                              IMG_{id}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     </div>

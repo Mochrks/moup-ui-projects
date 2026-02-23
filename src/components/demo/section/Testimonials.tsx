@@ -72,7 +72,7 @@ export const Testimonials = () => (
         features={[
           "Background Decorative Quote",
           "Large Scale",
-          "Black & Yellow Theme",
+          "Black & yellow Theme",
           "High Visibility",
         ]}
       >

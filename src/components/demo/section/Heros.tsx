@@ -1,92 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import { Engine, Container } from "@tsparticles/engine";
 import CodePreview from "../../ui-main/CodePriview";
 import { SectionDoc, ComponentBlock } from "@/components/ui-main/SectionDoc";
-import { sampleCodeHeros, sampleCodeHerosNext, sampleCodeHerosHtml } from "@/data/code/heros";
+import { sampleCodeHeros } from "@/data/code/heros";
 import { ContentLayout } from "@/layout/ContentLayout";
-
-// ─── Particle Hero Preview Component ─────────────────────────────────────────
-const ParticleBackground: React.FC = () => {
-  const [init, setInit] = useState(false);
-
-  useEffect(() => {
-    initParticlesEngine(async (engine: Engine) => {
-      await loadSlim(engine);
-    }).then(() => setInit(true));
-  }, []);
-
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
-
-  if (!init) return <></>;
-  return (
-    <div className="relative w-full h-[400px] overflow-hidden">
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={{
-          background: { color: { value: "#0d47a1" } },
-          fpsLimit: 120,
-          interactivity: {
-            events: {
-              onClick: { enable: true, mode: "push" },
-              onHover: { enable: true, mode: "repulse" },
-            },
-            modes: {
-              push: { quantity: 4 },
-              repulse: { distance: 200, duration: 0.4 },
-            },
-          },
-          particles: {
-            color: { value: "#ffffff" },
-            links: { color: "#ffffff", distance: 150, enable: true, opacity: 0.5, width: 1 },
-            move: {
-              direction: "none",
-              enable: true,
-              outModes: { default: "bounce" },
-              random: false,
-              speed: 4,
-              straight: false,
-            },
-            number: { density: { enable: true }, value: 80 },
-            opacity: { value: 0.5 },
-            shape: { type: "circle" },
-            size: { value: { min: 1, max: 5 } },
-          },
-          detectRetina: true,
-        }}
-      />
-    </div>
-  );
-};
-
-const HeroPreview: React.FC = () => (
-  <div className="relative w-full overflow-hidden bg-[#0d47a1]">
-    <ParticleBackground />
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 z-30 text-white text-center px-6">
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm font-semibold">
-        🚀 Interactive Particle Network
-      </div>
-      <h1 className="text-3xl md:text-4xl font-black leading-tight">Animated Hero Sections</h1>
-      <p className="text-white/70 text-sm max-w-sm leading-relaxed">
-        Stunning particle backgrounds powered by tsParticles. Hover to repulse, click to add more.
-      </p>
-      <div className="flex gap-3 mt-2">
-        <button className="px-5 py-2 bg-[#ffe135] text-black font-black rounded-lg border-2 border-white hover:scale-105 transition-transform text-sm">
-          Get Started →
-        </button>
-        <button className="px-5 py-2 bg-white/10 text-white font-bold rounded-lg border border-white/30 hover:bg-white/20 transition-colors backdrop-blur-sm text-sm">
-          View Docs
-        </button>
-      </div>
-    </div>
-  </div>
-);
 
 const HeroIcon = () => (
   <svg
@@ -104,13 +21,26 @@ const HeroIcon = () => (
   </svg>
 );
 
+import {
+  HeroSimpleGradient,
+  HeroGlassmorphism,
+  HeroSplit,
+  HeroFeatures,
+  HeroSearch,
+  HeroDarkMinimal,
+  HeroAnnouncement,
+  HeroVisualList,
+  HeroFloatingUI,
+  HeroTiered,
+} from "@/code/heros-demo";
+
 export const Heros = () => (
   <ContentLayout>
     <SectionDoc
       icon={<HeroIcon />}
       iconBg="bg-[#dbeafe]"
-      title="Animated Heros"
-      componentCount={1}
+      title="Heros"
+      componentCount={11}
       description="Capture your users' attention immediately with stunning animated hero sections. These components combine high-performance particle backgrounds using tsParticles with interactive elements to create an immersive first impression. Perfect for landing pages, SaaS frontpages, and creative portfolios."
       features={[
         "Interactive tsParticles network with hover and click effects",
@@ -120,26 +50,121 @@ export const Heros = () => (
         "Standard Shadcn UI button styles for seamless integration",
         "Optimized for performance with loadSlim tsParticles engine",
       ]}
-      dependencies={["@tsparticles/react", "@tsparticles/slim", "framer-motion"]}
+      dependencies={["@tsparticles/react", "@tsparticles/slim", "framer-motion", "lucide-react"]}
       shadcnDeps={["button", "badge"]}
     >
-      <ComponentBlock
-        title="Interactive Particle Hero"
-        subtitle="Dynamic network background with hero content overlay"
-        features={["tsParticles Engine", "Repulse on Hover", "Push on Click", "Glassmorphism UI"]}
-      >
-        <div className="w-full px-0">
-          <CodePreview
-            title="Particle Network Hero"
-            code={sampleCodeHeros}
-            codeNext={sampleCodeHerosNext}
-            codeHtml={sampleCodeHerosHtml}
-            language="javascript"
-            nameFile="hero-particle.tsx"
-            preview={<HeroPreview />}
-          />
+      <div className="flex flex-col gap-20">
+        <div className="grid grid-cols-1 gap-12">
+          <ComponentBlock title="Simple Gradient" subtitle="Soft background with strong typography">
+            <CodePreview
+              title="Simple Gradient Hero"
+              code={sampleCodeHeros}
+              preview={<HeroSimpleGradient />}
+              language="tsx"
+              nameFile="hero-gradient.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock
+            title="Glassmorphism Premium"
+            subtitle="Vibrant colors with translucent layers"
+          >
+            <CodePreview
+              title="Glass Hero"
+              code={sampleCodeHeros}
+              preview={<HeroGlassmorphism />}
+              language="tsx"
+              nameFile="hero-glass.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock title="Creative Split" subtitle="Dual-pane layout for content & visual">
+            <CodePreview
+              title="Split Hero"
+              code={sampleCodeHeros}
+              preview={<HeroSplit />}
+              language="tsx"
+              nameFile="hero-split.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock title="Feature Matrix" subtitle="Hero combined with key features grid">
+            <CodePreview
+              title="Features Hero"
+              code={sampleCodeHeros}
+              preview={<HeroFeatures />}
+              language="tsx"
+              nameFile="hero-features.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock title="Search Centric" subtitle="Ideal for documentation or search apps">
+            <CodePreview
+              title="Search Hero"
+              code={sampleCodeHeros}
+              preview={<HeroSearch />}
+              language="tsx"
+              nameFile="hero-search.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock title="Dark Minimalist" subtitle="High contrast dark mode design">
+            <CodePreview
+              title="Dark Hero"
+              code={sampleCodeHeros}
+              preview={<HeroDarkMinimal />}
+              language="tsx"
+              nameFile="hero-dark.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock title="Event Announcement" subtitle="Bold banner style for major news">
+            <CodePreview
+              title="Announcement Hero"
+              code={sampleCodeHeros}
+              preview={<HeroAnnouncement />}
+              language="tsx"
+              nameFile="hero-announcement.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock
+            title="Visual Workflow"
+            subtitle="Structured list with visual preview area"
+          >
+            <CodePreview
+              title="Workflow Hero"
+              code={sampleCodeHeros}
+              preview={<HeroVisualList />}
+              language="tsx"
+              nameFile="hero-workflow.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock
+            title="Dynamic Floating UI"
+            subtitle="Playful elements with bouncing animations"
+          >
+            <CodePreview
+              title="Floating Hero"
+              code={sampleCodeHeros}
+              preview={<HeroFloatingUI />}
+              language="tsx"
+              nameFile="hero-floating.tsx"
+            />
+          </ComponentBlock>
+
+          <ComponentBlock title="Conversion Tiered" subtitle="Hybrid hero with pricing comparison">
+            <CodePreview
+              title="Tiered Hero"
+              code={sampleCodeHeros}
+              preview={<HeroTiered />}
+              language="tsx"
+              nameFile="hero-tiered.tsx"
+            />
+          </ComponentBlock>
         </div>
-      </ComponentBlock>
+      </div>
     </SectionDoc>
   </ContentLayout>
 );

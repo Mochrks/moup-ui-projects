@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Button } from "@/components/ui-shadcn/button";
-import { Input } from "@/components/ui-shadcn/input";
-import { Label } from "@/components/ui-shadcn/label";
+import { Button } from "@/components/ui-neobrutalism/button";
+import { Input } from "@/components/ui-neobrutalism/input";
+import { Label } from "@/components/ui-neobrutalism/label";
 import { Textarea } from "@/components/ui-shadcn/textarea";
-import { Switch } from "@/components/ui-shadcn/switch";
+import { Switch } from "@/components/ui-neobrutalism/switch";
 import {
   Card,
   CardContent,
@@ -11,103 +11,149 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui-shadcn/card";
-import { Avatar, AvatarFallback } from "@/components/ui-shadcn/avatar";
-import { Badge } from "@/components/ui-shadcn/badge";
+} from "@/components/ui-neobrutalism/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui-neobrutalism/avatar";
+import { Badge } from "@/components/ui-neobrutalism/badge";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui-shadcn/select";
+} from "@/components/ui-neobrutalism/select";
+import { Zap, Shield, Globe, Terminal, Trash2, Activity, Server } from "lucide-react";
 
 // ─── User Profile Page ────────────────────────────────────────────────────────
 export const UserProfilePage = () => {
   const [editing, setEditing] = useState(false);
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <Card className="overflow-hidden">
+    <div className="w-full max-w-2xl mx-auto p-4">
+      <Card className="overflow-hidden border-4 border-black shadow-[12px_12px_0_0_#000] rounded-[32px] bg-white">
         {/* Cover */}
-        <div className="h-24 bg-gradient-to-r from-slate-700 to-slate-900 relative">
-          <div className="absolute top-3 right-3">
-            <Badge variant="secondary" className="text-xs">
-              Pro Member
+        <div className="h-32 bg-indigo-400 border-b-4 border-black relative overflow-hidden group">
+          <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute top-4 right-4 animate-bounce">
+            <Badge className="bg-black text-white border-2 border-white font-black uppercase italic text-[10px] shadow-[4px_4px_0_0_#000]">
+              APEX_OPERATOR
             </Badge>
+          </div>
+          <div className="absolute bottom-4 right-4">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-400 border-2 border-black" />
+              <div className="w-3 h-3 rounded-full bg-[#ffe135] border-2 border-black" />
+              <div className="w-3 h-3 rounded-full bg-green-400 border-2 border-black" />
+            </div>
           </div>
         </div>
 
         {/* Avatar + Info */}
-        <div className="px-6 pb-4">
-          <div className="flex items-end justify-between -mt-10 mb-4">
-            <Avatar className="w-20 h-20 border-4 border-card ring-2 ring-border">
-              <AvatarFallback className="text-2xl font-semibold text-muted-foreground">
-                AJ
-              </AvatarFallback>
-            </Avatar>
-            <Button variant="outline" size="sm" onClick={() => setEditing(!editing)}>
-              {editing ? "Cancel" : "✏️ Edit Profile"}
+        <div className="px-8 pb-8">
+          <div className="flex items-end justify-between -mt-12 mb-6">
+            <div className="relative">
+              <Avatar className="w-28 h-28 border-8 border-black shadow-[8px_8px_0_0_#000] rotate-3 transition-transform hover:rotate-0">
+                <AvatarImage src="https://i.pravatar.cc/150?u=aj" />
+                <AvatarFallback className="text-3xl font-black text-black bg-[#ffe135]">
+                  AJ
+                </AvatarFallback>
+              </Avatar>
+              <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-black text-white rounded-xl border-4 border-white flex items-center justify-center shadow-[4px_4px_0_0_#000]">
+                <Zap size={18} fill="white" />
+              </div>
+            </div>
+            <Button
+              variant="neutral"
+              className="h-12 border-2 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+              onClick={() => setEditing(!editing)}
+            >
+              {editing ? "ABORT_REWRITE" : "REWRITE_ID_CARD"}
             </Button>
           </div>
 
-          <div className="mb-5">
-            <h2 className="text-xl font-semibold">Alex Johnson</h2>
-            <p className="text-muted-foreground text-sm">
-              Senior UI/UX Designer at PixelCraft Studio
+          <div className="mb-8">
+            <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none mb-2">
+              ALEX_JOHNSON_CORE
+            </h2>
+            <p className="text-black/40 font-black uppercase italic text-xs tracking-widest flex items-center gap-2">
+              <Terminal size={14} /> SENIOR_ARCHITECT @ PIXEL_CRAFT_GRID
             </p>
-            <div className="flex flex-wrap gap-2 mt-2">
-              {["React", "Tailwind", "Figma", "TypeScript"].map((t) => (
-                <span
+            <div className="flex flex-wrap gap-3 mt-6">
+              {["REACT_PROTO", "TAILWIND_SYNC", "FIGMA_LEVEL", "TS_LOGIC"].map((t) => (
+                <Badge
                   key={t}
-                  className="text-xs px-2 py-0.5 bg-muted rounded-full text-muted-foreground"
+                  className="px-4 py-1 bg-black text-white border-2 border-black font-black uppercase italic text-[10px] tracking-widest shadow-[3px_3px_0_0_#ffe135]"
                 >
                   {t}
-                </span>
+                </Badge>
               ))}
             </div>
           </div>
 
           {editing ? (
-            <form className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-1.5">
-                  <Label>First Name</Label>
-                  <Input defaultValue="Alex" />
+            <form
+              className="space-y-6 pt-6 border-t-4 border-black/5"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1">
+                    IDENT_NAME
+                  </Label>
+                  <Input
+                    defaultValue="Alex"
+                    className="h-14 border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#ffe135] focus-visible:ring-0"
+                  />
                 </div>
-                <div className="space-y-1.5">
-                  <Label>Last Name</Label>
-                  <Input defaultValue="Johnson" />
+                <div className="space-y-2">
+                  <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1">
+                    IDENT_SURNAME
+                  </Label>
+                  <Input
+                    defaultValue="Johnson"
+                    className="h-14 border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#ffe135] focus-visible:ring-0"
+                  />
                 </div>
               </div>
-              <div className="space-y-1.5">
-                <Label>Email</Label>
-                <Input defaultValue="alex@pixelcraft.io" type="email" />
-              </div>
-              <div className="space-y-1.5">
-                <Label>Job Title</Label>
-                <Input defaultValue="Senior UI/UX Designer" />
-              </div>
-              <div className="space-y-1.5">
-                <Label>Bio</Label>
-                <Textarea
-                  defaultValue="Passionate about building beautiful, accessible interfaces. 7 years in product design."
-                  className="resize-none"
-                  rows={3}
+              <div className="space-y-2">
+                <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1">
+                  RELAY_EMAIL
+                </Label>
+                <Input
+                  defaultValue="alex@pixelcraft.io"
+                  type="email"
+                  className="h-14 border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#ffe135] focus-visible:ring-0"
                 />
               </div>
-              <Button>Save Changes</Button>
+              <div className="space-y-2">
+                <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1">
+                  MANIFEST_MANIFEST_DESC
+                </Label>
+                <Textarea
+                  defaultValue="Passionate about building beautiful, accessible interfaces. 7 years in product design."
+                  className="resize-none border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#ffe135] focus-visible:ring-0 min-h-[100px]"
+                />
+              </div>
+              <Button className="w-full h-16 bg-black text-white border-2 border-black font-black uppercase italic text-xl shadow-[6px_6px_0_0_#ffe135] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+                SYNCHRONIZE_DATA
+              </Button>
             </form>
           ) : (
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-6 pt-6 border-t-4 border-black/5">
               {[
-                { label: "Projects", value: "48" },
-                { label: "Followers", value: "2.4K" },
-                { label: "Following", value: "183" },
+                { label: "NODES_DEPLOYED", value: "48", color: "bg-pink-400" },
+                { label: "GRID_FOLLOWERS", value: "2.4K", color: "bg-[#ffe135]" },
+                { label: "PULSE_NETWORK", value: "183", color: "bg-indigo-400" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center p-3 rounded-lg bg-muted/40">
-                  <p className="text-xl font-semibold">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground">{stat.label}</p>
+                <div
+                  key={stat.label}
+                  className={`text-center p-6 border-4 border-black shadow-[6px_6px_0_0_#000] rounded-2xl ${stat.color} hover:-translate-y-1 transition-transform`}
+                >
+                  <p className="text-3xl font-black italic tracking-tighter leading-none mb-2">
+                    {stat.value}
+                  </p>
+                  <p className="text-[10px] font-black uppercase italic text-black leading-tight tracking-widest">
+                    {stat.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -127,65 +173,109 @@ export const AccountSettingsPage = () => {
   });
 
   return (
-    <div className="w-full max-w-xl mx-auto space-y-4">
+    <div className="w-full max-w-xl mx-auto space-y-10 p-4">
+      <h2 className="text-4xl font-black italic uppercase tracking-tighter mb-4 border-b-8 border-black pb-4 inline-block">
+        SYSTEM_CONFIG
+      </h2>
+
       {/* Security */}
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg">Security</CardTitle>
-          <CardDescription>Manage your password and authentication</CardDescription>
+      <Card className="border-4 border-black shadow-[10px_10px_0_0_#000] rounded-[32px] bg-white overflow-hidden">
+        <CardHeader className="bg-zinc-50 border-b-4 border-black p-8">
+          <CardTitle className="text-2xl font-black italic uppercase tracking-tighter flex items-center gap-3">
+            <Shield className="text-indigo-600" /> SEC_PROTOCOL
+          </CardTitle>
+          <CardDescription className="font-bold uppercase italic text-[10px] tracking-widest mt-1">
+            Manage encryption and auth vectors
+          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-1.5">
-            <Label>Current Password</Label>
-            <Input type="password" placeholder="••••••••" />
+        <CardContent className="p-8 space-y-6">
+          <div className="space-y-2">
+            <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1 text-black/40">
+              CURRENT_CIPHER
+            </Label>
+            <Input
+              type="password"
+              placeholder="••••••••"
+              className="h-14 border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#000] focus-visible:ring-0"
+            />
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-1.5">
-              <Label>New Password</Label>
-              <Input type="password" placeholder="New password" />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1 text-black/40">
+                GENERATE_NEW_CIPHER
+              </Label>
+              <Input
+                type="password"
+                placeholder="IDENT_KEY"
+                className="h-14 border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#000] focus-visible:ring-0"
+              />
             </div>
-            <div className="space-y-1.5">
-              <Label>Confirm</Label>
-              <Input type="password" placeholder="Confirm" />
+            <div className="space-y-2">
+              <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1 text-black/40">
+                VERIFY_KEY
+              </Label>
+              <Input
+                type="password"
+                placeholder="RE_IDENT"
+                className="h-14 border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#000] focus-visible:ring-0"
+              />
             </div>
           </div>
         </CardContent>
-        <CardFooter>
-          <Button>Update Password</Button>
+        <CardFooter className="p-8 pt-0">
+          <Button className="w-full h-14 bg-black text-white border-2 border-black font-black uppercase italic text-lg shadow-[4px_4px_0_0_#ffe135] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+            UPDATE_CIPHER_CORE
+          </Button>
         </CardFooter>
       </Card>
 
       {/* Notifications */}
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg">Notifications</CardTitle>
-          <CardDescription>Control how you receive notifications</CardDescription>
+      <Card className="border-4 border-black shadow-[10px_10px_0_0_#000] rounded-[32px] bg-white overflow-hidden">
+        <CardHeader className="bg-zinc-50 border-b-4 border-black p-8">
+          <CardTitle className="text-2xl font-black italic uppercase tracking-tighter flex items-center gap-3">
+            <Activity className="text-pink-400" /> PULSE_REPORTS
+          </CardTitle>
+          <CardDescription className="font-bold uppercase italic text-[10px] tracking-widest mt-1">
+            Manage synchronization frequency
+          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className="p-8 space-y-4">
           {[
             {
               key: "email" as const,
-              label: "Email Notifications",
-              desc: "Updates, activity, and weekly digest",
+              label: "RELAY_NOTIFICATIONS",
+              desc: "ACTIVITY_LOGS AND WEEKLY_DELTA_REPORTS",
+              color: "bg-indigo-400",
             },
-            { key: "push" as const, label: "Push Notifications", desc: "Real-time browser alerts" },
+            {
+              key: "push" as const,
+              label: "TERMINAL_ALERTS",
+              desc: "REAL_TIME_NODE_ALERTS",
+              color: "bg-[#ffe135]",
+            },
             {
               key: "marketing" as const,
-              label: "Marketing Emails",
-              desc: "Product news and special offers",
+              label: "PROTOCOL_UPDATES",
+              desc: "NEW_CORE_MODULES AND SECURITY_BULLETINS",
+              color: "bg-pink-400",
             },
           ].map((item) => (
             <div
               key={item.key}
-              className="flex items-center justify-between p-3 rounded-lg bg-muted/30"
+              className="flex items-center justify-between p-6 rounded-2xl border-4 border-black bg-white shadow-[4px_4px_0_0_#000] hover:translate-x-1 transition-transform"
             >
               <div>
-                <p className="font-medium text-sm">{item.label}</p>
-                <p className="text-xs text-muted-foreground">{item.desc}</p>
+                <p className="font-black italic uppercase tracking-tighter text-sm leading-none">
+                  {item.label}
+                </p>
+                <p className="text-[10px] font-black uppercase italic text-black/40 tracking-[0.05em] mt-2">
+                  {item.desc}
+                </p>
               </div>
               <Switch
                 checked={notifications[item.key]}
                 onCheckedChange={(v) => setNotifications((prev) => ({ ...prev, [item.key]: v }))}
+                className="scale-125 border-4 border-black data-[state=checked]:bg-green-400"
               />
             </div>
           ))}
@@ -193,47 +283,71 @@ export const AccountSettingsPage = () => {
       </Card>
 
       {/* Preferences */}
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg">Preferences</CardTitle>
+      <Card className="border-4 border-black shadow-[10px_10px_0_0_#000] rounded-[32px] bg-white overflow-hidden">
+        <CardHeader className="p-8 border-b-4 border-black">
+          <CardTitle className="text-2xl font-black italic uppercase tracking-tighter flex items-center gap-3">
+            <Globe className="text-[#ffe135]" /> REGION_LOGS
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="space-y-1.5">
-            <Label>Language</Label>
+        <CardContent className="p-8 space-y-6">
+          <div className="space-y-2">
+            <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1 text-black/40">
+              LANGUAGE_MODULE
+            </Label>
             <Select defaultValue="en">
-              <SelectTrigger>
+              <SelectTrigger className="h-14 border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#000] focus-visible:ring-0 bg-white">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                {["English", "Spanish", "French", "German", "Japanese"].map((lang, i) => (
-                  <SelectItem key={lang} value={["en", "es", "fr", "de", "ja"][i]}>
-                    {lang}
-                  </SelectItem>
-                ))}
+              <SelectContent className="border-4 border-black shadow-[8px_8px_0_0_#000] rounded-xl overflow-hidden font-black uppercase italic">
+                {["English_EN", "Spanish_ES", "French_FR", "German_DE", "Japanese_JA"].map(
+                  (lang, i) => (
+                    <SelectItem
+                      key={lang}
+                      value={["en", "es", "fr", "de", "ja"][i]}
+                      className="hover:bg-[#ffe135] transition-colors py-3"
+                    >
+                      {lang}
+                    </SelectItem>
+                  )
+                )}
               </SelectContent>
             </Select>
           </div>
-          <div className="space-y-1.5">
-            <Label>Timezone</Label>
+          <div className="space-y-2">
+            <Label className="font-black uppercase italic text-[10px] tracking-widest ml-1 text-black/40">
+              TIME_SECTOR
+            </Label>
             <Select defaultValue="utc7">
-              <SelectTrigger>
+              <SelectTrigger className="h-14 border-4 border-black font-black uppercase italic shadow-[4px_4px_0_0_#000] focus-visible:ring-0 bg-white">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="utc-8">UTC-8 Pacific</SelectItem>
-                <SelectItem value="utc-5">UTC-5 Eastern</SelectItem>
-                <SelectItem value="utc0">UTC+0 London</SelectItem>
-                <SelectItem value="utc7">UTC+7 Jakarta</SelectItem>
-                <SelectItem value="utc9">UTC+9 Tokyo</SelectItem>
+              <SelectContent className="border-4 border-black shadow-[8px_8px_0_0_#000] rounded-xl overflow-hidden font-black uppercase italic">
+                <SelectItem value="utc-8" className="hover:bg-indigo-400 py-3">
+                  UTC_8_PACIFIC
+                </SelectItem>
+                <SelectItem value="utc-5" className="hover:bg-indigo-400 py-3">
+                  UTC_5_EASTERN
+                </SelectItem>
+                <SelectItem value="utc0" className="hover:bg-indigo-400 py-3">
+                  UTC_0_LONDON
+                </SelectItem>
+                <SelectItem value="utc7" className="hover:bg-indigo-400 py-3">
+                  UTC_7_JAKARTA
+                </SelectItem>
+                <SelectItem value="utc9" className="hover:bg-indigo-400 py-3">
+                  UTC_9_TOKYO
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between items-center">
-          <button className="text-sm text-muted-foreground hover:text-destructive underline transition-colors">
-            Delete Account
+        <CardFooter className="p-8 bg-zinc-50 border-t-2 border-dashed border-black flex flex-col md:flex-row gap-6 justify-between items-center">
+          <button className="flex items-center gap-2 font-black uppercase italic text-xs text-red-500 hover:bg-red-50 px-4 py-2 border-2 border-transparent hover:border-black rounded-lg transition-all group">
+            <Trash2 size={16} /> WIPE_NODE_DATA
           </button>
-          <Button>Save Settings</Button>
+          <Button className="h-14 px-8 bg-black text-white border-2 border-black font-black uppercase italic text-lg shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+            SYNC_SETTINGS_CORE
+          </Button>
         </CardFooter>
       </Card>
     </div>
@@ -247,39 +361,51 @@ export const UserDashboard = () => {
       id: "#ORD-8821",
       date: "Feb 18, 2025",
       amount: "$149",
-      status: "Completed",
-      variant: "bg-green-50 text-green-700",
+      status: "COMPLETED",
+      variant: "bg-green-400 border-green-500",
     },
     {
       id: "#ORD-8820",
       date: "Feb 15, 2025",
       amount: "$79",
-      status: "Processing",
-      variant: "bg-blue-50 text-blue-700",
+      status: "PROCESSING",
+      variant: "bg-indigo-400 border-indigo-500",
     },
     {
       id: "#ORD-8818",
       date: "Feb 10, 2025",
       amount: "$249",
-      status: "Shipped",
-      variant: "bg-yellow-50 text-yellow-800",
+      status: "SHIPPED",
+      variant: "bg-pink-400 border-pink-500",
     },
   ];
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-4">
+    <div className="w-full max-w-2xl mx-auto space-y-8 p-4">
       {/* Welcome banner */}
-      <Card className="bg-slate-900 text-white border-0">
-        <CardContent className="pt-5 pb-5 flex items-center justify-between">
-          <div>
-            <p className="text-slate-400 text-xs font-medium uppercase tracking-wider">
-              Welcome back
-            </p>
-            <h2 className="text-xl font-semibold mt-1 text-white">Alex Johnson 👋</h2>
-            <p className="text-slate-400 text-sm mt-1">Member since Jan 2024 · Pro Plan</p>
+      <Card className="bg-black text-white border-4 border-black shadow-[12px_12px_0_0_#FFE135] rounded-[32px] overflow-hidden group">
+        <CardContent className="p-10 flex items-center justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-100 transition-opacity duration-700">
+            <Zap
+              size={140}
+              fill="white"
+              className="rotate-12 group-hover:rotate-0 transition-transform"
+            />
           </div>
-          <Avatar className="w-14 h-14">
-            <AvatarFallback className="bg-slate-700 text-white font-semibold text-lg">
+          <div className="relative z-10">
+            <p className="text-indigo-400 font-black uppercase italic text-[10px] tracking-[0.2em] mb-2">
+              UNIT_PULSE_ACTIVE
+            </p>
+            <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none text-white">
+              HI_ALEX_JOHNSON_CORE 👋
+            </h2>
+            <p className="text-white/40 font-black uppercase italic text-xs mt-3 bg-white/5 border border-white/10 px-4 py-1 inline-block rounded-full">
+              PRO_ENTITY // SINCE_JAN_2024
+            </p>
+          </div>
+          <Avatar className="w-20 h-20 border-4 border-white shadow-[6px_6px_0_0_#FFE135] relative z-20">
+            <AvatarImage src="https://i.pravatar.cc/150?u=aj" />
+            <AvatarFallback className="bg-slate-700 text-white font-black text-2xl">
               AJ
             </AvatarFallback>
           </Avatar>
@@ -287,45 +413,89 @@ export const UserDashboard = () => {
       </Card>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-6">
         {[
-          { label: "Total Orders", value: "24", icon: "📦" },
-          { label: "Total Spent", value: "$1.2K", icon: "💳" },
-          { label: "Saved Items", value: "17", icon: "❤️" },
+          { label: "LOGISTICS_SYNC", value: "24", icon: <Server size={24} />, color: "bg-white" },
+          {
+            label: "TOTAL_DEP_VAL",
+            value: "$1.2K",
+            icon: <Zap size={24} />,
+            color: "bg-[#ffe135]",
+          },
+          {
+            label: "SECURE_NODES",
+            value: "17",
+            icon: <Shield size={24} />,
+            color: "bg-indigo-400",
+          },
         ].map((s) => (
-          <Card key={s.label}>
-            <CardContent className="pt-4 pb-4">
-              <p className="text-2xl mb-1">{s.icon}</p>
-              <p className="text-xl font-semibold">{s.value}</p>
-              <p className="text-xs text-muted-foreground">{s.label}</p>
+          <Card
+            key={s.label}
+            className={`border-4 border-black shadow-[8px_8px_0_0_#000] rounded-3xl ${s.color} hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all group`}
+          >
+            <CardContent className="p-8 text-center flex flex-col items-center">
+              <div className="w-12 h-12 bg-black text-white rounded-xl border-2 border-white flex items-center justify-center shadow-[4px_4px_0_0_#000] mb-4 group-hover:rotate-12 transition-transform">
+                {s.icon}
+              </div>
+              <p className="text-3xl font-black italic tracking-tighter leading-none mb-1">
+                {s.value}
+              </p>
+              <p className="text-[9px] font-black uppercase italic text-black/50 tracking-widest">
+                {s.label}
+              </p>
             </CardContent>
           </Card>
         ))}
       </div>
 
       {/* Recent Orders */}
-      <Card>
-        <CardHeader className="pb-3 flex flex-row items-center justify-between">
-          <CardTitle className="text-lg">Recent Orders</CardTitle>
-          <Button variant="outline" size="sm" className="text-xs h-7">
-            View all
+      <Card className="border-4 border-black shadow-[10px_10px_0_0_#000] rounded-[32px] bg-white overflow-hidden">
+        <CardHeader className="p-8 border-b-4 border-black bg-zinc-50 flex flex-row items-center justify-between">
+          <div>
+            <CardTitle className="text-2xl font-black italic uppercase tracking-tighter">
+              DATA_TRANSMISSIONS
+            </CardTitle>
+            <p className="text-[10px] font-black uppercase italic text-black/40 mt-1 tracking-widest">
+              Recent node deployments
+            </p>
+          </div>
+          <Button
+            variant="neutral"
+            className="border-2 border-black font-black uppercase italic text-[10px] h-10 px-4 shadow-[4px_4px_0_0_#000] hover:shadow-none transition-all"
+          >
+            VIEW_LOGS
           </Button>
         </CardHeader>
-        <CardContent className="space-y-2">
+        <CardContent className="p-8 space-y-4">
           {orders.map((order) => (
             <div
               key={order.id}
-              className="flex items-center justify-between p-3 rounded-lg bg-muted/30"
+              className="flex items-center justify-between p-6 rounded-2xl border-4 border-black bg-white shadow-[6px_6px_0_0_#000] hover:translate-x-1 transition-transform group"
             >
-              <div>
-                <p className="font-medium text-sm">{order.id}</p>
-                <p className="text-xs text-muted-foreground">{order.date}</p>
+              <div className="flex items-center gap-4">
+                <div
+                  className={`w-12 h-12 rounded-xl border-2 border-black flex items-center justify-center font-black italic text-xs shadow-[2px_2px_0_0_#000] ${order.variant.split(" ")[0]}`}
+                >
+                  <Activity size={20} className="text-black" />
+                </div>
+                <div>
+                  <p className="font-black italic uppercase tracking-tighter text-base leading-none group-hover:text-indigo-600 transition-colors">
+                    {order.id}
+                  </p>
+                  <p className="text-[10px] font-black uppercase italic text-black/40 tracking-widest mt-1">
+                    {order.date}_TIMESTAMP
+                  </p>
+                </div>
               </div>
               <div className="text-right">
-                <p className="font-medium text-sm">{order.amount}</p>
-                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${order.variant}`}>
+                <p className="text-xl font-black italic tracking-tighter underline decoration-2 decoration-[#ffe135] underline-offset-4 mb-2">
+                  {order.amount}
+                </p>
+                <Badge
+                  className={`${order.variant} border-2 border-black text-black font-black uppercase italic text-[9px] px-3 shadow-[2px_2px_0_0_#000]`}
+                >
                   {order.status}
-                </span>
+                </Badge>
               </div>
             </div>
           ))}

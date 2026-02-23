@@ -1,24 +1,35 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui-shadcn/button";
-import { Input } from "@/components/ui-shadcn/input";
-import { Label } from "@/components/ui-shadcn/label";
+import { Button } from "@/components/ui-neobrutalism/button";
+import { Input } from "@/components/ui-neobrutalism/input";
+import { Label } from "@/components/ui-neobrutalism/label";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui-shadcn/card";
+} from "@/components/ui-neobrutalism/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui-shadcn/select";
-import { Badge } from "@/components/ui-shadcn/badge";
-import { Separator } from "@/components/ui-shadcn/separator";
-import { Star, ChevronLeft, ChevronRight, Plus, Minus, Trash2, CheckCircle } from "lucide-react";
+} from "@/components/ui-neobrutalism/select";
+import { Badge } from "@/components/ui-neobrutalism/badge";
+import { Separator } from "@/components/ui-neobrutalism/separator";
+import {
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  Plus,
+  Minus,
+  Trash2,
+  CheckCircle,
+  ShoppingBag,
+  Heart,
+  Eye,
+} from "lucide-react";
 
 export const EcommerceLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="container mx-auto p-4">{children}</div>
@@ -29,79 +40,97 @@ export const ProductListingPage = () => {
   const products = [
     {
       id: 1,
-      name: "Modern Desk Lamp",
+      name: "BRUTAL LAMP v.1",
       price: 59.99,
       image: "https://picsum.photos/id/1018/600/400",
       rating: 4.5,
+      color: "bg-[#ffe135]",
     },
     {
       id: 2,
-      name: "Ergonomic Office Chair",
+      name: "NEO CHAIR PRO",
       price: 199.99,
       image: "https://picsum.photos/id/1018/600/400",
       rating: 4.8,
+      color: "bg-indigo-400",
     },
     {
       id: 3,
-      name: "Wireless Bluetooth Earbuds",
+      name: "TECH BUDS X",
       price: 79.99,
       image: "https://picsum.photos/id/1018/600/400",
       rating: 4.2,
+      color: "bg-pink-400",
     },
     {
       id: 4,
-      name: "Smart Home Security Camera",
+      name: "SECURE CAM 360",
       price: 129.99,
       image: "https://picsum.photos/id/1018/600/400",
       rating: 4.6,
+      color: "bg-green-400",
     },
     {
       id: 5,
-      name: "Portable Power Bank",
+      name: "POWER TANK 20K",
       price: 39.99,
       image: "https://picsum.photos/id/1018/600/400",
       rating: 4.4,
+      color: "bg-orange-400",
     },
     {
       id: 6,
-      name: "Stainless Steel Water Bottle",
+      name: "TITAIN FLASK",
       price: 24.99,
       image: "https://picsum.photos/id/1018/600/400",
       rating: 4.7,
+      color: "bg-purple-400",
     },
   ];
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Our Products</h2>
-        <div className="flex items-center space-x-4">
+    <div className="space-y-10">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end bg-black p-8 border-4 border-black shadow-[8px_8px_0_0_#ffe135] rounded-3xl gap-6">
+        <div>
+          <Badge className="mb-4 bg-[#ffe135] text-black border-2 border-black font-black uppercase italic shadow-[2px_2px_0_0_#fff]">
+            Summer Collection
+          </Badge>
+          <h1 className="text-5xl font-black text-white italic uppercase tracking-tighter leading-none">
+            Market / Shop
+          </h1>
+        </div>
+        <div className="flex flex-wrap items-center gap-4 w-full lg:w-auto">
           <Select defaultValue="featured">
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Sort by" />
+            <SelectTrigger className="w-full sm:w-[200px] h-14 border-4 border-black bg-white font-black uppercase italic shadow-[4px_4px_0_0_#fff]">
+              <SelectValue placeholder="SORT BY" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="featured">Featured</SelectItem>
-              <SelectItem value="price-low-high">Price: Low to High</SelectItem>
-              <SelectItem value="price-high-low">Price: High to Low</SelectItem>
-              <SelectItem value="newest">Newest</SelectItem>
+            <SelectContent className="border-4 border-black">
+              <SelectItem value="featured" className="font-black uppercase">
+                Featured
+              </SelectItem>
+              <SelectItem value="price-low-high" className="font-black uppercase">
+                Price: Low-High
+              </SelectItem>
+              <SelectItem value="price-high-low" className="font-black uppercase">
+                Price: High-Low
+              </SelectItem>
             </SelectContent>
           </Select>
-          <div className="flex border rounded-md">
+          <div className="flex bg-white border-4 border-black shadow-[4px_4px_0_0_#fff] overflow-hidden">
             <Button
-              variant="default"
+              variant="neutral"
               size="icon"
               onClick={() => setView("grid")}
-              className={view === "grid" ? "bg-secondary" : ""}
+              className={`h-12 w-12 rounded-none border-none ${view === "grid" ? "bg-[#ffe135]" : "bg-white"}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
@@ -112,19 +141,19 @@ export const ProductListingPage = () => {
               </svg>
             </Button>
             <Button
-              variant="default"
+              variant="neutral"
               size="icon"
               onClick={() => setView("list")}
-              className={view === "list" ? "bg-secondary" : ""}
+              className={`h-12 w-12 rounded-none border-l-4 border-black ${view === "list" ? "bg-[#ffe135]" : "bg-white"}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
@@ -139,46 +168,105 @@ export const ProductListingPage = () => {
           </div>
         </div>
       </div>
+
       <div
-        className={`grid gap-6 ${view === "grid" ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}
+        className={`grid gap-10 ${view === "grid" ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}
       >
         {products.map((product) => (
-          <Card key={product.id} className={view === "list" ? "flex flex-row" : ""}>
-            <img
-              src={product.image}
-              alt={product.name}
-              className={`object-cover ${view === "grid" ? "h-48 w-full" : "h-full w-48"}`}
-            />
-            <div className="p-4 flex flex-col justify-between flex-grow">
-              <div>
-                <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
-                <div className="flex items-center mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 ${i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"}`}
-                    />
-                  ))}
-                  <span className="ml-2 text-sm text-gray-600">{product.rating}</span>
-                </div>
+          <Card
+            key={product.id}
+            className={`group border-4 border-black shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all rounded-3xl overflow-hidden bg-white ${view === "list" ? "flex flex-col md:flex-row" : ""}`}
+          >
+            <div
+              className={`relative overflow-hidden ${view === "grid" ? "h-64 border-b-4 border-black" : "h-auto w-full md:w-80 md:border-r-4 border-black"}`}
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute top-4 left-4">
+                <Badge
+                  className={`${product.color} text-black border-2 border-black font-black uppercase text-[10px] shadow-[2px_2px_0_0_#000]`}
+                >
+                  HOT ITEM
+                </Badge>
               </div>
-              <div className="flex justify-between items-center mt-4">
-                <span className="font-bold text-lg">${product.price.toFixed(2)}</span>
-                <Button>Add to Cart</Button>
+              <div className="absolute bottom-4 right-4 translate-y-20 group-hover:translate-y-0 transition-transform duration-500 flex flex-col gap-2">
+                <Button
+                  variant="neutral"
+                  size="icon"
+                  className="bg-white border-2 border-black shadow-[2px_2px_0_0_#000]"
+                >
+                  <Heart size={18} />
+                </Button>
+                <Button
+                  variant="neutral"
+                  size="icon"
+                  className="bg-white border-2 border-black shadow-[2px_2px_0_0_#000]"
+                >
+                  <Eye size={18} />
+                </Button>
+              </div>
+            </div>
+            <div className="p-6 flex flex-col justify-between flex-grow bg-white">
+              <div>
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-black text-2xl uppercase italic tracking-tighter leading-none">
+                    {product.name}
+                  </h3>
+                  <div className="flex items-center bg-black text-[#ffe135] px-2 py-1 border-2 border-black rounded shadow-[2px_2px_0_0_#fff]">
+                    <Star className="h-3 w-3 fill-current mr-1" />
+                    <span className="text-[10px] font-black">{product.rating}</span>
+                  </div>
+                </div>
+                <p className="text-[10px] font-bold text-black/50 uppercase tracking-widest mb-4">
+                  Industrial Grade / V.01-B
+                </p>
+              </div>
+              <div className="flex justify-between items-center mt-6">
+                <span className="font-black text-3xl font-mono">${product.price.toFixed(2)}</span>
+                <Button className="h-12 px-6 bg-[#ffe135] text-black border-2 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none font-black uppercase italic transition-all">
+                  ADD TO CART
+                </Button>
               </div>
             </div>
           </Card>
         ))}
       </div>
-      <div className="flex justify-center mt-8 space-x-2">
-        <Button variant="default" size="icon">
-          <ChevronLeft className="h-4 w-4" />
+
+      <div className="flex justify-center mt-12 gap-3">
+        <Button
+          variant="neutral"
+          size="icon"
+          className="border-2 border-black h-12 w-12 bg-white shadow-[4px_4px_0_0_#000]"
+        >
+          <ChevronLeft className="h-5 w-5" />
         </Button>
-        <Button variant="default">1</Button>
-        <Button variant="default">2</Button>
-        <Button variant="default">3</Button>
-        <Button variant="default" size="icon">
-          <ChevronRight className="h-4 w-4" />
+        <Button
+          variant="neutral"
+          className="border-2 border-black h-12 w-12 bg-[#ffe135] shadow-[4px_4px_0_0_#000] font-black"
+        >
+          1
+        </Button>
+        <Button
+          variant="neutral"
+          className="border-2 border-black h-12 w-12 bg-white shadow-[4px_4px_0_0_#000] font-black transition-all hover:bg-zinc-50"
+        >
+          2
+        </Button>
+        <Button
+          variant="neutral"
+          className="border-2 border-black h-12 w-12 bg-white shadow-[4px_4px_0_0_#000] font-black transition-all hover:bg-zinc-50"
+        >
+          3
+        </Button>
+        <Button
+          variant="neutral"
+          size="icon"
+          className="border-2 border-black h-12 w-12 bg-white shadow-[4px_4px_0_0_#000]"
+        >
+          <ChevronRight className="h-5 w-5" />
         </Button>
       </div>
     </div>
@@ -189,103 +277,118 @@ export const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="grid md:grid-cols-2 gap-8">
-      <div className="flex flex-col space-y-4">
-        <div className="flex justify-center items-center ">
+    <div className="grid md:grid-cols-2 gap-12 bg-white border-4 border-black p-8 rounded-3xl shadow-[12px_12px_0_0_#000]">
+      <div className="space-y-6">
+        <div className="relative aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[6px_6px_0_0_#ffe135]">
           <img
-            src="https://picsum.photos/id/1018/600/400"
+            src="https://picsum.photos/id/1018/800/800"
             alt="Product"
-            className="object-cover rounded-lg"
+            className="object-cover w-full h-full"
           />
+          <div className="absolute top-6 left-6 rotate-[-15deg] bg-black text-white border-2 border-white px-4 py-2 font-black italic uppercase shadow-[4px_4px_0_0_#ffe135]">
+            NEW SEASON
+          </div>
         </div>
         <div className="grid grid-cols-4 gap-4">
-          <img
-            src="https://picsum.photos/id/1018/600/400"
-            alt="Product thumbnail"
-            className="object-cover rounded-lg"
-          />
-          <img
-            src="https://picsum.photos/id/1018/600/400"
-            alt="Product thumbnail"
-            className="object-cover rounded-lg"
-          />
-          <img
-            src="https://picsum.photos/id/1018/600/400"
-            alt="Product thumbnail"
-            className="object-cover rounded-lg"
-          />
-          <img
-            src="https://picsum.photos/id/1018/600/400"
-            alt="Product thumbnail"
-            className="object-cover rounded-lg"
-          />
+          {[1, 2, 3, 4].map((i) => (
+            <div
+              key={i}
+              className="aspect-square border-2 border-black rounded-xl overflow-hidden shadow-[2px_2px_0_0_#000] hover:translate-y-[-2px] transition-transform cursor-pointer"
+            >
+              <img
+                src="https://picsum.photos/id/1018/200/200"
+                alt="thumbnail"
+                className="object-cover w-full h-full opacity-60 hover:opacity-100 transition-opacity"
+              />
+            </div>
+          ))}
         </div>
       </div>
-      <div className="space-y-6">
+
+      <div className="space-y-8 flex flex-col justify-center">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Modern Desk Lamp</h1>
-          <div className="flex items-center space-x-2 mb-4">
-            <div className="flex">
+          <Badge className="bg-indigo-400 text-black border-2 border-black font-black uppercase mb-4 italic">
+            PREMIUM_ACCESSORY
+          </Badge>
+          <h1 className="text-5xl font-black uppercase italic tracking-tighter leading-none mb-4">
+            BRUTAL LAMP v.1
+          </h1>
+          <div className="flex items-center space-x-3 mb-6">
+            <div className="flex bg-black p-1 px-2 border-2 border-black rounded">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                <Star key={i} className="h-4 w-4 text-[#ffe135] fill-current" />
               ))}
             </div>
-            <span className="text-sm text-gray-600">(121 reviews)</span>
+            <span className="text-xs font-black uppercase underline decoration-2 underline-offset-4 tracking-widest">
+              (121 CUSTOMER_REVIEWS)
+            </span>
           </div>
-          <p className="text-xl font-bold mb-4">$59.99</p>
-          <p className="text-gray-600 mb-6">
-            Illuminate your workspace with our sleek and adjustable Modern Desk Lamp. Perfect for
-            home offices or study areas, this lamp provides ample lighting while adding a touch of
-            contemporary style to your decor.
+          <p className="text-5xl font-black font-mono mb-8">$59.99</p>
+          <p className="text-lg font-bold text-gray-700 leading-relaxed border-l-8 border-[#ffe135] pl-6 mb-8 italic">
+            Illuminate your workspace with our high-impact, adjustable Industrial Core Lamp.
+            Engineered for high-performance output with a neobrutalist structural soul.
           </p>
         </div>
-        <div className="space-y-4">
-          <div className="flex items-center space-x-4">
-            <Label htmlFor="color">Color:</Label>
+
+        <div className="space-y-6 bg-zinc-50 p-6 border-4 border-black rounded-2xl shadow-[4px_4px_0_0_#000]">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <Label htmlFor="color" className="font-black uppercase tracking-widest text-xs">
+              MODULE_COLOR:
+            </Label>
             <Select defaultValue="black">
-              <SelectTrigger id="color" className="w-[180px]">
-                <SelectValue placeholder="Select color" />
+              <SelectTrigger
+                id="color"
+                className="w-full sm:w-[200px] border-2 border-black bg-white font-black uppercase h-12 shadow-[2px_2px_0_0_#000]"
+              >
+                <SelectValue placeholder="Select" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="black">Black</SelectItem>
-                <SelectItem value="white">White</SelectItem>
-                <SelectItem value="silver">Silver</SelectItem>
+              <SelectContent className="border-2 border-black">
+                <SelectItem value="black" className="font-black">
+                  ONX_BLACK
+                </SelectItem>
+                <SelectItem value="white" className="font-black">
+                  STARK_WHITE
+                </SelectItem>
+                <SelectItem value="silver" className="font-black">
+                  PRO_SILVER
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
-          <div className="flex items-center space-x-4">
-            <Label>Quantity:</Label>
-            <div className="flex items-center border rounded-md">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <Label className="font-black uppercase tracking-widest text-xs">UNIT_QUANTITY:</Label>
+            <div className="flex items-center border-4 border-black bg-white rounded-xl shadow-[2px_2px_0_0_#000] overflow-hidden">
               <Button
-                variant="default"
+                variant="neutral"
                 size="icon"
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className="h-10 w-10 rounded-none border-none bg-zinc-100 hover:bg-[#ffe135]"
               >
                 <Minus className="h-4 w-4" />
               </Button>
-              <span className="w-12 text-center">{quantity}</span>
-              <Button variant="default" size="icon" onClick={() => setQuantity(quantity + 1)}>
+              <span className="w-14 text-center font-black text-lg">{quantity}</span>
+              <Button
+                variant="neutral"
+                size="icon"
+                onClick={() => setQuantity(quantity + 1)}
+                className="h-10 w-10 rounded-none border-none bg-zinc-100 hover:bg-[#ffe135]"
+              >
                 <Plus className="h-4 w-4" />
               </Button>
             </div>
           </div>
         </div>
-        <div className="space-y-4">
-          <Button className="w-full">Add to Cart</Button>
-          <Button variant="default" className="w-full">
-            Add to Wishlist
+
+        <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <Button className="flex-1 h-16 bg-black text-white border-2 border-black shadow-[6px_6px_0_0_#34A853] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all font-black uppercase italic text-xl flex gap-2">
+            <ShoppingBag size={24} /> ADD TO CART
           </Button>
-        </div>
-        <Separator />
-        <div className="space-y-4">
-          <h3 className="font-semibold">Product Details</h3>
-          <ul className="list-disc list-inside space-y-2 text-sm text-gray-600">
-            <li>Adjustable arm and head for precise lighting</li>
-            <li>Energy-efficient LED bulb included</li>
-            <li>Touch-sensitive controls with multiple brightness levels</li>
-            <li>USB charging port for convenient device charging</li>
-            <li>Compact base with cable management system</li>
-          </ul>
+          <Button
+            variant="neutral"
+            className="h-16 px-8 bg-white border-2 border-black shadow-[4px_4px_0_0_#000] hover:shadow-none font-black text-xl italic uppercase"
+          >
+            <Heart size={24} />
+          </Button>
         </div>
       </div>
     </div>
@@ -293,200 +396,340 @@ export const ProductDetailPage = () => {
 };
 
 export const CartPage = () => {
-  const cartItems = [
+  const [cartItems] = useState([
     {
       id: 1,
-      name: "Modern Desk Lamp",
+      name: "BRUTAL LAMP v.1",
       price: 59.99,
       quantity: 1,
-      image: "https://picsum.photos/id/1018/600/400",
+      image: "https://picsum.photos/id/1018/200/200",
+      color: "bg-[#ffe135]",
     },
     {
       id: 2,
-      name: "Ergonomic Office Chair",
+      name: "NEO CHAIR PRO",
       price: 199.99,
       quantity: 1,
-      image: "https://picsum.photos/id/1018/600/400",
+      image: "https://picsum.photos/id/1018/200/200",
+      color: "bg-indigo-400",
     },
-  ];
+  ]);
 
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shipping = 10;
   const total = subtotal + shipping;
 
   return (
-    <>
-      <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
-      <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <div className="space-y-4">
-            {cartItems.map((item) => (
-              <Card key={item.id}>
-                <CardContent className="flex items-center space-x-4 p-4">
+    <div className="space-y-8">
+      <div className="bg-[#ffe135] border-4 border-black p-8 rounded-3xl shadow-[8px_8px_0_0_#000]">
+        <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none mb-2">
+          SHIPPING CART
+        </h2>
+        <p className="font-bold uppercase text-xs opacity-60">
+          You have {cartItems.length} items manifest in system
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-10">
+        <div className="lg:col-span-2 space-y-6">
+          {cartItems.map((item) => (
+            <Card
+              key={item.id}
+              className="border-4 border-black shadow-[6px_6px_0_0_#000] rounded-2xl overflow-hidden bg-white hover:translate-x-1 hover:translate-y-1 transition-all"
+            >
+              <CardContent className="flex flex-col sm:flex-row items-center gap-6 p-6">
+                <div
+                  className={`h-24 w-24 border-2 border-black rounded-xl overflow-hidden shadow-[2px_2px_0_0_#000] ${item.color} p-1`}
+                >
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="h-24 w-24 object-cover rounded-md"
+                    className="h-full w-full object-cover rounded-lg border border-black"
                   />
-                  <div className="flex-grow">
-                    <h3 className="font-semibold">{item.name}</h3>
-                    <p className="text-sm text-gray-600 mb-2">${item.price.toFixed(2)}</p>
-                    <div className="flex items-center space-x-2">
-                      <Button variant="default" size="icon">
-                        <Minus className="h-4 w-4" />
+                </div>
+                <div className="flex-grow text-center sm:text-left">
+                  <h3 className="text-xl font-black uppercase italic tracking-tight leading-none mb-1">
+                    {item.name}
+                  </h3>
+                  <p className="text-sm font-black font-mono mb-4 text-black/50">
+                    ${item.price.toFixed(2)} / UNIT
+                  </p>
+                  <div className="flex items-center justify-center sm:justify-start gap-3">
+                    <div className="flex items-center border-2 border-black bg-white rounded-lg shadow-[2px_2px_0_0_#000] h-9">
+                      <Button
+                        variant="neutral"
+                        size="icon"
+                        className="h-full w-8 border-none rounded-none bg-zinc-50 hover:bg-[#ffe135]"
+                      >
+                        <Minus size={12} />
                       </Button>
-                      <span>{item.quantity}</span>
-                      <Button variant="default" size="icon">
-                        <Plus className="h-4 w-4" />
+                      <span className="w-10 text-center font-black text-sm">{item.quantity}</span>
+                      <Button
+                        variant="neutral"
+                        size="icon"
+                        className="h-full w-8 border-none rounded-none bg-zinc-50 hover:bg-[#ffe135]"
+                      >
+                        <Plus size={12} />
                       </Button>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
-                    <Button variant="default" size="icon" className="text-red-500">
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+                <div className="flex flex-col items-center sm:items-end justify-between self-stretch">
+                  <p className="text-2xl font-black font-mono">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </p>
+                  <Button
+                    variant="neutral"
+                    size="icon"
+                    className="bg-red-200 text-red-600 border-2 border-black shadow-[2px_2px_0_0_#000] hover:bg-red-400 hover:text-white transition-colors h-10 w-10"
+                  >
+                    <Trash2 size={18} />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-        <div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Order Summary</CardTitle>
+
+        <div className="lg:col-span-1">
+          <Card className="border-4 border-black shadow-[10px_10px_0_0_#000] rounded-3xl overflow-hidden bg-white sticky top-20">
+            <CardHeader className="bg-zinc-100 border-b-4 border-black p-6">
+              <CardTitle className="font-black uppercase italic tracking-tighter text-2xl">
+                Manifest Summary
+              </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex justify-between">
-                <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+            <CardContent className="p-8 space-y-6">
+              <div className="flex justify-between font-bold text-sm uppercase opacity-60">
+                <span>Core Subtotal</span>
+                <span className="font-mono text-black font-black">${subtotal.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between">
-                <span>Shipping</span>
-                <span>${shipping.toFixed(2)}</span>
+              <div className="flex justify-between font-bold text-sm uppercase opacity-60">
+                <span>Standard Delivery</span>
+                <span className="font-mono text-black font-black">${shipping.toFixed(2)}</span>
               </div>
-              <Separator />
-              <div className="flex justify-between font-semibold">
-                <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+              <Separator className="h-1 bg-black/10" />
+              <div className="flex justify-between items-end">
+                <span className="font-black text-xl uppercase italic tracking-tighter">
+                  Total Payable
+                </span>
+                <span className="font-black text-4xl font-mono underline decoration-4 decoration-[#ffe135] underline-offset-4">
+                  ${total.toFixed(2)}
+                </span>
               </div>
-              <Button className="w-full">Proceed to Checkout</Button>
+              <Button className="w-full h-16 bg-black text-white hover:bg-zinc-800 border-2 border-black shadow-[6px_6px_0_0_#ffe135] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all font-black text-xl uppercase italic mt-6 rounded-2xl">
+                AUTH & CHECKOUT →
+              </Button>
             </CardContent>
           </Card>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 export const CheckoutPage = () => {
   return (
-    <div className="grid md:grid-cols-2 gap-8">
-      <div className="space-y-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Shipping Information</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName">First Name</Label>
-                <Input id="firstName" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="lastName">Last Name</Label>
-                <Input id="lastName" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="address">Address</Label>
-              <Input id="address" />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="city">City</Label>
-                <Input id="city" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="postalCode">Postal Code</Label>
-                <Input id="postalCode" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="country">Country</Label>
-              <Select>
-                <SelectTrigger id="country">
-                  <SelectValue placeholder="Select country" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="us">United States</SelectItem>
-                  <SelectItem value="ca">Canada</SelectItem>
-                  <SelectItem value="uk">United Kingdom</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Payment Information</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="cardNumber">Card Number</Label>
-              <Input id="cardNumber" placeholder="1234 5678 9012 3456" />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="expirationDate">Expiration Date</Label>
-                <Input id="expirationDate" placeholder="MM/YY" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="cvv">CVV</Label>
-                <Input id="cvv" placeholder="123" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+    <div className="space-y-10">
+      <div className="bg-indigo-400 border-4 border-black p-8 rounded-3xl shadow-[8px_8px_0_0_#000] flex justify-between items-center text-white">
+        <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none">
+          Checkout Secure
+        </h2>
+        <Badge className="bg-black text-white border-2 border-white font-black italic">
+          ENCRYPTED_SSL
+        </Badge>
       </div>
-      <div>
-        <Card>
-          <CardHeader>
-            <CardTitle>Order Summary</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span>Modern Desk Lamp</span>
-                <span>$59.99</span>
+
+      <div className="grid lg:grid-cols-3 gap-10">
+        <div className="lg:col-span-2 space-y-10">
+          <Card className="border-4 border-black rounded-3xl shadow-[6px_6px_0_0_#000] bg-white overflow-hidden">
+            <CardHeader className="bg-zinc-50 border-b-4 border-black p-6">
+              <CardTitle className="font-black text-xl uppercase italic">
+                1. Shipping Logistics
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8 space-y-6">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="firstName"
+                    className="font-black uppercase text-[10px] tracking-widest pl-2"
+                  >
+                    First Unit Name
+                  </Label>
+                  <Input
+                    id="firstName"
+                    className="h-12 border-2 border-black font-bold uppercase shadow-[2px_2px_0_0_#000]"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="lastName"
+                    className="font-black uppercase text-[10px] tracking-widest pl-2"
+                  >
+                    Last Unit Name
+                  </Label>
+                  <Input
+                    id="lastName"
+                    className="h-12 border-2 border-black font-bold uppercase shadow-[2px_2px_0_0_#000]"
+                  />
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span>Ergonomic Office Chair</span>
-                <span>$199.99</span>
+              <div className="space-y-2">
+                <Label
+                  htmlFor="address"
+                  className="font-black uppercase text-[10px] tracking-widest pl-2"
+                >
+                  Grid Location / Address
+                </Label>
+                <Input
+                  id="address"
+                  className="h-12 border-2 border-black font-bold uppercase shadow-[2px_2px_0_0_#000]"
+                />
               </div>
-            </div>
-            <Separator />
-            <div className="flex justify-between">
-              <span>Subtotal</span>
-              <span>$259.98</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Shipping</span>
-              <span>$10.00</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Tax</span>
-              <span>$26.00</span>
-            </div>
-            <Separator />
-            <div className="flex justify-between font-semibold">
-              <span>Total</span>
-              <span>$295.98</span>
-            </div>
-            <Button className="w-full">Place Order</Button>
-          </CardContent>
-        </Card>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="city"
+                    className="font-black uppercase text-[10px] tracking-widest pl-2"
+                  >
+                    City Node
+                  </Label>
+                  <Input
+                    id="city"
+                    className="h-12 border-2 border-black font-bold uppercase shadow-[2px_2px_0_0_#000]"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="country"
+                    className="font-black uppercase text-[10px] tracking-widest pl-2"
+                  >
+                    Origin Country
+                  </Label>
+                  <Select>
+                    <SelectTrigger
+                      id="country"
+                      className="h-12 border-2 border-black font-black uppercase italic shadow-[2px_2px_0_0_#000]"
+                    >
+                      <SelectValue placeholder="Select Node" />
+                    </SelectTrigger>
+                    <SelectContent className="border-2 border-black">
+                      <SelectItem value="us" className="font-black uppercase">
+                        United States
+                      </SelectItem>
+                      <SelectItem value="ca" className="font-black uppercase">
+                        Canada
+                      </SelectItem>
+                      <SelectItem value="uk" className="font-black uppercase">
+                        United Kingdom
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-4 border-black rounded-3xl shadow-[6px_6px_0_0_#000] bg-white overflow-hidden">
+            <CardHeader className="bg-zinc-50 border-b-4 border-black p-6">
+              <CardTitle className="font-black text-xl uppercase italic">
+                2. Finance Terminal
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8 space-y-6">
+              <div className="space-y-2">
+                <Label
+                  htmlFor="cardNumber"
+                  className="font-black uppercase text-[10px] tracking-widest pl-2"
+                >
+                  System Card Access Number
+                </Label>
+                <div className="relative">
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-6 bg-zinc-200 border border-black rounded flex items-center justify-center font-black text-[8px] uppercase">
+                    VISA
+                  </div>
+                  <Input
+                    id="cardNumber"
+                    placeholder="0000 0000 0000 0000"
+                    className="h-14 border-2 border-black font-mono font-black text-lg shadow-[2px_2px_0_0_#000]"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="expirationDate"
+                    className="font-black uppercase text-[10px] tracking-widest pl-2"
+                  >
+                    End Date (MM/YY)
+                  </Label>
+                  <Input
+                    id="expirationDate"
+                    placeholder="00/00"
+                    className="h-12 border-2 border-black font-mono font-black shadow-[2px_2px_0_0_#000]"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="cvv"
+                    className="font-black uppercase text-[10px] tracking-widest pl-2"
+                  >
+                    Master Key (CVV)
+                  </Label>
+                  <Input
+                    id="cvv"
+                    placeholder="000"
+                    className="h-12 border-2 border-black font-mono font-black shadow-[2px_2px_0_0_#000]"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="lg:col-span-1">
+          <Card className="border-4 border-black shadow-[10px_10px_0_0_#000] rounded-3xl overflow-hidden bg-[#ffe135] flex flex-col sticky top-20">
+            <CardHeader className="bg-black text-white p-6">
+              <CardTitle className="font-black uppercase italic tracking-tighter text-2xl">
+                Secure Order Log
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8 space-y-6">
+              <div className="space-y-4">
+                <div className="flex justify-between items-center text-sm font-black uppercase">
+                  <span>BRUTAL LAMP v.1</span>
+                  <span className="font-mono">$59.99</span>
+                </div>
+                <div className="flex justify-between items-center text-sm font-black uppercase">
+                  <span>NEO CHAIR PRO</span>
+                  <span className="font-mono">$199.99</span>
+                </div>
+              </div>
+              <Separator className="h-1 bg-black/20" />
+              <div className="space-y-3 font-bold uppercase text-[10px]">
+                <div className="flex justify-between">
+                  <span>Subtotal Data</span>
+                  <span>$259.98</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Logistics Tax</span>
+                  <span>$10.00</span>
+                </div>
+              </div>
+              <div className="pt-6 border-t-4 border-black flex justify-between items-center">
+                <span className="font-black text-2xl uppercase italic tracking-tighter">
+                  FINAL TOTAL
+                </span>
+                <span className="font-black text-4xl font-mono underline decoration-4 decoration-black underline-offset-4 leading-none">
+                  $269.98
+                </span>
+              </div>
+              <Button className="w-full h-16 bg-black text-white border-2 border-black shadow-[6px_6px_0_0_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all font-black text-xl uppercase italic mt-8 rounded-2xl">
+                AUTHORIZE PAYMENT
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
@@ -494,57 +737,86 @@ export const CheckoutPage = () => {
 
 export const OrderConfirmationPage = () => {
   return (
-    <div className="max-w-2xl mx-auto text-center">
-      <div className="mb-8">
-        <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-        <h1 className="text-3xl font-bold mb-2">Order Confirmed!</h1>
-        <p className="text-gray-600">
-          Thank you for your purchase. Your order has been received and is being processed.
+    <div className="max-w-3xl mx-auto text-center space-y-10">
+      <div className="relative inline-block">
+        <div className="absolute inset-0 bg-green-400 border-4 border-black rounded-full rotate-6 -z-10" />
+        <div className="bg-white border-4 border-black p-12 rounded-full shadow-[8px_8px_0_0_#000]">
+          <CheckCircle className="h-24 w-24 text-green-500" />
+        </div>
+      </div>
+
+      <div>
+        <h1 className="text-6xl font-black italic uppercase tracking-tighter leading-none mb-4">
+          ORDER_CONFIRMED!
+        </h1>
+        <p className="text-xl font-bold uppercase tracking-widest text-black/50">
+          Transmission received / items in transit
         </p>
       </div>
-      <Card>
-        <CardHeader>
-          <CardTitle>Order Details</CardTitle>
+
+      <Card className="border-4 border-black shadow-[12px_12px_0_0_#ffe135] bg-white rounded-3xl overflow-hidden text-left">
+        <CardHeader className="bg-black text-white p-8">
+          <CardTitle className="font-black uppercase italic tracking-tighter text-3xl">
+            System Receipt #12345
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex justify-between">
-            <span>Order Number:</span>
-            <span className="font-semibold">#12345</span>
+        <CardContent className="p-10 space-y-8">
+          <div className="grid grid-cols-2 gap-10">
+            <div className="space-y-2">
+              <p className="text-[10px] font-black uppercase text-black/40 tracking-widest">
+                TRANSACTION_DATE
+              </p>
+              <p className="text-lg font-black uppercase italic">MAY_15 / 2024</p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-[10px] font-black uppercase text-black/40 tracking-widest">
+                TRANSACTION_TOTAL
+              </p>
+              <p className="text-3xl font-black font-mono underline decoration-4 decoration-[#ffe135] underline-offset-4 italic">
+                $295.98
+              </p>
+            </div>
           </div>
-          <div className="flex justify-between">
-            <span>Order Date:</span>
-            <span>May 15, 2023</span>
+
+          <Separator className="h-1 bg-black/10" />
+
+          <div className="space-y-4">
+            <h3 className="font-black uppercase italic tracking-widest text-sm border-l-8 border-black pl-4">
+              UNITS ORDERED:
+            </h3>
+            <div className="bg-zinc-50 border-2 border-black rounded-xl p-6 font-black uppercase italic space-y-2">
+              <div className="flex justify-between">
+                <span>+ BRUTAL LAMP v.1</span>
+                <span>[1 UNIT]</span>
+              </div>
+              <div className="flex justify-between">
+                <span>+ NEO CHAIR PRO</span>
+                <span>[1 UNIT]</span>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-between">
-            <span>Total Amount:</span>
-            <span className="font-semibold">$295.98</span>
-          </div>
-          <Separator />
-          <div className="space-y-2">
-            <h3 className="font-semibold">Items Ordered:</h3>
-            <ul className="list-disc list-inside text-sm text-gray-600">
-              <li>Modern Desk Lamp (1)</li>
-              <li>Ergonomic Office Chair (1)</li>
-            </ul>
-          </div>
-          <Separator />
-          <div className="space-y-2">
-            <h3 className="font-semibold">Shipping Address:</h3>
-            <p className="text-sm text-gray-600">
-              John Doe
-              <br />
-              123 Main St
-              <br />
-              Anytown, ST 12345
-              <br />
-              United States
+
+          <div className="space-y-4 pt-4 text-center sm:text-left">
+            <h3 className="font-black uppercase italic tracking-widest text-sm border-l-8 border-black pl-4">
+              DELIVERY_NODE:
+            </h3>
+            <p className="font-bold text-gray-600 bg-zinc-100 p-6 border-2 border-dashed border-black rounded-xl italic">
+              JOHN DOE / 123 MAIN ST / ANYTOWN, ST 12345 / UNITED STATES
             </p>
           </div>
         </CardContent>
       </Card>
-      <div className="mt-8 space-x-4 ">
-        <Button variant="default">Track Order</Button>
-        <Button variant="default">Continue Shopping</Button>
+
+      <div className="flex flex-wrap justify-center gap-6 pt-4">
+        <Button className="h-16 px-10 bg-black text-white border-2 border-black shadow-[6px_6px_0_0_#ffe135] font-black uppercase italic text-lg hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+          TRACK PACKAGE
+        </Button>
+        <Button
+          variant="neutral"
+          className="h-16 px-10 bg-white border-2 border-black shadow-[6px_6px_0_0_#000] font-black uppercase italic text-lg hover:bg-zinc-50"
+        >
+          BACK TO STORE
+        </Button>
       </div>
     </div>
   );
@@ -552,38 +824,79 @@ export const OrderConfirmationPage = () => {
 
 export const OrderHistoryPage = () => {
   const orders = [
-    { id: "12345", date: "May 15, 2023", total: 295.98, status: "Delivered" },
-    { id: "12344", date: "April 30, 2023", total: 149.99, status: "Shipped" },
-    { id: "12343", date: "April 15, 2023", total: 79.99, status: "Processing" },
+    {
+      id: "12345",
+      date: "May 15, 2023",
+      total: 295.98,
+      status: "Delivered",
+      color: "bg-green-400",
+    },
+    {
+      id: "12344",
+      date: "April 30, 2023",
+      total: 149.99,
+      status: "Shipped",
+      color: "bg-indigo-400",
+    },
+    { id: "12343", date: "April 15, 2023", total: 79.99, status: "Review", color: "bg-yellow-400" },
   ];
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Order History</h2>
-      <div className="space-y-4">
+    <div className="space-y-10">
+      <div className="bg-pink-400 border-4 border-black p-8 rounded-3xl shadow-[8px_8px_0_0_#000]">
+        <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none text-white">
+          Archives / History
+        </h2>
+        <p className="font-bold uppercase text-xs text-white/80 mt-2">
+          Accessing past transaction nodes...
+        </p>
+      </div>
+
+      <div className="space-y-8">
         {orders.map((order) => (
-          <Card key={order.id}>
-            <CardHeader>
-              <CardTitle>Order #{order.id}</CardTitle>
-              <CardDescription>Placed on {order.date}</CardDescription>
+          <Card
+            key={order.id}
+            className="group border-4 border-black shadow-[6px_6px_0_0_#000] rounded-3xl overflow-hidden bg-white hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
+          >
+            <CardHeader className="bg-zinc-50 border-b-2 border-black flex flex-row items-center justify-between p-6">
+              <div>
+                <CardTitle className="font-black uppercase italic text-2xl leading-none">
+                  Order Node #{order.id}
+                </CardTitle>
+                <CardDescription className="font-bold uppercase text-[10px] tracking-widest mt-1">
+                  LOG_DATE: {order.date}
+                </CardDescription>
+              </div>
+              <div
+                className={`px-4 py-1.5 border-4 border-black ${order.color} font-black uppercase italic text-xs shadow-[4px_4px_0_0_#000]`}
+              >
+                {order.status}
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="flex justify-between items-center">
+            <CardContent className="p-8">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
                 <div>
-                  <p className="font-semibold">${order.total.toFixed(2)}</p>
-                  <Badge
-                    variant={
-                      order.status === "Delivered"
-                        ? "default"
-                        : order.status === "Shipped"
-                          ? "outline"
-                          : "destructive"
-                    }
-                  >
-                    {order.status}
-                  </Badge>
+                  <p className="text-[10px] font-black uppercase opacity-40 mb-1">
+                    TOTAL_TRANSACTION_VALUE
+                  </p>
+                  <p className="text-4xl font-black font-mono underline decoration-4 decoration-pink-400 underline-offset-4 tracking-tighter italic">
+                    ${order.total.toFixed(2)}
+                  </p>
                 </div>
-                <Button variant="default">View Details</Button>
+                <div className="flex gap-4 w-full sm:w-auto">
+                  <Button
+                    variant="neutral"
+                    className="flex-1 sm:flex-none h-12 px-6 border-2 border-black bg-[#ffe135] font-black uppercase italic text-sm shadow-[4px_4px_0_0_#000] hover:shadow-none transition-all"
+                  >
+                    VIEW_MANIFEST
+                  </Button>
+                  <Button
+                    variant="neutral"
+                    className="flex-1 sm:flex-none h-12 px-6 border-2 border-black bg-white font-black uppercase italic text-sm shadow-[4px_4px_0_0_#000] hover:shadow-none transition-all"
+                  >
+                    INVOICE
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>

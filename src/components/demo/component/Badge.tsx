@@ -98,7 +98,7 @@ export const Badge = () => (
           />
         </ComponentBlock>
 
-        <ComponentBlock title="Warning State" subtitle="Yellow markers for cautionary data">
+        <ComponentBlock title="Warning State" subtitle="yellow markers for cautionary data">
           <CodePreview
             preview={<BadgeWarning />}
             code={badgeDefaultSnippet.react}

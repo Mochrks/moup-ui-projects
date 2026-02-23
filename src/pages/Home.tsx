@@ -316,7 +316,7 @@ const Home = () => {
 
         {/* ─── Feature Showcase ──────────────────────────────────── */}
         <section className="mt-20">
-          {/* Yellow marquee strip */}
+          {/* yellow marquee strip */}
           <MarqueeStrip />
 
           {/* Section header */}

@@ -168,15 +168,15 @@ export const AlertLeftBar = () => (
 
 // 8. Security Priority Notice
 export const AlertAction = () => (
-  <div className="p-1 bg-gradient-to-br from-orange-400 to-red-500 rounded-[2rem] shadow-xl overflow-hidden">
+  <div className="p-1 bg-gradient-to-br from-yellow-400 to-red-500 rounded-[2rem] shadow-xl overflow-hidden">
     <Alert className="w-full bg-white rounded-[1.8rem] border-0 p-6">
       <div className="flex flex-col sm:flex-row items-center gap-6">
-        <div className="w-20 h-20 bg-orange-100 rounded-3xl border-2 border-black flex items-center justify-center shrink-0">
-          <LifeBuoy className="text-orange-600 animate-[spin_10s_linear_infinite]" size={40} />
+        <div className="w-20 h-20 bg-yellow-100 rounded-3xl border-2 border-black flex items-center justify-center shrink-0">
+          <LifeBuoy className="text-yellow-600 animate-[spin_10s_linear_infinite]" size={40} />
         </div>
         <div className="space-y-4 flex-1">
           <div className="space-y-1">
-            <AlertTitle className="text-2xl font-black uppercase italic tracking-tighter text-orange-600">
+            <AlertTitle className="text-2xl font-black uppercase italic tracking-tighter text-yellow-600">
               Upgrade Safety!
             </AlertTitle>
             <AlertDescription className="text-zinc-500 font-bold leading-relaxed text-sm">
@@ -185,7 +185,7 @@ export const AlertAction = () => (
               vulnerabilities.
             </AlertDescription>
           </div>
-          <Button className="bg-orange-600 hover:bg-orange-700 border-2 border-black text-white font-heading rounded-xl shadow-[4px_4px_0_0_#000] active:translate-y-1 transition-all">
+          <Button className="bg-yellow-600 hover:bg-yellow-700 border-2 border-black text-white font-heading rounded-xl shadow-[4px_4px_0_0_#000] active:translate-y-1 transition-all">
             UPGRADE WORKSPACE
           </Button>
         </div>
@@ -213,20 +213,20 @@ export const AlertMinimal = () => (
 
 // 10. Intensive Feedback
 export const AlertSecurity = () => (
-  <Alert className="w-full border-4 border-black bg-orange-50/50 rounded-3xl p-8 relative">
+  <Alert className="w-full border-4 border-black bg-yellow-50/50 rounded-3xl p-8 relative">
     <div className="absolute top-0 right-0 p-3">
-      <Badge className="bg-orange-500 text-white border-2 border-black font-black">
+      <Badge className="bg-yellow-500 text-white border-2 border-black font-black">
         HIGH PRIORITY
       </Badge>
     </div>
     <div className="grid gap-6">
       <div className="flex items-start gap-4 border-b border-black/10 pb-4">
-        <ShieldAlert size={32} className="text-orange-600 shrink-0" />
+        <ShieldAlert size={32} className="text-yellow-600 shrink-0" />
         <div className="space-y-1">
-          <AlertTitle className="text-xl font-heading text-orange-950">
+          <AlertTitle className="text-xl font-heading text-yellow-950">
             Intrusion Attempt Blocked
           </AlertTitle>
-          <AlertDescription className="text-orange-900/60 font-medium">
+          <AlertDescription className="text-yellow-900/60 font-medium">
             Device type "Android 14" failed challenge response in region{" "}
             <span className="font-bold underline">ID-JKT</span>.
           </AlertDescription>
@@ -236,7 +236,7 @@ export const AlertSecurity = () => (
         <Button className="flex-1 border-2 border-black bg-white rounded-xl font-bold hover:bg-zinc-100 h-11">
           Review Logs
         </Button>
-        <Button className="flex-1 border-2 border-black bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 h-11 shadow-[4px_4px_0_0_#000]">
+        <Button className="flex-1 border-2 border-black bg-yellow-500 text-white rounded-xl font-bold hover:bg-yellow-600 h-11 shadow-[4px_4px_0_0_#000]">
           Secure Account
         </Button>
       </div>

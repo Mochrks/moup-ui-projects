@@ -92,7 +92,7 @@ export const CalendarMultiple = () => {
 
 // 4. Restricted Workflow (Weekdays Only)
 export const CalendarDisabled = () => (
-  <div className="p-1 bg-gradient-to-br from-red-500 to-orange-500 rounded-3xl shadow-xl">
+  <div className="p-1 bg-gradient-to-br from-red-500 to-yellow-500 rounded-3xl shadow-xl">
     <div className="bg-white rounded-[1.4rem] p-4">
       <div className="flex items-center gap-2 mb-3 text-red-600 font-black text-xs uppercase pl-2">
         <ShieldCheck size={14} /> Production Restriction Active

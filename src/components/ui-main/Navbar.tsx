@@ -201,7 +201,7 @@ export const Navbar = () => {
                 <div role="button" onClick={handleLogoClick} className="cursor-pointer">
                   <span className="text-xl font-bold">MoupUI</span>
                 </div>
-                <Badge variant="secondary" className="ml-2 bg-orange-300">
+                <Badge variant="secondary" className="ml-2 bg-yellow-300">
                   Beta
                 </Badge>
               </div>

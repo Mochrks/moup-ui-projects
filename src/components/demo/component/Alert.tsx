@@ -22,7 +22,7 @@ export const Alert = () => (
   <ContentLayout>
     <SectionDoc
       icon={<MessageCircleWarning className="w-5 h-5" />}
-      iconBg="bg-orange-100"
+      iconBg="bg-yellow-100"
       title="Alert"
       componentCount={10}
       description="Provide contextual feedback messages for typical user actions with a handful of available and flexible alert messages."
@@ -79,7 +79,7 @@ export const Alert = () => (
 
         <ComponentBlock
           title="Warning Notification"
-          subtitle="Yellow themed for cautionary messages"
+          subtitle="yellow themed for cautionary messages"
         >
           <CodePreview
             preview={<AlertWarning />}

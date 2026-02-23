@@ -32,7 +32,7 @@ export function ContrastTab() {
   const getRatingColor = (ratio: number) => {
     if (ratio >= 7) return "text-green-600";
     if (ratio >= 4.5) return "text-yellow-600";
-    if (ratio >= 3) return "text-orange-500";
+    if (ratio >= 3) return "text-yellow-500";
     return "text-red-500";
   };
 

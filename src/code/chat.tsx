@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Button } from "@/components/ui-shadcn/button";
-import { Input } from "@/components/ui-shadcn/input";
+import React, { useState } from "react";
+import { Button } from "@/components/ui-neobrutalism/button";
+import { Input } from "@/components/ui-neobrutalism/input";
 import {
   Card,
   CardContent,
@@ -8,28 +8,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui-shadcn/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui-shadcn/avatar";
-import { Badge } from "@/components/ui-shadcn/badge";
-import { ScrollArea } from "@/components/ui-shadcn/scroll-area";
-import {
-  MessageCircle,
-  Search,
-  Send,
-  Paperclip,
-  MoreVertical,
-  Phone,
-  Video,
-  Smile,
-} from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui-shadcn/dropdown-menu";
+} from "@/components/ui-neobrutalism/card";
+import { ScrollArea } from "@/components/ui-neobrutalism/scroll-area";
+import { Search, Send, Paperclip, MoreVertical, Phone, Video, Plus, Bot } from "lucide-react";
 
 export const AIPoweredChatbot = () => {
   const [messages, setMessages] = useState([
@@ -41,13 +22,12 @@ export const AIPoweredChatbot = () => {
     if (input.trim()) {
       setMessages([...messages, { id: messages.length + 1, text: input, sender: "user" }]);
       setInput("");
-      // Simulate AI response
       setTimeout(() => {
         setMessages((prev) => [
           ...prev,
           {
             id: prev.length + 1,
-            text: "I'm processing your request. How else can I help you?",
+            text: "I'm processing your request using the MoupUI Neural Engine. How else can I help?",
             sender: "bot",
           },
         ]);
@@ -56,132 +36,160 @@ export const AIPoweredChatbot = () => {
   };
 
   return (
-    <div className="w-full  mx-auto">
-      <CardHeader>
-        <CardTitle>AI Assistant</CardTitle>
-        <CardDescription>Get instant help from our AI chatbot</CardDescription>
-      </CardHeader>
-      <CardContent className="h-[400px] overflow-y-auto">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"} mb-4`}
-          >
-            <div
-              className={`max-w-[70%] p-3 rounded-lg ${message.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
-            >
-              {message.text}
+    <div className="w-full max-w-2xl mx-auto">
+      <Card className="border-4 border-black shadow-[8px_8px_0_0_#000] overflow-hidden">
+        <CardHeader className="bg-[#ffe135] border-b-4 border-black flex flex-row items-center justify-between pb-6">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center border-2 border-white shadow-[2px_2px_0_0_#000]">
+              <Bot size={24} className="text-white" />
+            </div>
+            <div>
+              <CardTitle className="text-2xl font-black italic uppercase tracking-tight leading-none">
+                AI CORE
+              </CardTitle>
+              <CardDescription className="text-black/60 font-bold uppercase text-[10px]">
+                Neural Processing Active
+              </CardDescription>
             </div>
           </div>
-        ))}
-      </CardContent>
-      <CardFooter className="flex gap-2">
-        <Input
-          placeholder="Type your message..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && handleSend()}
-        />
-        <Button onClick={handleSend}>
-          <Send className="w-4 h-4" />
-        </Button>
-      </CardFooter>
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500 border-2 border-black" />
+            <div className="w-3 h-3 rounded-full bg-green-500 border-2 border-black animate-pulse" />
+          </div>
+        </CardHeader>
+        <CardContent className="h-[400px] bg-zinc-50 p-6 space-y-6 overflow-y-auto">
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+            >
+              <div
+                className={`max-w-[80%] p-4 border-2 border-black font-bold shadow-[4px_4px_0_0_#000] rounded-2xl ${
+                  message.sender === "user"
+                    ? "bg-indigo-400 text-black rounded-tr-none translate-x-[-4px]"
+                    : "bg-white text-black rounded-tl-none translate-x-[4px]"
+                }`}
+              >
+                {message.text}
+              </div>
+            </div>
+          ))}
+        </CardContent>
+        <CardFooter className="p-6 bg-white border-t-4 border-black flex gap-3">
+          <Input
+            placeholder="Type your instruction..."
+            className="flex-1 h-12 border-2 border-black font-bold shadow-[4px_4px_0_0_#ffe135] focus-visible:ring-0"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyPress={(e) => e.key === "Enter" && handleSend()}
+          />
+          <Button
+            onClick={handleSend}
+            className="h-12 w-12 bg-black text-white border-2 border-black shadow-[4px_4px_0_0_#34A853] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+          >
+            <Send className="w-5 h-5" />
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 };
 
 export const RenderChatLayoutOne = () => {
-  const [selectedChat, setSelectedChat] = useState<number | null>(null);
+  const [selectedChat, setSelectedChat] = useState<number | null>(1);
   const [messageInput, setMessageInput] = useState("");
 
   const chats = [
     {
       id: 1,
       name: "John Doe",
-      avatar: "/placeholder.svg?height=40&width=40",
       lastMessage: "Hey, how are you?",
       time: "5m ago",
       unread: 2,
+      color: "bg-pink-400",
     },
     {
       id: 2,
       name: "Sarah Connor",
-      avatar: "/placeholder.svg?height=40&width=40",
       lastMessage: "The project is due tomorrow",
       time: "1h ago",
       unread: 0,
+      color: "bg-green-400",
     },
     {
       id: 3,
       name: "Tech Support",
-      avatar: "/placeholder.svg?height=40&width=40",
-      lastMessage: "Your ticket has been resolved",
+      lastMessage: "Ticket resolved",
       time: "1d ago",
       unread: 1,
+      color: "bg-indigo-400",
     },
     {
       id: 4,
       name: "Jane Smith",
-      avatar: "/placeholder.svg?height=40&width=40",
       lastMessage: "Lunch at 1 PM?",
       time: "2d ago",
       unread: 0,
-    },
-    {
-      id: 5,
-      name: "Team Channel",
-      avatar: "/placeholder.svg?height=40&width=40",
-      lastMessage: "New announcement from HR",
-      time: "3d ago",
-      unread: 5,
+      color: "bg-yellow-400",
     },
   ];
 
   const renderChatList = () => (
-    <Card className="h-full">
-      <CardHeader>
-        <div className="flex justify-between items-center">
-          <CardTitle>Chats</CardTitle>
-          <Button variant="ghost" size="icon">
-            <MessageCircle className="h-4 w-4" />
+    <Card className="h-full border-4 border-black shadow-[8px_8px_0_0_#000] overflow-hidden flex flex-col">
+      <CardHeader className="bg-zinc-100 border-b-4 border-black pb-6">
+        <div className="flex justify-between items-center mb-4">
+          <CardTitle className="text-2xl font-black italic uppercase tracking-tighter">
+            COMS
+          </CardTitle>
+          <Button variant="noShadow" size="icon" className="border-2 border-black bg-white">
+            <Plus className="h-4 w-4" />
           </Button>
         </div>
         <div className="relative">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input placeholder="Search chats" className="pl-8" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-black" />
+          <Input
+            placeholder="SEARCH CONTACTS..."
+            className="pl-10 border-2 border-black bg-white font-black uppercase text-xs shadow-[2px_2px_0_0_#000]"
+          />
         </div>
       </CardHeader>
-      <CardContent>
-        <ScrollArea className="h-[400px]">
-          {chats.map((chat) => (
-            <div
-              key={chat.id}
-              className={`flex items-center space-x-4 p-4 cursor-pointer hover:bg-accent ${selectedChat === chat.id ? "bg-accent" : ""}`}
-              onClick={() => setSelectedChat(chat.id)}
-            >
-              <Avatar>
-                <AvatarImage src={chat.avatar} alt={chat.name} />
-                <AvatarFallback>
-                  {chat.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex-grow">
-                <p className="text-sm font-medium">{chat.name}</p>
-                <p className="text-xs text-gray-500">{chat.lastMessage}</p>
+      <CardContent className="flex-1 p-0 overflow-hidden">
+        <ScrollArea className="h-full">
+          <div className="p-2 space-y-2">
+            {chats.map((chat) => (
+              <div
+                key={chat.id}
+                className={`flex items-center space-x-3 p-3 cursor-pointer border-2 transition-all rounded-xl ${
+                  selectedChat === chat.id
+                    ? "bg-[#ffe135] border-black shadow-[4px_4px_0_0_#000]"
+                    : "border-transparent hover:border-black/10 hover:bg-zinc-50"
+                }`}
+                onClick={() => setSelectedChat(chat.id)}
+              >
+                <div
+                  className={`w-10 h-10 rounded-lg border-2 border-black ${chat.color} flex items-center justify-center shadow-[2px_2px_0_0_#000]`}
+                >
+                  <span className="font-black text-xs">{chat.name[0]}</span>
+                </div>
+                <div className="flex-grow min-w-0">
+                  <p className="text-sm font-black truncate uppercase tracking-tight">
+                    {chat.name}
+                  </p>
+                  <p className="text-[10px] font-bold text-black/50 truncate uppercase">
+                    {chat.lastMessage}
+                  </p>
+                </div>
+                <div className="flex flex-col items-end">
+                  <p className="text-[9px] font-black text-black/40 uppercase">{chat.time}</p>
+                  {chat.unread > 0 && (
+                    <div className="mt-1 w-5 h-5 bg-black text-white rounded flex items-center justify-center text-[10px] font-black border border-black shadow-[1px_1px_0_0_#ffe135]">
+                      {chat.unread}
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="flex flex-col items-end">
-                <p className="text-xs text-gray-500">{chat.time}</p>
-                {chat.unread > 0 && (
-                  <Badge variant="destructive" className="mt-1">
-                    {chat.unread}
-                  </Badge>
-                )}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </ScrollArea>
       </CardContent>
     </Card>
@@ -189,126 +197,140 @@ export const RenderChatLayoutOne = () => {
 
   const renderChatWindow = () => {
     const chat = chats.find((c) => c.id === selectedChat);
-    if (!chat) return null;
+    if (!chat)
+      return (
+        <Card className="h-full border-4 border-black shadow-[8px_8px_0_0_#000] flex items-center justify-center bg-zinc-50 italic font-black text-zinc-300 uppercase">
+          Select a channel to transmit
+        </Card>
+      );
 
     return (
-      <div className="h-full flex flex-col">
-        <CardHeader>
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <Avatar>
-                <AvatarImage src={chat.avatar} alt={chat.name} />
-                <AvatarFallback>
-                  {chat.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <CardTitle>{chat.name}</CardTitle>
-                <CardDescription>Online</CardDescription>
-              </div>
+      <Card className="h-full border-4 border-black shadow-[8px_8px_0_0_#000] overflow-hidden flex flex-col">
+        <CardHeader className="border-b-4 border-black bg-white flex flex-row items-center justify-between pb-6">
+          <div className="flex items-center space-x-4">
+            <div
+              className={`w-12 h-12 rounded-xl border-2 border-black ${chat.color} flex items-center justify-center shadow-[3px_3px_0_0_#000]`}
+            >
+              <span className="font-black text-lg">{chat.name[0]}</span>
             </div>
-            <div className="flex space-x-2">
-              <Button variant="ghost" size="icon">
-                <Phone className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <Video className="h-4 w-4" />
-              </Button>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <MoreVertical className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Chat Options</DropdownMenuLabel>
-                  <DropdownMenuItem>View Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Search in Conversation</DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Mute Notifications</DropdownMenuItem>
-                  <DropdownMenuItem>Block User</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+            <div>
+              <CardTitle className="text-xl font-black uppercase italic tracking-tight leading-none">
+                {chat.name}
+              </CardTitle>
+              <div className="flex items-center gap-1.5 mt-1">
+                <div className="w-2 h-2 bg-green-500 border border-black rounded-full" />
+                <span className="text-[10px] font-black opacity-50 uppercase tracking-widest">
+                  Active Link
+                </span>
+              </div>
             </div>
           </div>
+          <div className="flex gap-2">
+            <Button
+              variant="noShadow"
+              size="icon"
+              className="border-2 border-black bg-white hover:bg-zinc-100"
+            >
+              <Phone className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="noShadow"
+              size="icon"
+              className="border-2 border-black bg-white hover:bg-zinc-100"
+            >
+              <Video className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="noShadow"
+              size="icon"
+              className="border-2 border-black bg-white hover:bg-zinc-100"
+            >
+              <MoreVertical className="h-4 w-4" />
+            </Button>
+          </div>
         </CardHeader>
-        <CardContent className="flex-grow overflow-hidden">
-          <ScrollArea className="h-[300px] pr-4">
-            {/* Placeholder messages */}
-            <div className="space-y-4">
+        <CardContent className="flex-1 bg-zinc-50 p-6 overflow-hidden">
+          <ScrollArea className="h-full pr-4">
+            <div className="space-y-6">
               <div className="flex justify-start">
-                <div className="bg-accent rounded-lg p-2 max-w-[70%]">
-                  <p className="text-sm">Hey, how's it going?</p>
-                  <p className="text-xs text-gray-500 mt-1">10:30 AM</p>
+                <div className="bg-white border-2 border-black rounded-2xl rounded-tl-none p-4 max-w-[70%] shadow-[4px_4px_0_0_#000] relative">
+                  <p className="text-sm font-bold">Hey, how's the neobrutalist project going?</p>
+                  <p className="text-[9px] font-black text-black/30 mt-2 uppercase">10:30 AM</p>
                 </div>
               </div>
               <div className="flex justify-end">
-                <div className="bg-primary text-primary-foreground rounded-lg p-2 max-w-[70%]">
-                  <p className="text-sm">Hi! I'm doing well, thanks. How about you?</p>
-                  <p className="text-xs text-primary-foreground/70 mt-1">10:32 AM</p>
-                </div>
-              </div>
-              <div className="flex justify-start">
-                <div className="bg-accent rounded-lg p-2 max-w-[70%]">
-                  <p className="text-sm">I'm good too. Did you finish the project?</p>
-                  <p className="text-xs text-gray-500 mt-1">10:33 AM</p>
-                </div>
-              </div>
-              <div className="flex justify-end">
-                <div className="bg-primary text-primary-foreground rounded-lg p-2 max-w-[70%]">
-                  <p className="text-sm">
-                    Yes, I just submitted it. Can you review it when you have a chance?
+                <div className="bg-[#ffe135] border-2 border-black rounded-2xl rounded-tr-none p-4 max-w-[70%] shadow-[4px_4px_0_0_#000]">
+                  <p className="text-sm font-black italic">
+                    It's coming together. The bold borders are really popping!
                   </p>
-                  <p className="text-xs text-primary-foreground/70 mt-1">10:35 AM</p>
+                  <p className="text-[9px] font-black text-black/40 mt-2 uppercase">10:32 AM</p>
+                </div>
+              </div>
+              <div className="flex justify-start">
+                <div className="bg-white border-2 border-black rounded-2xl rounded-tl-none p-4 max-w-[70%] shadow-[4px_4px_0_0_#000]">
+                  <p className="text-sm font-bold">
+                    Can't wait to see the final design. Let me know when it's live.
+                  </p>
+                  <p className="text-[9px] font-black text-black/30 mt-2 uppercase">10:33 AM</p>
                 </div>
               </div>
             </div>
           </ScrollArea>
         </CardContent>
-        <CardFooter>
-          <form className="flex space-x-2 w-full" onSubmit={(e) => e.preventDefault()}>
-            <Button variant="outline" size="icon">
-              <Paperclip className="h-4 w-4" />
+        <CardFooter className="p-4 border-t-4 border-black bg-white">
+          <div className="flex space-x-3 w-full">
+            <Button
+              variant="neutral"
+              size="icon"
+              className="border-2 border-black h-12 w-12 bg-white flex-shrink-0"
+            >
+              <Paperclip className="h-5 w-5" />
             </Button>
             <Input
-              placeholder="Type a message"
+              placeholder="TYPE YOUR ENCRYPTED MESSAGE..."
+              className="flex-grow h-12 border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0_0_#ffe135] focus-visible:ring-0"
               value={messageInput}
               onChange={(e) => setMessageInput(e.target.value)}
-              className="flex-grow"
             />
-            <Button type="submit">
-              <Send className="h-4 w-4 mr-2" />
-              Send
+            <Button className="h-12 px-6 bg-black text-white border-2 border-black shadow-[4px_4px_0_0_#34A853] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all uppercase font-black italic">
+              SEND
             </Button>
-          </form>
+          </div>
         </CardFooter>
-      </div>
+      </Card>
     );
   };
 
   return (
-    <>
-      <div className="grid grid-cols-3 gap-6 h-[600px]">
-        <div className="col-span-1">{renderChatList()}</div>
-        <div className="col-span-2">{renderChatWindow()}</div>
-      </div>
-    </>
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-[700px]">
+      <div className="lg:col-span-1">{renderChatList()}</div>
+      <div className="lg:col-span-2">{renderChatWindow()}</div>
+    </div>
   );
 };
 
 export const RenderChatLayoutTwo = () => {
   const [messages, setMessages] = useState([
-    { id: 1, sender: "John", content: "Hey, how are you?", time: "10:00 AM" },
-    { id: 2, sender: "You", content: "I'm good, thanks! How about you?", time: "10:05 AM" },
-    { id: 3, sender: "John", content: "Doing well! Did you finish the project?", time: "10:10 AM" },
     {
-      id: 4,
+      id: 1,
+      sender: "John",
+      content: "Did you update the navbar?",
+      time: "10:00 AM",
+      isYou: false,
+    },
+    {
+      id: 2,
       sender: "You",
-      content: "Yes, I just submitted it. Can you review when you have a chance?",
-      time: "10:15 AM",
+      content: "Yes! Added the bold shadows as requested.",
+      time: "10:05 AM",
+      isYou: true,
+    },
+    {
+      id: 3,
+      sender: "John",
+      content: "Looks sharp. Let's push to main.",
+      time: "10:10 AM",
+      isYou: false,
     },
   ]);
 
@@ -324,6 +346,7 @@ export const RenderChatLayoutTwo = () => {
           sender: "You",
           content: input,
           time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+          isYou: true,
         },
       ]);
       setInput("");
@@ -331,78 +354,120 @@ export const RenderChatLayoutTwo = () => {
   };
 
   return (
-    <div className="flex h-[600px]  mx-auto border border-border rounded-lg overflow-hidden">
-      <div className="w-1/3 border-r border-border bg-background">
-        <div className="p-5 ">
-          <Input placeholder="Search chats" className="w-full" />
+    <div className="h-[600px] border-4 border-black rounded-3xl overflow-hidden flex bg-white shadow-[12px_12px_0_0_#000]">
+      {/* Search/Contacts Column */}
+      <div className="w-1/3 border-r-4 border-black bg-zinc-50 flex flex-col">
+        <div className="p-6 border-b-2 border-black bg-white">
+          <Input
+            placeholder="SEARCH CHANNELS..."
+            className="w-full border-2 border-black font-black uppercase text-[10px] h-10 shadow-[2px_2px_0_0_#000]"
+          />
         </div>
-        <ScrollArea className="h-[calc(600px-65px)]">
-          {["John", "Alice", "Bob", "Carol"].map((name, index) => (
-            <div key={index} className="flex items-center gap-3 p-4 hover:bg-accent cursor-pointer">
-              <Avatar>
-                <AvatarImage src={`/placeholder.svg?height=40&width=40`} alt={name} />
-                <AvatarFallback>{name[0]}</AvatarFallback>
-              </Avatar>
-              <div className="flex-1">
-                <h3 className="font-semibold">{name}</h3>
-                <p className="text-sm text-muted-foreground">Last message...</p>
+        <ScrollArea className="flex-1">
+          {["Alpha", "Bravo", "Charlie", "Delta"].map((name, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-4 p-5 hover:bg-[#ffe135]/20 border-b border-black/5 cursor-pointer transition-colors group"
+            >
+              <div className="w-10 h-10 bg-white border-2 border-black rounded-full flex items-center justify-center font-black shadow-[2px_2px_0_0_#000] group-hover:bg-[#ffe135]">
+                {name[0]}
               </div>
-              <span className="text-xs text-muted-foreground">12:34 PM</span>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-black text-sm uppercase italic tracking-tighter truncate">
+                  {name}_UNITS
+                </h3>
+                <p className="text-[10px] font-bold text-black/40 uppercase truncate">
+                  ACTIVE SESSION 02...
+                </p>
+              </div>
+              <div className="w-2 h-2 rounded-full bg-green-500 border border-black shadow-[1px_1px_0_0_#000]" />
             </div>
           ))}
         </ScrollArea>
       </div>
+
+      {/* Main Chat Area */}
       <div className="flex-1 flex flex-col">
-        <div className="flex items-center justify-between p-4 border-b border-border">
-          <div className="flex items-center gap-3">
-            <Avatar>
-              <AvatarImage src="/placeholder.svg?height=40&width=40" alt="John" />
-              <AvatarFallback>J</AvatarFallback>
-            </Avatar>
+        <div className="flex items-center justify-between p-6 border-b-4 border-black bg-[#ffe135]">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-black rounded-full border-2 border-white flex items-center justify-center shadow-[4px_4px_0_0_#000]">
+              <span className="text-white font-black">A</span>
+            </div>
             <div>
-              <h2 className="font-semibold">John</h2>
-              <p className="text-xs text-muted-foreground">Online</p>
+              <h2 className="text-xl font-black italic uppercase tracking-tighter">ALPHA_UNITS</h2>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-black rounded-full animate-blink" />
+                <p className="text-[9px] font-black uppercase tracking-widest leading-none">
+                  Transmission Open
+                </p>
+              </div>
             </div>
           </div>
           <div className="flex gap-2">
-            <Button variant="ghost" size="icon">
+            <Button
+              variant="noShadow"
+              size="icon"
+              className="bg-white border-2 border-black h-10 w-10"
+            >
               <Search className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button
+              variant="noShadow"
+              size="icon"
+              className="bg-white border-2 border-black h-10 w-10"
+            >
               <MoreVertical className="h-4 w-4" />
             </Button>
           </div>
         </div>
-        <ScrollArea className="flex-1 p-4">
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex ${message.sender === "You" ? "justify-end" : "justify-start"} mb-4`}
-            >
+
+        <ScrollArea className="flex-1 p-6 bg-zinc-50 border-b-4 border-black">
+          <div className="space-y-6">
+            {messages.map((message) => (
               <div
-                className={`max-w-[70%] p-3 rounded-lg ${message.sender === "You" ? "bg-primary text-primary-foreground" : "bg-accent"}`}
+                key={message.id}
+                className={`flex ${message.isYou ? "justify-end" : "justify-start"}`}
               >
-                <p className="text-sm">{message.content}</p>
-                <p className="text-xs text-muted-foreground mt-1">{message.time}</p>
+                <div
+                  className={`max-w-[70%] p-4 border-2 border-black shadow-[4px_4px_0_0_#000] rounded-xl ${
+                    message.isYou ? "bg-indigo-300 rounded-br-none" : "bg-white rounded-bl-none"
+                  }`}
+                >
+                  <p className="text-sm font-black leading-snug">{message.content}</p>
+                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-black/10">
+                    <span className="text-[8px] font-black uppercase text-black/40 tracking-widest">
+                      {message.sender}
+                    </span>
+                    <span className="text-[8px] font-black uppercase text-black/40">
+                      {message.time}
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </ScrollArea>
-        <form onSubmit={sendMessage} className="flex items-center gap-2 p-4 border-t border-border">
-          <Button type="button" variant="ghost" size="icon">
-            <Paperclip className="h-4 w-4" />
+
+        <form onSubmit={sendMessage} className="flex items-center gap-3 p-6 bg-white">
+          <Button
+            type="button"
+            variant="noShadow"
+            size="icon"
+            className="border-2 border-black bg-zinc-100 h-12 w-12 flex-shrink-0"
+          >
+            <Paperclip className="h-5 w-5" />
           </Button>
           <Input
-            placeholder="Type a message"
+            placeholder="TYPE_INPUT_PROMPT..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1"
+            className="flex-1 h-12 border-2 border-black font-mono font-black uppercase text-xs focus-visible:ring-0 shadow-[4px_4px_0_0_#000]"
           />
-          <Button type="button" variant="ghost" size="icon">
-            <Smile className="h-4 w-4" />
-          </Button>
-          <Button type="submit">
-            <Send className="h-4 w-4" />
+          <Button
+            type="submit"
+            className="h-12 px-6 bg-black text-[#ffe135] border-2 border-black font-black uppercase italic shadow-[4px_4px_0_0_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+          >
+            TRANSMIT
           </Button>
         </form>
       </div>
